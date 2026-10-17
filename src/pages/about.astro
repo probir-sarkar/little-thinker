@@ -63,12 +63,6 @@ const stories = await getCollection("stories");
       <h2>What this site does not do</h2>
       <ul>
         <li><b>No scores, no quizzes, no answers at the back.</b> You cannot get these questions wrong.</li>
-        <li><b>No accounts and no advertising.</b> There is nothing to sign up for and nothing being sold.</li>
-        <li>
-          <b>No tracking.</b> The &ldquo;what do you think?&rdquo; buttons remember your answer on your own
-          device and nothing is sent anywhere, because there is nowhere for it to go. Nothing you type or tap
-          here leaves your computer or phone.
-        </li>
         <li><b>No explaining the plumbing.</b> This is a place to think about ideas, not about how websites are built.</li>
       </ul>
 
@@ -87,9 +81,9 @@ const stories = await getCollection("stories");
         people's lives are retold for young readers and are simplified on purpose.
       </p>
       <p>
-        There are {countOf(ideas.length)} ideas, {countOf(philosophers.length)} philosophers and
-        {countOf(stories.length)} stories here so far, and it grows. If something in it is wrong, it is worth
-        fixing — which is why the sources are named rather than paraphrased from nowhere.
+        There are {countOf(ideas.length, "idea")}, {countOf(philosophers.length, "philosopher")} and{" "}
+        {countOf(stories.length, "story", "stories")} here so far, and it grows. If something in it is wrong, it is
+        worth fixing — which is why the sources are named rather than paraphrased from nowhere.
       </p>
     </div>
 

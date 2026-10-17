@@ -493,7 +493,7 @@
 
   .foot { @apply mt-5 border-t-2 border-ink px-[clamp(18px,4vw,44px)] pb-11.5 pt-8; }
   .foot-inner {
-    @apply mx-auto grid max-w-[1180px] gap-6.5;
+    @apply mx-auto grid max-w-[1180px] gap-6.5 px-[clamp(18px,4vw,44px)];
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   }
   .foot-brand { @apply mb-2 font-display text-[1.2rem] font-bold; }

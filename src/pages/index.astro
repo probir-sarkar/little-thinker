@@ -7,19 +7,25 @@ import ConceptCard from "../components/ConceptCard.astro";
 import Icon from "../components/Icon.astro";
 import WonderBoard from "../components/islands/WonderBoard.tsx";
 import wonders from "../data/wonders.json";
-import { countOf } from "../lib/count";
+import { countOf, wordOf } from "../lib/count";
 import credits from "../data/credits.json";
 
 const philosophers = await getCollection("philosophers");
 const concepts = await getCollection("concepts");
+const stories = await getCollection("stories");
 
-// Three, not six: the row says "Three to start with" and links to all nine,
-// so the count on screen matches the count in the words.
+// Three, not six: the row says "Three to start with" and links to the full
+// shelf, so the count on screen matches the count in the words. Three ideas
+// too, for the same reason — a fourth would wrap alone onto a second row.
 const picked = ["socrates", "hypatia", "confucius"];
 const shelf = picked.map((id) => philosophers.find((p) => p.id === id)!).filter(Boolean);
-const ideaShelf = ["fairness", "truth", "time", "your-thoughts"]
+const ideaShelf = ["fairness", "truth", "time"]
   .map((id) => concepts.find((c) => c.id === id)!)
   .filter(Boolean);
+const storyShelf = ["the-cave", "the-boy-who-cried-wolf", "the-fox-and-the-grapes"]
+  .map((id) => stories.find((s) => s.id === id)!)
+  .filter(Boolean);
+const ideaDoorNamed = 4;
 
 // Decorative photographs, only if the credited ones were fetched.
 const sceneImages = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpg,jpeg,png,webp}", {
@@ -51,7 +57,7 @@ const scenes = (credits as any[])
 >
   <section class="hero">
     <div class="hero-left">
-      <p class="kicker">Philosophy for children 6–12</p>
+      <p class="kicker">Philosophy for children 5–12</p>
       <h1>Big questions,<br />cut down to size.</h1>
       <p class="lede">
         One idea per page. One philosopher per page. No answers at the bottom — just better questions, and things to try
@@ -67,7 +73,7 @@ const scenes = (credits as any[])
         <a class="door" href="/ideas">
           <span class="door-n">02</span>
           <span class="door-t">Start with a big idea</span>
-          <span class="door-s">Fairness, time, truth, courage and ten more</span>
+          <span class="door-s">Fairness, time, truth, courage and {wordOf(concepts.length - ideaDoorNamed)} more</span>
           <span class="door-a" aria-hidden="true"><Icon name="idea" size={22} /></span>
         </a>
       </div>
@@ -121,6 +127,25 @@ const scenes = (credits as any[])
     </div>
     <div class="grid grid-shelf">
       {ideaShelf.map((c) => <ConceptCard entry={c} />)}
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="row-head">
+      <h2>A story, told out loud</h2>
+      <a class="more" href="/stories">All {stories.length} &rarr;</a>
+    </div>
+    <div class="grid grid-3">
+      {
+        storyShelf.map((s) => (
+          <a class="story-card" href={`/stories/${s.id}`}>
+            <p class="story-src">{s.data.sourceShort}</p>
+            <h2>{s.data.title}</h2>
+            <p>{s.data.hook}</p>
+            <p class="story-meta">Ages {s.data.agesMin}&ndash;{s.data.agesMax}</p>
+          </a>
+        ))
+      }
     </div>
   </section>
 
