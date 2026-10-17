@@ -17,6 +17,7 @@ const isCurrent = (href: string) => (href === "/" ? path === "/" : path.startsWi
 const navItems = [
   { href: "/philosophers", label: "Philosophers" },
   { href: "/ideas", label: "Big Ideas" },
+  { href: "/stories", label: "Stories" },
   { href: "/grown-ups", label: "Grown-ups" },
 ];
 // The build emits dist/ideas/money.html, so Astro.url.pathname carries a
@@ -103,7 +104,9 @@ const socialCard = new URL("/og.png", Astro.site).href;
           <p class="foot-h">Go to</p>
           <a href="/philosophers">Philosophers</a>
           <a href="/ideas">Big Ideas</a>
-                <a href="/grown-ups">For grown-ups</a>
+          <a href="/stories">Stories</a>
+          <a href="/about">About</a>
+          <a href="/grown-ups">For grown-ups</a>
         </div>
         <div class="foot-col">
           <p class="foot-h">Images &amp; accuracy</p>

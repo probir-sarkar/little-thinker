@@ -257,6 +257,32 @@
   }
   .scene figcaption { @apply mt-2 text-[0.8rem] text-muted; }
 
+  /* ---------- story cards ---------- */
+  .story-card {
+    @apply flex flex-col gap-2 rounded-page border-[1.5px] border-ink bg-paper px-5 py-4.5 no-underline
+           transition-[transform,box-shadow] duration-150;
+    &:hover { @apply -translate-x-0.5 -translate-y-0.5; box-shadow: 7px 7px 0 var(--color-ink); }
+  }
+  /* A long source line used to wrap to four lines on one card and one line on
+     the next, which knocked the whole row out of alignment. One line each, and
+     the ages are pinned to the bottom so they line up across the row. */
+  .story-src {
+    @apply m-0 text-[0.76rem] font-bold uppercase tracking-[0.12em] text-muted;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .story-card h2 {
+    @apply m-0 font-display text-[1.24rem] leading-tight;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 3.15rem;
+  }
+  .story-card p { @apply m-0 text-[0.95rem] text-ink-2; }
+  .story-meta { @apply mt-auto pt-2 text-[0.85rem] text-muted; }
+
   /* ---------- rows and grids ---------- */
   .row { @apply pb-1.5 pt-8.5; }
   .row-head { @apply flex items-baseline justify-between gap-5 border-b-2 border-ink pb-2.5; }

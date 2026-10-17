@@ -1,0 +1,91 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../components/BaseLayout.astro";
+import Icon from "../../components/Icon.astro";
+
+export async function getStaticPaths() {
+  const stories = await getCollection("stories");
+  return stories.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const s = entry.data;
+const { Content } = await render(entry);
+
+const all = await getCollection("stories");
+const alsoStories = all.filter((o) => o.id !== entry.id).slice(0, 3);
+
+const concepts = await getCollection("concepts");
+const ideas = s.ideas
+  .map((id) => concepts.find((c) => c.id === id))
+  .filter((c) => c !== undefined);
+---
+
+<BaseLayout title={`${s.title} — Think Small`} description={s.hook}>
+  <article class="detail">
+    <nav class="crumbs">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/stories">Stories</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{s.title}</span>
+    </nav>
+
+    <header class="detail-head">
+      <div>
+        <p class="kicker">Story &middot; Ages {s.agesMin}&ndash;{s.agesMax}</p>
+        <h1>{s.title}</h1>
+        <p class="lede">{s.hook}</p>
+      </div>
+    </header>
+
+    <div class="detail-body">
+      <div class="prose">
+        <Content />
+
+        <section class="qblock">
+          <p class="qblock-label">What it is really asking</p>
+          <p class="qblock-q">{s.ask}</p>
+        </section>
+
+        <section class="tryit">
+          <p class="tryit-label"><Icon name="speech" size={15} /> How to tell it</p>
+          <p set:html={s.tellIt} />
+        </section>
+
+        <section class="gofurther">
+          <p class="tryit-label"><Icon name="scroll" size={15} /> Where this story comes from</p>
+          <p><b>{s.source}</b></p>
+          <p class="side-small" set:html={s.sourceNote} />
+          <p class="side-small">
+            This is a retelling, not a translation. The words are ours; the story is theirs.
+          </p>
+        </section>
+      </div>
+
+      <aside class="sidebox">
+        {
+          ideas.length > 0 && (
+            <div class="side-block">
+              <p class="side-h">The idea behind it</p>
+              {ideas.map((c) => (
+                <a class="side-link" href={`/ideas/${c!.id}`}>
+                  {c!.data.title}
+                  <span>Ages {c!.data.agesMin}&ndash;{c!.data.agesMax}</span>
+                </a>
+              ))}
+            </div>
+          )
+        }
+
+        <div class="side-block">
+          <p class="side-h">More stories</p>
+          {alsoStories.map((o) => (
+            <a class="side-link" href={`/stories/${o.id}`}>
+              {o.data.title}
+              <span>{o.data.source}</span>
+            </a>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

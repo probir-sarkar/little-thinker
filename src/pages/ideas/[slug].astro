@@ -20,6 +20,11 @@ const concepts = await getCollection("concepts");
 const related = c.related
   .map((id) => concepts.find((x) => x.id === id))
   .filter((x): x is NonNullable<typeof x> => Boolean(x));
+
+/** Some ideas have a story told alongside them — a myth, a parable, a thought
+ *  experiment. The story is the hook; this is the link back to it. */
+const stories = await getCollection("stories");
+const story = stories.find((s) => s.data.ideas.includes(entry.id));
 ---
 
 <BaseLayout title={`${c.title} — Think Small`} description={c.hook}>
@@ -134,6 +139,18 @@ const related = c.related
                   <span>{branchOf(r.data.branch).name}</span>
                 </a>
               ))}
+            </div>
+          )
+        }
+
+        {
+          story && (
+            <div class="side-block">
+              <p class="side-h">A story to go with this</p>
+              <a class="side-link" href={`/stories/${story.id}`}>
+                {story.data.title}
+                <span>{story.data.source}</span>
+              </a>
             </div>
           )
         }

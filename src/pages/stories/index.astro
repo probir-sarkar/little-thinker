@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../components/BaseLayout.astro";
+import Icon from "../../components/Icon.astro";
+
+const stories = (await getCollection("stories")).sort((a, b) => a.data.agesMin - b.data.agesMin);
+
+---
+
+<BaseLayout
+  title="Stories — Think Small"
+  description="Old stories with a question still open in them: the cave, the invisible ring, the ship that was replaced, the butterfly dream."
+>
+  <header class="page-head">
+    <p class="kicker">Stories</p>
+    <h1>Stories that leave<br />the question open</h1>
+    <p class="lede">
+      These are not made-up examples. Every one of them is a real story that someone told a long time ago to
+      make a point — a myth, a parable, a puzzle. We have retold them plainly for young readers and written
+      down where each one comes from. None of them ends in an answer.
+    </p>
+  </header>
+
+  <div class="grid grid-3">
+    {
+      stories.map((s) => (
+        <a class="story-card" href={`/stories/${s.id}`}>
+          <p class="story-src">{s.data.sourceShort}</p>
+          <h2>{s.data.title}</h2>
+          <p>{s.data.hook}</p>
+          <p class="story-meta">Ages {s.data.agesMin}&ndash;{s.data.agesMax}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="how">
+    <h2>How to read one</h2>
+    <ol class="how-list">
+      <li>
+        <b>Read it out loud</b>
+        <span>These were spoken long before they were written. They work better as something you tell.</span>
+      </li>
+      <li>
+        <b>Stop before the end</b>
+        <span>Every story page gives you the place to stop and ask, and what to ask.</span>
+      </li>
+      <li>
+        <b>Do not settle it</b>
+        <span>A story that ends in a tidy answer teaches that thinking is a race to a finish line.</span>
+      </li>
+    </ol>
+  </div>
+</BaseLayout>

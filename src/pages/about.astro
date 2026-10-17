@@ -1,0 +1,110 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../components/BaseLayout.astro";
+import { countOf } from "../lib/count";
+
+const ideas = await getCollection("concepts");
+const philosophers = await getCollection("philosophers");
+const stories = await getCollection("stories");
+---
+
+<BaseLayout
+  title="About — Think Small"
+  description="A free library of big questions, written for children. What is on a page, where the ideas come from, and what this site deliberately does not do."
+>
+  <header class="page-head">
+    <p class="kicker">About</p>
+    <h1>A library of questions, not answers</h1>
+    <p class="lede">
+      Think Small is a free collection of the big questions children ask anyway, written so that a child can
+      read a page alone or argue about it with an adult. It is for anyone curious, and it is written for
+      children aged about five to twelve.
+    </p>
+  </header>
+
+  <div class="detail-body">
+    <div class="prose">
+      <h2>Why philosophy, and why for children</h2>
+      <p>
+        Children ask about fairness, time, death, dreams and whether they are the same person they were last
+        year, and they ask without being prompted. Most of the time the answer they get is that it is a silly
+        question, or that they will understand when they are older. Neither of those is true. These are the
+        questions philosophers have been failing to settle for twenty-five centuries, and a child of seven can
+        hold one in their head without any difficulty at all.
+      </p>
+      <p>
+        This site takes children seriously as thinkers. That means the arguments are real ones and the
+        disagreements are left open. It also means we do not pretend that every question has a tidy answer,
+        because that would be the one thing guaranteed to make a child stop bothering to ask.
+      </p>
+
+      <h2>What is on a page</h2>
+      <p>
+        Every idea follows the same shape. A question, in one line. A short piece of writing that takes it
+        somewhere. A thing to <b>try</b>, which usually needs nothing but a sheet of paper. Three questions to
+        <b>talk about</b>, with nothing printed underneath them. The arguments people actually make, under
+        <b>Yes, but&hellip;</b>, each with a reply. <b>What other philosophers think</b>, named, with their
+        position in a sentence. And <b>if you want to go further</b>, the real book it comes from, so an adult
+        who wants to go deeper knows where to go.
+      </p>
+
+      <h2>Where the ideas come from</h2>
+      <p>
+        Every idea and every story names its sources. Nothing here is invented to make a point — if a page
+        tells you Plato said something, you can find out where. Where a philosopher's position is given as a
+        summary rather than a quotation, the page says so, because a summary and a sentence somebody actually
+        wrote are not the same thing and should not be dressed up as each other.
+      </p>
+      <p>
+        The thinkers come from Athens and Jerusalem and Córdoba, from Kalady, Kyoto, Nanjing and Tunis, and
+        from people who were arguing with their own traditions rather than only with Europe's.
+      </p>
+
+      <h2>What this site does not do</h2>
+      <ul>
+        <li><b>No scores, no quizzes, no answers at the back.</b> You cannot get these questions wrong.</li>
+        <li><b>No accounts and no advertising.</b> There is nothing to sign up for and nothing being sold.</li>
+        <li>
+          <b>No tracking.</b> The &ldquo;what do you think?&rdquo; buttons remember your answer on your own
+          device and nothing is sent anywhere, because there is nowhere for it to go. Nothing you type or tap
+          here leaves your computer or phone.
+        </li>
+        <li><b>No explaining the plumbing.</b> This is a place to think about ideas, not about how websites are built.</li>
+      </ul>
+
+      <h2>Use it with a child</h2>
+      <p>
+        Read a page together and then stop talking. Most of the value is in what happens after the page ends.
+        The <a href="/grown-ups">grown-ups page</a> has a ten-minute routine for doing this with one child or
+        with a class, and a table of every idea by age and theme for anyone planning lessons.
+      </p>
+
+      <h2>Pictures and accuracy</h2>
+      <p>
+        Portraits are public-domain or openly licensed pictures from Wikimedia Commons, and each one is
+        <a href="/credits">credited in full</a>. Where no portrait of a thinker exists that is both authentic
+        and free to use, the page uses a drawn mark rather than inventing a face. Stories and accounts of
+        people's lives are retold for young readers and are simplified on purpose.
+      </p>
+      <p>
+        There are {countOf(ideas.length)} ideas, {countOf(philosophers.length)} philosophers and
+        {countOf(stories.length)} stories here so far, and it grows. If something in it is wrong, it is worth
+        fixing — which is why the sources are named rather than paraphrased from nowhere.
+      </p>
+    </div>
+
+    <aside class="sidebox">
+      <div class="side-block">
+        <p class="side-h">Start somewhere</p>
+        <a class="side-link" href="/ideas">Big ideas<span>The questions</span></a>
+        <a class="side-link" href="/philosophers">Philosophers<span>Who asked them</span></a>
+        <a class="side-link" href="/stories">Stories<span>Old tales, open questions</span></a>
+      </div>
+      <div class="side-block">
+        <p class="side-h">For adults</p>
+        <a class="side-link" href="/grown-ups">Ten-minute ritual<span>How to run it</span></a>
+        <a class="side-link" href="/credits">Image credits<span>Every picture, sourced</span></a>
+      </div>
+    </aside>
+  </div>
+</BaseLayout>

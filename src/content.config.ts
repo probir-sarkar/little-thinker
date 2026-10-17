@@ -52,4 +52,27 @@ const concepts = defineCollection({
   }),
 });
 
-export const collections = { philosophers, concepts };
+/**
+ * Stories. These are retellings of tales that already exist — a myth, a
+ * parable, a thought experiment — not invented examples. The source line is
+ * part of the page, because a story that came from somewhere should say so.
+ */
+const stories = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/stories" }),
+  schema: z.object({
+    title: z.string(),
+    source: z.string(),
+    // The card label. Kept separate from `source` so the full provenance
+    // stays on the page and the card stays short enough not to be truncated.
+    sourceShort: z.string(),
+    sourceNote: z.string(),
+    agesMin: z.number(),
+    agesMax: z.number(),
+    hook: z.string(),
+    ask: z.string(),
+    tellIt: z.string(),
+    ideas: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = { philosophers, concepts, stories };
