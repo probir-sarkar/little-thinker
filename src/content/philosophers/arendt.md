@@ -1,7 +1,7 @@
 ---
 name: "Hannah Arendt"
 monogram: "HA"
-icon: "crowd"
+icon: "speech"
 years: "1906–1975"
 birthYear: 1906
 deathYear: 1975

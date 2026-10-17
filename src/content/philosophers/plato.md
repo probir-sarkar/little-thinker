@@ -1,7 +1,7 @@
 ---
 name: "Plato"
 monogram: "PL"
-icon: "arch"
+icon: "column"
 years: "c. 427–347 BCE"
 birthYear: -427
 deathYear: -347

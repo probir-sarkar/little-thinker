@@ -1,7 +1,7 @@
 ---
 name: "Socrates"
 monogram: "SO"
-icon: "spiral"
+icon: "question"
 years: "469–399 BCE"
 birthYear: -469
 deathYear: -399

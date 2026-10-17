@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "think-small-philosophy",
+  "compatibility_date": "2026-10-12",
+  "compatibility_flags": ["global_fetch_strictly_public"],
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Load-bearing. With "none" the root path 404s; with anything other than
+    // auto-trailing-slash the extensionless links this site generates break.
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  // No D1, no KV, no Durable Objects, no Images binding: this is a static
+  // site. Declared empty here so the adapter does not auto-provision a KV
+  // namespace for Astro sessions that this site never uses.
+  "kv_namespaces": [],
+  "observability": { "enabled": true }
+}

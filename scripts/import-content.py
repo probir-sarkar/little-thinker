@@ -17,6 +17,13 @@ CONTENT = ROOT / "src" / "content"
 DATA = ROOT / "src" / "data"
 
 # Maps a philosopher to the credited image file the image-sourcing pass downloads.
+# The prototype's abstract symbol names -> concrete sprite ids.
+SYMBOL_TO_ICON = {
+    "spiral": "question", "gate": "door", "arch": "column", "leaf": "leaf",
+    "star": "star", "lantern": "lantern", "dot": "mirror", "book": "scroll",
+    "crowd": "speech",
+}
+
 HERO = {
     "socrates": ("socrates.jpg", "Marble bust of Socrates in the Louvre"),
     "confucius": ("confucius.jpg", "Traditional portrait of Confucius"),
@@ -88,7 +95,7 @@ def main():
         front = {
             "name": p["name"],
             "monogram": p["monogram"],
-            "icon": p["symbol"],
+            "icon": SYMBOL_TO_ICON[p["symbol"]],
             "years": p["years"],
             "birthYear": birth,
             "deathYear": death,

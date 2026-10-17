@@ -1,17 +1,23 @@
 {
-  "name": "think-small",
+  "name": "think-small-philosophy",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "node": ">=22.22.0"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "check:icons": "node scripts/check-icons.mjs",
+    "build": "npm run check:icons && astro build",
+    "verify": "node scripts/verify-dist.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "deploy": "npm run build && wrangler deploy",
+    "astro": "astro",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
-    "astro": "^7.4.0"
+    "@astrojs/cloudflare": "^14.4.0",
+    "astro": "^7.4.0",
+    "wrangler": "^4.151.1"
   }
 }

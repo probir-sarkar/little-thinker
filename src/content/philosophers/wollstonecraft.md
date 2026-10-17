@@ -1,7 +1,7 @@
 ---
 name: "Mary Wollstonecraft"
 monogram: "MW"
-icon: "book"
+icon: "scroll"
 years: "1759–1797"
 birthYear: 1759
 deathYear: 1797

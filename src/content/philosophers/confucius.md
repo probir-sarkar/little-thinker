@@ -1,7 +1,7 @@
 ---
 name: "Confucius"
 monogram: "CO"
-icon: "gate"
+icon: "door"
 years: "551–479 BCE"
 birthYear: -551
 deathYear: -479

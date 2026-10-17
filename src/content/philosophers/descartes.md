@@ -1,7 +1,7 @@
 ---
 name: "René Descartes"
 monogram: "RD"
-icon: "dot"
+icon: "mirror"
 years: "1596–1650"
 birthYear: 1596
 deathYear: 1650
