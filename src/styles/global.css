@@ -244,9 +244,15 @@
   .scene figure { @apply m-0; }
   /* These plates are an owl, a sky chart, a world map and a reading room —
      shapes that have nothing in common. A 4/3 cover crop cut the top off the
-     sky chart and trimmed the map, so each one now keeps its own proportions. */
+     sky chart and trimmed the map, so the frame is now 4/5 with the picture
+     *contained* inside it: nothing is ever trimmed, and a shared frame keeps
+     the captions on one baseline. The source plates are all close to 4/5, so
+     the leftover margin is only a few pixels. */
   .scene img {
     @apply w-full rounded-page border-[1.5px] border-ink;
+    aspect-ratio: 4 / 5;
+    object-fit: contain;
+    background: var(--color-paper-2);
     filter: sepia(0.3) saturate(0.8) contrast(1.02);
   }
   .scene figcaption { @apply mt-2 text-[0.8rem] text-muted; }
