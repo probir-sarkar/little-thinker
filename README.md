@@ -1,9 +1,9 @@
-# Think Small — philosophy for children
+# Little Thinker — philosophy for children
 
 A real Astro project: 39 routes, content collections, build-time image
 optimisation, and charts drawn as SVG from the content itself.
 
-Live: <https://think-small-philosophy.probir.workers.dev>
+Live: <https://little-thinker.probir.dev>
 
 ## Commands
 

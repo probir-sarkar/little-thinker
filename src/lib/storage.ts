@@ -4,7 +4,7 @@
  * Everything the site remembers about a reader lives here: reading settings,
  * which wonders they took on, how they voted. Nothing is sent anywhere.
  */
-const PREFIX = "think-small:";
+const PREFIX = "little-thinker:";
 
 export function load<T>(key: string, fallback: T): T {
   try {

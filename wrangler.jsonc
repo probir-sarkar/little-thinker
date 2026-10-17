@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "think-small-philosophy",
+  "name": "little-thinker",
   "compatibility_date": "2025-09-01",
   // No "main", no bindings. Cloudflare's Astro framework guide: for a fully
   // static Astro project the config is just an `assets` block, "because you're
@@ -13,5 +13,8 @@
     // Serves src/pages/404.astro for unmatched routes.
     "not_found_handling": "404-page"
   },
+  // Attaches the custom domain to this Worker. probir.dev is already a zone on
+  // this account, so Wrangler creates the DNS record and the certificate for it.
+  "routes": [{ "pattern": "little-thinker.probir.dev", "custom_domain": true }],
   "observability": { "enabled": true }
 }

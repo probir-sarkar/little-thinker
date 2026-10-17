@@ -27,7 +27,7 @@ const stories = await getCollection("stories");
 const story = stories.find((s) => s.data.ideas.includes(entry.id));
 ---
 
-<BaseLayout title={`${c.title} — Think Small`} description={c.hook}>
+<BaseLayout title={`${c.title} — Little Thinker`} description={c.hook}>
   <article class="detail idea-detail" style={`--card-accent:${b.color}`}>
     <nav class="crumbs">
       <a href="/">Home</a><span aria-hidden="true">/</span>
