@@ -11,7 +11,7 @@ oneLiner: "He answered the big questions with jokes, and argued that the most us
 bigQuestion: "Is a dream less real than a day?"
 quote: "I do not know whether I was a man dreaming I was a butterfly, or a butterfly now dreaming I am a man."
 quoteNote: "From the butterfly chapter. He is not asking you to doubt everything, he is asking how you would ever check."
-heroImage: ""
+heroImage: "zhuangzi.jpg"
 heroImageAlt: "No portrait from Zhuangzi's lifetime is known"
 facts:
   - "His book is mostly stories about people who are odd — a butcher who cuts up an ox without ever sharpening his knife, a cripple everyone admires, a man who talks to a skull."

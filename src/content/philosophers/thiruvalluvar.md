@@ -11,7 +11,7 @@ oneLiner: "He put a whole ethics into 1,330 two-line verses, and made kindness t
 bigQuestion: "What is the shortest way to say how to live?"
 quote: "All that is born must suffer; so the wise do not do harm."
 quoteNote: "His verses are couplets, and translations differ a great deal. The theme throughout is that avoiding harm comes before everything else."
-heroImage: ""
+heroImage: "thiruvalluvar.jpg"
 heroImageAlt: "No portrait from Thiruvalluvar's lifetime is known"
 facts:
   - "Almost nothing is known about him, including whether Thiruvalluvar is a name or a title meaning something like 'the respected weaver'."

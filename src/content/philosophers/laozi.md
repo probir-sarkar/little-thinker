@@ -11,7 +11,7 @@ oneLiner: "He said the strongest thing in the world is soft, and that the best w
 bigQuestion: "Is it better to push, or to let things happen?"
 quote: "The softest thing in the world overruns the hardest."
 quoteNote: "From the Dao De Jing. Water is his example: it yields to everything and wears down rock."
-heroImage: ""
+heroImage: "laozi.jpg"
 heroImageAlt: "No portrait from Laozi's lifetime is known"
 facts:
   - "Almost nothing is known about him as a person. Even his dates are guesswork across two centuries, and some scholars doubt he was one man."

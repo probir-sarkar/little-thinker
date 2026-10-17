@@ -11,7 +11,7 @@ oneLiner: "He described what it is to see yourself through the eyes of people wh
 bigQuestion: "Who are you when other people see you wrongly?"
 quote: "It is a strange sensation, this double consciousness — always looking at oneself through the eyes of others."
 quoteNote: "A paraphrase of the opening of The Souls of Black Folk, where he sets out seeing yourself through the eyes of a society that dismisses you."
-heroImage: ""
+heroImage: "du-bois.jpg"
 heroImageAlt: "W. E. B. Du Bois, photographed in his lifetime"
 facts:
   - "He was the first African American to earn a doctorate at Harvard, and he had already studied in Berlin."

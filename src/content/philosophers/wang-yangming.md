@@ -11,7 +11,7 @@ oneLiner: "He argued that knowing the right thing and doing it are not two steps
 bigQuestion: "If you know what is right, why don't you do it?"
 quote: "There is no knowledge apart from action; knowing and doing are one."
 quoteNote: "A summary of his doctrine of the unity of knowledge and action, argued against the prevailing view that understanding comes first and practice follows."
-heroImage: ""
+heroImage: "wang-yangming.jpg"
 heroImageAlt: "A traditional depiction of Wang Yangming"
 facts:
   - "He was a general as well as a philosopher, and put down a major rebellion — an unusual credential for someone writing about inner knowing."

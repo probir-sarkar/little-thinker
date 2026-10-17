@@ -11,7 +11,7 @@ oneLiner: "He tried to describe experience before it gets divided into a self an
 bigQuestion: "What is happening before you divide things into you and everything else?"
 quote: "Pure experience is experience just as it is, before any division into subject and object."
 quoteNote: "The opening idea of his first book, An Inquiry into the Good — a description of experience prior to the categories we usually add to it."
-heroImage: ""
+heroImage: "nishida-kitaro.jpg"
 heroImageAlt: "Nishida Kitaro, photographed in his lifetime"
 facts:
   - "He taught in provincial schools for years before getting a university post, and wrote his first book while still teaching secondary school."

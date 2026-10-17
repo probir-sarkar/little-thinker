@@ -11,7 +11,7 @@ oneLiner: "He argued that a society can be built so that people are sorted at bi
 bigQuestion: "Is an unequal society stable, or only quiet?"
 quote: "Caste is not a division of labour; it is a division of labourers."
 quoteNote: "His central claim against the defence that caste is simply people doing different jobs — the difference being that one is chosen and the other is inherited."
-heroImage: ""
+heroImage: "ambedkar.jpg"
 heroImageAlt: "B. R. Ambedkar, photographed in his lifetime"
 facts:
   - "He was born into a caste treated as untouchable, was the first member of it to attend an Indian university, and went on to earn doctorates in New York and London."

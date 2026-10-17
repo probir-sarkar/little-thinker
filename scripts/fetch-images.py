@@ -30,6 +30,32 @@ SUBJECTS = [
     ("descartes", "René Descartes portrait Frans Hals"),
     ("wollstonecraft", "Mary Wollstonecraft portrait John Opie"),
     ("arendt", "Hannah Arendt photograph portrait"),
+    ("diogenes", "Diogenes painting lantern"),
+    ("marcus-aurelius", "Marcus Aurelius bust portrait"),
+    ("mill", "John Stuart Mill portrait photograph"),
+    ("nagarjuna", "Nagarjuna statue"),
+    ("sor-juana", "Sor Juana Ines de la Cruz portrait"),
+    ("zera-yacob", "Zera Yacob Ethiopian philosopher"),
+    # Added with the wider geography: China, India, the Islamic world, Japan,
+    # Africa and the Americas. Search terms are chosen so the Commons title
+    # usually contains the subject's name, which is what pick() prefers.
+    ("laozi", "Laozi painting"),
+    ("zhuangzi", "Zhuangzi painting"),
+    ("zhu-xi", "Zhu Xi portrait"),
+    ("wang-yangming", "Wang Yangming portrait"),
+    ("mencius", "Mencius portrait"),
+    ("shankara", "Adi Shankara painting"),
+    ("kautilya", "Chanakya portrait"),
+    ("thiruvalluvar", "Thiruvalluvar statue"),
+    ("ambedkar", "B. R. Ambedkar portrait"),
+    ("al-ghazali", "Al-Ghazali portrait"),
+    ("ibn-rushd", "Averroes medieval portrait"),
+    ("ibn-khaldun", "Ibn Khaldun portrait"),
+    ("ibn-tufayl", "Ibn Tufayl portrait"),
+    ("dogen", "Dogen portrait painting"),
+    ("nishida-kitaro", "Nishida Kitaro photograph"),
+    ("fanon", "Frantz Fanon photograph"),
+    ("du-bois", "W. E. B. Du Bois photograph"),
 ]
 
 SCENES = [

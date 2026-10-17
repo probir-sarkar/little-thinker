@@ -11,7 +11,7 @@ oneLiner: "He said understanding comes from looking closely at ordinary things, 
 bigQuestion: "How do you find out how things work?"
 quote: "Investigate the things around you, and extend your knowledge one thing at a time."
 quoteNote: "The doctrine of gewu, drawn from an older text and made central by Zhu Xi and his followers."
-heroImage: ""
+heroImage: "zhu-xi.jpg"
 heroImageAlt: "A traditional depiction of Zhu Xi"
 facts:
   - "He selected four older books, wrote commentaries on them, and those commentaries became the basis of the Chinese civil service examinations for six hundred years."

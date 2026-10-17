@@ -11,7 +11,7 @@ oneLiner: "He argued that people are born good, and that the work of a life is n
 bigQuestion: "Are people born good?"
 quote: "The feeling of commiseration is the beginning of humaneness."
 quoteNote: "His test is the child at the well: anyone would lurch towards a drowning child, before any thought of reward."
-heroImage: ""
+heroImage: "mencius.jpg"
 heroImageAlt: "No portrait from Mencius's lifetime is known"
 facts:
   - "His test case for human goodness is the child at the edge of a well: everyone, he says, would rush to stop it — not for thanks, not for reward, just because."

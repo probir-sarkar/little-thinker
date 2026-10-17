@@ -26,6 +26,12 @@ const nearbyIdeas = concepts.filter((c) => c.data.branch === p.branch).slice(0, 
 
 const credit = (credits as any[]).find((c) => c.slug === entry.id);
 
+/** Commons filenames are not prose. "File:Zhang Lu-Laozi Riding an Ox (cropped).jpg"
+ *  reads badly on the page, so show the work without the File: prefix or extension. */
+function prettyTitle(raw: string) {
+  return raw.replace(/^File:/i, "").replace(/\.(jpe?g|png)$/i, "").replace(/_/g, " ");
+}
+
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -87,12 +93,13 @@ const structuredData = {
         {
           credit ? (
             <p class="side-small">
-              {credit.title} — {credit.author}. <a href="/credits">Where this picture comes from</a>.
+              {prettyTitle(credit.title)}
+              {credit.author ? ` — ${credit.author}` : ""}. <a href="/credits">Source on Wikimedia Commons</a>.
             </p>
           ) : (
             <p class="side-small">
-              No portrait of {p.name.split(" ")[0]} from their own lifetime survives, so this page uses a drawn mark
-              instead of inventing a face. <a href="/credits">About the pictures</a>.
+              We have no portrait of {p.name.split(" ")[0]} that is both authentic and free to use, so this page uses
+              a drawn mark rather than an invented face. <a href="/credits">About the pictures</a>.
             </p>
           )
         }
