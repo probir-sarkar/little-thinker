@@ -2,25 +2,11 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../components/BaseLayout.astro";
 import PhilosopherCard from "../../components/PhilosopherCard.astro";
-import TimelineChart from "../../components/charts/TimelineChart.astro";
 import Icon from "../../components/Icon.astro";
 import FilterChips from "../../components/islands/FilterChips.tsx";
-import BranchChart from "../../components/charts/BranchChart.astro";
 import { Capitalised, countOf } from "../../lib/count";
 
 const philosophers = (await getCollection("philosophers")).sort((a, b) => a.data.birthYear - b.data.birthYear);
-const byBranch = philosophers.reduce<Record<string, number>>((acc, p) => {
-  acc[p.data.branch] = (acc[p.data.branch] ?? 0) + 1;
-  return acc;
-}, {});
-const timeline = philosophers.map((p) => ({
-  name: p.data.name,
-  icon: p.data.icon,
-  birthYear: p.data.birthYear,
-  deathYear: p.data.deathYear,
-  branch: p.data.branch,
-  href: `/philosophers/${p.id}`,
-}));
 ---
 
 <BaseLayout
@@ -55,10 +41,6 @@ const timeline = philosophers.map((p) => ({
   <div class="grid grid-4" id="p-grid">
     {philosophers.map((p) => <PhilosopherCard entry={p} />)}
   </div>
-
-  <TimelineChart people={timeline} />
-
-  <BranchChart counts={byBranch} unit="thinkers" title="Who came from which tradition" />
 
   <div class="how">
     <h2>Why so few, and why these?</h2>

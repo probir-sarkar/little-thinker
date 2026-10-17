@@ -1,8 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../components/BaseLayout.astro";
-import AgeRangeChart from "../components/charts/AgeRangeChart.astro";
-import BranchChart from "../components/charts/BranchChart.astro";
 import { branchList, branchOf } from "../lib/site";
 
 const concepts = (await getCollection("concepts")).sort((a, b) => a.data.agesMin - b.data.agesMin);
@@ -12,14 +10,6 @@ const byBranch = concepts.reduce<Record<string, number>>((acc, c) => {
   acc[c.data.branch] = (acc[c.data.branch] ?? 0) + 1;
   return acc;
 }, {});
-
-const ladder = concepts.map((c) => ({
-  title: c.data.title,
-  branch: c.data.branch,
-  agesMin: c.data.agesMin,
-  agesMax: c.data.agesMax,
-  href: `/ideas/${c.id}`,
-}));
 
 const themes: Record<string, string> = {
   "how-to-live": "PSHE · values · behaviour",
@@ -79,10 +69,6 @@ const themes: Record<string, string> = {
           <b>Do not settle it.</b> A page that ends in a conclusion teaches that thinking is a race to a finish line.
         </li>
       </ul>
-
-      <AgeRangeChart ideas={ladder} />
-
-      <BranchChart counts={byBranch} unit="ideas" title="Coverage across the six themes" />
     </div>
   </div>
 

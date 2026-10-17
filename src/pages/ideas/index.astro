@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../components/BaseLayout.astro";
 import ConceptCard from "../../components/ConceptCard.astro";
-import AgeRangeChart from "../../components/charts/AgeRangeChart.astro";
 import FilterChips from "../../components/islands/FilterChips.tsx";
 import Icon from "../../components/Icon.astro";
 import { branchList } from "../../lib/site";
@@ -12,14 +11,6 @@ const concepts = await getCollection("concepts");
 const groups = branchList
   .map((b) => ({ ...b, items: concepts.filter((c) => c.data.branch === b.key) }))
   .filter((g) => g.items.length > 0);
-
-const ladder = concepts.map((c) => ({
-  title: c.data.title,
-  branch: c.data.branch,
-  agesMin: c.data.agesMin,
-  agesMax: c.data.agesMax,
-  href: `/ideas/${c.id}`,
-}));
 
 ---
 
@@ -61,8 +52,6 @@ const ladder = concepts.map((c) => ({
     />
     <p class="filter-count" id="c-count"></p>
   </div>
-
-  <AgeRangeChart ideas={ladder} />
 
   {
     groups.map((g) => (

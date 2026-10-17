@@ -238,14 +238,15 @@
 
   /* ---------- photographs ---------- */
   .scene {
-    @apply grid gap-3.5 border-b border-line py-6.5;
+    @apply grid items-start gap-3.5 border-b border-line py-6.5;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
   .scene figure { @apply m-0; }
+  /* These plates are an owl, a sky chart, a world map and a reading room —
+     shapes that have nothing in common. A 4/3 cover crop cut the top off the
+     sky chart and trimmed the map, so each one now keeps its own proportions. */
   .scene img {
     @apply w-full rounded-page border-[1.5px] border-ink;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
     filter: sepia(0.3) saturate(0.8) contrast(1.02);
   }
   .scene figcaption { @apply mt-2 text-[0.8rem] text-muted; }
@@ -398,28 +399,6 @@
   /* ---------- icons ---------- */
   .icon { @apply inline-block shrink-0 align-[-0.15em]; }
 
-  /* ---------- charts ---------- */
-  .chart { @apply my-7 rounded-page border-2 border-ink bg-paper px-5 py-5 pb-4; }
-  .chart-head {
-    @apply mb-1 flex items-center gap-2 text-[0.76rem] font-bold uppercase tracking-[0.14em] text-accent;
-  }
-  .chart-title { @apply mb-1.5 font-display text-[1.25rem] font-bold; }
-  .chart-note { @apply mt-2.5 text-[0.86rem] text-muted; }
-  /* Scoped to the plot. A bare `.chart svg` also hit the 14px icon in
-     .chart-head and stretched it to the width of the panel. */
-  .chart-scroll svg { @apply block h-auto w-full overflow-visible; }
-  .chart-scroll { @apply overflow-x-auto; }
-  /* The lifespan chart has 33 rows in a 900-wide viewBox. Squeezed to a phone's
-     ~310px of panel it becomes unreadable, so give it a floor and let the
-     wrapper scroll instead of shrinking. */
-  @media (max-width: 700px) {
-    .chart-scroll svg { min-width: 620px; }
-  }
-  .chart-tick { font-family: var(--font-body); font-size: 11px; fill: var(--color-muted); }
-  .chart-label { font-family: var(--font-body); font-size: 12px; fill: var(--color-ink); }
-  .chart-bar { @apply transition-opacity duration-150; }
-  .chart-bar:hover { @apply opacity-70; }
-
   /* ---------- vote ---------- */
   .vote { @apply my-7.5 rounded-page border-2 border-ink bg-paper px-5 py-4.5; }
   .vote-label {
@@ -498,7 +477,7 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
   .credit { @apply flex flex-col overflow-hidden rounded-page border-[1.5px] border-ink bg-paper; }
-  .credit img { @apply w-full; aspect-ratio: 4 / 3; object-fit: cover; }
+  .credit img { @apply w-full; }
   .credit-body { @apply px-3.5 py-3 text-[0.86rem]; }
   .credit-body b { @apply block; }
   .credit-body span { @apply block text-muted; }

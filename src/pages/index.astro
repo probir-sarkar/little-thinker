@@ -4,7 +4,6 @@ import { Image } from "astro:assets";
 import BaseLayout from "../components/BaseLayout.astro";
 import PhilosopherCard from "../components/PhilosopherCard.astro";
 import ConceptCard from "../components/ConceptCard.astro";
-import TimelineChart from "../components/charts/TimelineChart.astro";
 import Icon from "../components/Icon.astro";
 import WonderBoard from "../components/islands/WonderBoard.tsx";
 import wonders from "../data/wonders.json";
@@ -21,15 +20,6 @@ const shelf = picked.map((id) => philosophers.find((p) => p.id === id)!).filter(
 const ideaShelf = ["fairness", "truth", "time", "your-thoughts"]
   .map((id) => concepts.find((c) => c.id === id)!)
   .filter(Boolean);
-
-const timeline = philosophers.map((p) => ({
-  name: p.data.name,
-  icon: p.data.icon,
-  birthYear: p.data.birthYear,
-  deathYear: p.data.deathYear,
-  branch: p.data.branch,
-  href: `/philosophers/${p.id}`,
-}));
 
 // Decorative photographs, only if the credited ones were fetched.
 const sceneImages = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpg,jpeg,png,webp}", {
@@ -133,8 +123,6 @@ const scenes = (credits as any[])
       {ideaShelf.map((c) => <ConceptCard entry={c} />)}
     </div>
   </section>
-
-  <TimelineChart people={timeline} />
 
   <section class="how">
     <h2>How every page works</h2>
