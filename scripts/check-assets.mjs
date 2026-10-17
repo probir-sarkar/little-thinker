@@ -9,9 +9,10 @@
  * invisible to a build log and easy to miss in review.
  *
  * Checks, in order of how bad the failure would be:
- *   1. every philosopher's declared heroImage exists with that exact filename
+ *   1. every philosopher's and story's declared heroImage exists with that
+ *      exact filename
  *   2. every credited file exists
- *   3. every credit slug maps to a philosopher or a scene, so no orphan rows
+ *   3. every credit slug maps to a philosopher, a story or a scene
  *   4. no image sits on disk uncredited
  */
 import { readdirSync, readFileSync, existsSync } from "node:fs";
@@ -20,29 +21,35 @@ import { join, basename } from "node:path";
 const root = process.cwd();
 const IMG = join(root, "src", "assets", "images");
 const PH = join(root, "src", "content", "philosophers");
+const ST = join(root, "src", "content", "stories");
 
 const onDisk = new Set(readdirSync(IMG));
 const problems = [];
 
-// 1. declared hero images
-const slugs = readdirSync(PH)
-  .filter((f) => f.endsWith(".md"))
-  .map((f) => basename(f, ".md"));
+// 1. declared hero images (philosophers and stories use the same frontmatter key)
+const phSlugs = readdirSync(PH).filter((f) => f.endsWith(".md")).map((f) => basename(f, ".md"));
+const stSlugs = readdirSync(ST).filter((f) => f.endsWith(".md")).map((f) => basename(f, ".md"));
+const slugs = [...phSlugs, ...stSlugs];
+const heroOf = {};
+const noHero = [];
 
-for (const slug of slugs) {
-  const text = readFileSync(join(PH, `${slug}.md`), "utf8");
-  const m = text.match(/^heroImage:\s*"?([^"\n]+)"?/m);
-  if (!m) continue;
-  const declared = m[1].trim();
-  if (declared === "" || declared === "null") continue;
-  if (!onDisk.has(declared)) {
-    // A near-miss in the same family is almost always the real culprit.
-    const stem = declared.replace(/\.[^.]+$/, "");
-    const near = [...onDisk].filter((f) => f.startsWith(stem));
-    problems.push(
-      `${slug}: declares "${declared}" which does not exist` +
-        (near.length ? ` — did you mean ${near.join(" or ")}?` : " (no similar file on disk)"),
-    );
+for (const [dir, slugsHere] of [[PH, phSlugs], [ST, stSlugs]]) {
+  for (const slug of slugsHere) {
+    const text = readFileSync(join(dir, `${slug}.md`), "utf8");
+    const m = text.match(/^heroImage:\s*"?([^"\n]+)"?/m);
+    if (!m) continue;
+    const declared = m[1].trim();
+    heroOf[slug] = declared;
+    if (declared === "" || declared === "null") { noHero.push(slug); continue; }
+    if (!onDisk.has(declared)) {
+      // A near-miss in the same family is almost always the real culprit.
+      const stem = declared.replace(/\.[^.]+$/, "");
+      const near = [...onDisk].filter((f) => f.startsWith(stem));
+      problems.push(
+        `${slug}: declares "${declared}" which does not exist` +
+          (near.length ? ` — did you mean ${near.join(" or ")}?` : " (no similar file on disk)"),
+      );
+    }
   }
 }
 
@@ -53,8 +60,8 @@ const sceneSlugs = new Set(credits.filter((c) => c.slug.startsWith("scene-")).ma
 
 for (const c of credits) {
   if (!onDisk.has(c.file)) problems.push(`credits: "${c.slug}" lists ${c.file}, not on disk`);
-  if (!slugs.includes(c.slug) && !sceneSlugs.has(c.slug)) {
-    problems.push(`credits: "${c.slug}" matches no philosopher and is not a scene- entry`);
+  if (!phSlugs.includes(c.slug) && !stSlugs.includes(c.slug) && !sceneSlugs.has(c.slug)) {
+    problems.push(`credits: "${c.slug}" matches no philosopher, story or scene- entry`);
   }
 }
 
@@ -66,15 +73,10 @@ for (const file of onDisk) {
 }
 
 console.log(
-  `check-assets: ${slugs.length} philosophers, ${onDisk.size} images, ${credits.length} credit records`,
+  `check-assets: ${phSlugs.length} philosophers, ${stSlugs.length} stories, ${onDisk.size} images, ${credits.length} credit records`,
 );
-const unmatched = slugs.filter((s) => {
-  const t = readFileSync(join(PH, `${s}.md`), "utf8");
-  const m = t.match(/^heroImage:\s*"?([^"\n]+)"?/m);
-  return m && !onDisk.has(m[1].trim());
-});
-if (unmatched.length) {
-  console.log(`  using the drawn fallback (no portrait known): ${unmatched.join(", ")}`);
+if (noHero.length) {
+  console.log(`  using the drawn fallback (no image declared): ${noHero.join(", ")}`);
 }
 
 if (problems.length) {

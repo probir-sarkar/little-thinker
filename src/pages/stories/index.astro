@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../components/BaseLayout.astro";
 import Icon from "../../components/Icon.astro";
+import StoryArt from "../../components/StoryArt.astro";
 
 const stories = (await getCollection("stories")).sort((a, b) => a.data.agesMin - b.data.agesMin);
 
@@ -19,12 +20,22 @@ const stories = (await getCollection("stories")).sort((a, b) => a.data.agesMin -
       make a point — a myth, a parable, a puzzle. We have retold them plainly for young readers and written
       down where each one comes from. None of them ends in an answer.
     </p>
-  </header>
+    <figure class="mt-5.5">
+      <img
+        src="/illustration-stories.svg"
+        alt="An open book on the ground with a dotted trail rising from its pages toward a big question mark, under a crescent moon and stars"
+        width="800"
+        height="400"
+        class="h-auto w-full rounded-page border-[1.5px] border-ink bg-paper-2"
+      />
+    </figure>
+    </header>
 
   <div class="grid grid-3">
     {
       stories.map((s) => (
         <a class="story-card" href={`/stories/${s.id}`}>
+          {s.data.heroImage && <StoryArt file={s.data.heroImage} alt={s.data.heroImageAlt} />}
           <p class="story-src">{s.data.sourceShort}</p>
           <h2>{s.data.title}</h2>
           <p>{s.data.hook}</p>

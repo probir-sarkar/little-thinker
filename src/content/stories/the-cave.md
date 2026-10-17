@@ -8,6 +8,8 @@ agesMax: 12
 hook: "What if you had never seen anything but shadows?"
 ask: "Are you sure that everything you can see is everything there is?"
 tellIt: "Tell it slowly and stop at the hard part: when the freed prisoner goes back. Ask what the other prisoners would think of him before you say what Plato says."
+heroImage: "the-cave.jpg"
+heroImageAlt: "An old engraving of people sitting in a dark cave, watching shadows on the wall"
 ideas:
   - "seeing-is-believing"
   - "truth"

@@ -258,6 +258,22 @@
   .scene figcaption { @apply mt-2 text-[0.8rem] text-muted; }
 
   /* ---------- story cards ---------- */
+  /* Same plate language as .scene: a fixed frame with the artwork contained
+     (never trimmed), sepia-washed so a Greek pot, a Chinese scroll and a Dutch
+     engraving sit together as one set. */
+  .story-art {
+    @apply w-full rounded-page border-[1.5px] border-ink;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: var(--color-paper-2);
+    filter: sepia(0.3) saturate(0.8) contrast(1.02);
+  }
+  .story-art-hero { aspect-ratio: 3 / 2; }
+  .story-card .story-art { @apply -mx-1 mb-1; }
+  .story-figure { @apply m-0;
+    figcaption { @apply mt-2 mb-1 text-[0.8rem] text-muted; }
+  }
+
   .story-card {
     @apply flex flex-col gap-2 rounded-page border-[1.5px] border-ink bg-paper px-5 py-4.5 no-underline
            transition-[transform,box-shadow] duration-150;

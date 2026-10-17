@@ -8,6 +8,8 @@ agesMax: 9
 hook: "Have you ever decided you didn't want something — the exact moment you couldn't have it?"
 ask: "When we can't have what we want, is it better to change what we want — or to pretend we never wanted it?"
 tellIt: "It takes thirty seconds to tell. Tell it, then wait. The argument starts when you ask whether the fox really changed his mind."
+heroImage: "the-fox-and-the-grapes.jpg"
+heroImageAlt: "A Victorian illustration of a fox leaping up at a grape vine"
 ideas:
   - "happiness"
   - "truth"

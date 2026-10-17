@@ -8,6 +8,8 @@ agesMax: 12
 hook: "What would you do if you knew nobody would ever find out?"
 ask: "Are you good, or are you just being watched?"
 tellIt: "Let the child answer the last question first, before you tell them what happens. Their answer is the interesting part."
+heroImage: "the-ring.jpg"
+heroImageAlt: "A Renaissance painting of a man kneeling among rocks, finding a ring"
 ideas:
   - "invisible-ring"
   - "fairness"

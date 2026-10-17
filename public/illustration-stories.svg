@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-label="An open book on the ground with a dotted trail rising from its pages toward a big question mark, under a crescent moon and stars">
+  <g fill="none" stroke="#221c17" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ground -->
+    <path d="M40 348h720" stroke-width="4"/>
+  </g>
+
+  <!-- crescent moon, upper right, clear of the question mark -->
+  <g stroke="#3e5c9a" stroke-width="5" stroke-linecap="round">
+    <path d="M690 70a40 40 0 1 0 32 64 48 48 0 0 1-32-64Z"/>
+  </g>
+
+  <!-- stars -->
+  <g stroke="#c4622d" stroke-width="3.5" stroke-linecap="round" opacity="0.85">
+    <path d="M120 92l14 24M134 92l-14 24M127 82v6M127 120v6"/>
+    <path d="M212 168l10 18M222 168l-10 18"/>
+    <path d="M600 200l12 20M612 200l-12 20"/>
+    <circle cx="170" cy="210" r="3.5"/>
+    <circle cx="560" cy="120" r="3.5"/>
+    <circle cx="676" cy="230" r="3"/>
+  </g>
+
+  <!-- open book, lower left -->
+  <g fill="none" stroke="#221c17" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 344c36-24 88-24 124-2v-78c-36-22-88-22-124 2Z"/>
+    <path d="M398 344c-36-24-88-24-124-2v-78c36-22 88-22 124 2Z"/>
+    <path d="M274 264v78"/>
+    <path d="M176 296c26-13 58-15 82-4M176 318c26-13 58-15 82-4M372 296c-26-13-58-15-82-4M372 318c-26-13-58-15-82-4" stroke-width="3"/>
+  </g>
+
+  <!-- dotted trail from the pages to the question mark -->
+  <g fill="none" stroke="#c4622d" stroke-width="3.5" stroke-linecap="round" opacity="0.75">
+    <path d="M280 250c6-34 52-46 92-34" stroke-dasharray="2 14"/>
+    <path d="M396 224c26 8 40 24 44 44" stroke-dasharray="2 14"/>
+  </g>
+
+  <!-- big open question mark, upper right, above the trail's end -->
+  <g fill="none" stroke="#c4622d" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+    <path d="M430 190c0-40 30-66 68-66s66 24 66 62c0 32-22 44-42 58-14 10-20 20-20 36v16"/>
+    <path d="M502 330h.01"/>
+  </g>
+</svg>

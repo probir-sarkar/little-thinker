@@ -72,6 +72,10 @@ const stories = defineCollection({
     ask: z.string(),
     tellIt: z.string(),
     ideas: z.array(z.string()).default([]),
+    // A period picture of the story, from Wikimedia Commons like the portraits.
+    // Empty means "no picture yet" — the card and page simply skip the frame.
+    heroImage: z.string().default(""),
+    heroImageAlt: z.string().default(""),
   }),
 });
 

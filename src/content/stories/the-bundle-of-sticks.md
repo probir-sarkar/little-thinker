@@ -8,6 +8,8 @@ agesMax: 9
 hook: "One stick snaps. A bundle doesn't. So what exactly is the bundle?"
 ask: "What can your family, or your class, do together that nobody in it could do alone?"
 tellIt: "Bring actual sticks, or chopsticks, and let everyone try to snap the bundle first. The story lands better if the bundle wins in your kitchen."
+heroImage: "the-bundle-of-sticks.jpg"
+heroImageAlt: "An old engraving of a father handing a bundle of sticks to his sons"
 ideas:
   - "friendship"
   - "rules"

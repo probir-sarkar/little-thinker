@@ -8,6 +8,8 @@ agesMax: 8
 hook: "Who believes a liar when they finally tell the truth?"
 ask: "Once someone has lied to you, what would it take to believe them again?"
 tellIt: "Tell it slowly, and stop before the end. Ask what the villagers will do the next time the boy shouts, before you tell them what happened."
+heroImage: "the-boy-who-cried-wolf.jpg"
+heroImageAlt: "A 1666 engraving of a shepherd boy calling out, with a wolf among the sheep"
 ideas:
   - "lies"
   - "truth"

@@ -1,0 +1,45 @@
+---
+/**
+ * A story's picture, in the same plate frame as the homepage scenes: a fixed
+ * aspect with the artwork *contained* inside, so nothing is ever trimmed, and
+ * the same sepia wash so old engravings, Greek pots and Chinese scrolls read
+ * as one set.
+ *
+ * Renders nothing at all when the story has no picture — a story without art
+ * should not carry an empty frame.
+ */
+import { Image } from "astro:assets";
+
+interface Props {
+  /** Credit-verified image file, e.g. "the-cave.jpg". Empty for "none yet". */
+  file?: string | null;
+  alt?: string | null;
+  /** "card" = 4/3 for the grids; "hero" = 3/2 for the story page. */
+  size?: "card" | "hero";
+}
+
+const { file, alt, size = "card" } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/*.{jpg,jpeg,png,webp}",
+  { eager: true },
+);
+const key = file ? Object.keys(images).find((k) => k.endsWith(`/${file}`)) : undefined;
+const src = key ? images[key].default : undefined;
+const px = size === "hero" ? 960 : 560;
+---
+
+{
+  src ? (
+    <Image
+      class={size === "hero" ? "story-art story-art-hero" : "story-art"}
+      src={src}
+      alt={alt ?? ""}
+      widths={[px, px * 2]}
+      sizes={size === "hero" ? "(max-width: 900px) 100vw, 680px" : "(max-width: 640px) 100vw, 360px"}
+      format="webp"
+      loading="lazy"
+      decoding="async"
+    />
+  ) : null
+}

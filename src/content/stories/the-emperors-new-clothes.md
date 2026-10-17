@@ -8,6 +8,8 @@ agesMax: 10
 hook: "Everybody can see it. Nobody will say it."
 ask: "Why is it so hard to say the true thing when everyone else is silent?"
 tellIt: "Let the child be the one who shouts it. Have them do the shouting — that is the whole point of the story."
+heroImage: "the-emperors-new-clothes.jpg"
+heroImageAlt: "An old drawing of a royal procession with a crowd watching on"
 ideas:
   - "free-speech"
   - "truth"

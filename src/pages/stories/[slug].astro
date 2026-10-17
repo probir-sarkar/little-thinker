@@ -2,6 +2,8 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../components/BaseLayout.astro";
 import Icon from "../../components/Icon.astro";
+import StoryArt from "../../components/StoryArt.astro";
+import credits from "../../data/credits.json";
 
 export async function getStaticPaths() {
   const stories = await getCollection("stories");
@@ -19,6 +21,9 @@ const concepts = await getCollection("concepts");
 const ideas = s.ideas
   .map((id) => concepts.find((c) => c.id === id))
   .filter((c) => c !== undefined);
+
+const credit = (credits as any[]).find((c) => c.slug === entry.id);
+const creditTitle = credit?.title?.replace(/^File:/, "").replace(/\.(jpe?g|png)$/i, "").replace(/_/g, " ");
 ---
 
 <BaseLayout title={`${s.title} — Little Thinker`} description={s.hook}>
@@ -39,6 +44,18 @@ const ideas = s.ideas
 
     <div class="detail-body">
       <div class="prose">
+        {s.heroImage && (
+          <figure class="story-figure">
+            <StoryArt file={s.heroImage} alt={s.heroImageAlt} size="hero" />
+            {credit && (
+              <figcaption>
+                {creditTitle}
+                {credit.author ? ` — ${credit.author}` : ""}. <a href="/credits">Source on Wikimedia Commons</a>.
+              </figcaption>
+            )}
+          </figure>
+        )}
+
         <Content />
 
         <section class="qblock">

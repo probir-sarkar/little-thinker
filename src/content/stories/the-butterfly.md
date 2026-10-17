@@ -8,6 +8,8 @@ agesMax: 9
 hook: "How do you know you are not dreaming right now?"
 ask: "If you cannot tell, does it matter?"
 tellIt: "A bedtime story. Ask them at the end, quietly, and let them fall asleep on it."
+heroImage: "the-butterfly.jpg"
+heroImageAlt: "A Chinese ink painting of a man asleep beside a butterfly"
 ideas:
   - "dream-or-real"
   - "seeing-is-believing"

@@ -8,6 +8,8 @@ agesMax: 12
 hook: "The fastest runner in Greece can never catch a tortoise. Can you find the cheat?"
 ask: "If there is always another half of a gap to cross first, how does anything ever arrive?"
 tellIt: "Draw it: a line for the track, two markers for the runners. Halve the gap out loud — halfway, halfway, halfway — until the room starts to get suspicious."
+heroImage: "achilles-and-the-tortoise.jpg"
+heroImageAlt: "An ancient Greek vase painted with the warrior Achilles"
 ideas:
   - "infinity"
   - "numbers"

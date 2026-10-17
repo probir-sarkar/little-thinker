@@ -8,6 +8,8 @@ agesMax: 8
 hook: "Which works better — pushing, or warming?"
 ask: "When you want someone to change what they're doing, what actually changes their mind?"
 tellIt: "This one is made for acting out: whoosh like the wind, then shine like the sun. Ask halfway through who is going to win, and why."
+heroImage: "the-north-wind-and-the-sun.jpg"
+heroImageAlt: "An old etching of the wind and the sun above a traveller on a road"
 ideas:
   - "changing-your-mind"
   - "freedom"

@@ -60,7 +60,7 @@ src/
 public/icons.svg               hand-authored icon sprite
 public/robots.txt              points at the sitemap
 src/assets/images/             source images (optimised into dist/ at build)
-scripts/                       build-time checks (see below)
+scripts/                       build-time checks (see below) + fetch-story-images.mjs
 ```
 
 ## Why it is shaped this way
@@ -74,7 +74,12 @@ scripts/                       build-time checks (see below)
   the grid reads as one set. It is deliberately letters and not a drawn face:
   inventing a likeness for someone nobody ever painted is the one thing this
   site must not do. `heroImage: ""` declares "none known", which is different
-  from a wrong filename; `check:assets` tells the two apart.
+  from a wrong filename; `check:assets` tells the two apart. Story pictures
+  follow the same rule: period artworks from Wikimedia Commons, one per story,
+  rendered in the same plate frame with the artwork contained (never trimmed)
+  so a Greek pot, a Chinese scroll and a Dutch engraving read as one set.
+  `scripts/fetch-story-images.mjs` finds, filters (public-domain/CC only),
+  downloads and credits them in one run.
 - **Progressive enhancement.** The site reads fine with JavaScript off; the JS
   adds reading settings, search, filters and votes, all in localStorage.
 - **No backend today.** A static site with no database has nothing to log in

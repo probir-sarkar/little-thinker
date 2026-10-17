@@ -8,6 +8,8 @@ agesMax: 12
 hook: "Take one grain off a heap of rice. Still a heap. Keep going. So where did the heap go?"
 ask: "If every single step looks harmless, how does a big change ever happen?"
 tellIt: "This one needs props — rice, sand, or buttons. Actually take one grain away at a time and make everyone say “still a heap”. Stop when someone starts hedging."
+heroImage: "the-heap.jpg"
+heroImageAlt: "An old painting of a harvest, with sheaves of wheat standing in a field"
 ideas:
   - "change"
   - "language"

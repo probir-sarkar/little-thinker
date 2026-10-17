@@ -5,6 +5,7 @@ import BaseLayout from "../components/BaseLayout.astro";
 import PhilosopherCard from "../components/PhilosopherCard.astro";
 import ConceptCard from "../components/ConceptCard.astro";
 import Icon from "../components/Icon.astro";
+import StoryArt from "../components/StoryArt.astro";
 import WonderBoard from "../components/islands/WonderBoard.tsx";
 import wonders from "../data/wonders.json";
 import { countOf, wordOf } from "../lib/count";
@@ -139,6 +140,7 @@ const scenes = (credits as any[])
       {
         storyShelf.map((s) => (
           <a class="story-card" href={`/stories/${s.id}`}>
+            {s.data.heroImage && <StoryArt file={s.data.heroImage} alt={s.data.heroImageAlt} />}
             <p class="story-src">{s.data.sourceShort}</p>
             <h2>{s.data.title}</h2>
             <p>{s.data.hook}</p>

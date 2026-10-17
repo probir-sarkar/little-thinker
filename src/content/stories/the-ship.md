@@ -8,6 +8,8 @@ agesMax: 10
 hook: "Change one plank. Then another. When is it a different ship?"
 ask: "What is it that makes something the same thing over time?"
 tellIt: "Best told with props: a pen, swapped for another pen, swapped again. Children get the puzzle faster than adults do."
+heroImage: "the-ship.jpg"
+heroImageAlt: "An ancient Greek painting of a sailing ship, on a wine cup"
 ideas:
   - "change"
   - "being-yourself"

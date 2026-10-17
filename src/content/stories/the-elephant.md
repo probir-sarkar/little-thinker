@@ -8,6 +8,8 @@ agesMax: 9
 hook: "Six people touch the same animal. They all describe something different."
 ask: "Can everybody be partly right and still be wrong?"
 tellIt: "Use a scarf or a coat and let the child feel it blindfolded. Then argue about what it is."
+heroImage: "the-elephant.jpg"
+heroImageAlt: "An old Japanese drawing of blind men feeling an elephant, each holding a different part"
 ideas:
   - "truth"
   - "proof-vs-story"
