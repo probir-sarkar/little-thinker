@@ -117,7 +117,7 @@
            bg-paper px-[clamp(18px,4vw,44px)] py-3;
   }
   .brand { @apply mr-auto flex items-center gap-3 no-underline; }
-  .brand-mark { @apply size-[26px] shrink-0 rounded-[50%_50%_50%_0] bg-ink; }
+  .brand-mark { @apply size-[27px] shrink-0 text-ink; }
   .brand-text { @apply flex flex-col font-display text-[1.16rem] font-bold leading-none; }
   .brand-text small {
     @apply mt-1 font-body text-[0.62rem] font-normal uppercase tracking-[0.09em] text-muted;

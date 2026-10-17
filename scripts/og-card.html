@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #fbf6ec;
+    background-image: radial-gradient(rgb(34 28 23 / 0.055) 1px, transparent 1px);
+    background-size: 22px 22px;
+    font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
+    color: #221c17; display: flex; flex-direction: column; padding: 50px 68px 46px;
+  }
+  .top { display: flex; align-items: flex-end; gap: 12px; }
+  .mark { width: 58px; height: 58px; color: #221c17; }
+  .wordmark { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 38px;
+               letter-spacing: -0.02em; line-height: 1; }
+  .tag { font-size: 13px; letter-spacing: 0.16em; color: #6b5f50; padding-bottom: 4px; }
+  h1 { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 92px;
+        line-height: 0.98; letter-spacing: -0.03em; margin-top: 40px; }
+  .sub { font-size: 28px; color: #3c332c; margin-top: 26px; }
+  .from { font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 27px;
+           color: #a0441a; margin-top: 12px; }
+  .faces { display: flex; justify-content: space-between; margin-top: auto; padding-top: 28px; }
+  .faces img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+                object-position: 50% 18%; border: 2px solid #221c17; }
+  .rule { height: 2px; background: #221c17; margin-top: 28px; }
+  .url { display: flex; justify-content: space-between; font-size: 19px; color: #6b5f50; padding-top: 14px; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <svg class="mark" viewBox="0 0 32 32" fill="none"><path d="M16 23.3V8.6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <path d="M16 12.4c0-4.8 3.2-8 8-8 0 4.8-3.2 8-8 8Z" fill="currentColor"/>
+      <path d="M16 12.4c0-4.8-3.2-8-8-8 0 4.8 3.2 8 8 8Z" fill="currentColor"/>
+      <circle cx="16" cy="24.4" r="3.3" fill="currentColor"/></svg>
+    <span class="wordmark">Think&nbsp;Small</span>
+    <span class="tag">PHILOSOPHY FOR CHILDREN</span>
+  </div>
+
+  <h1>Big questions,<br>cut down to size.</h1>
+  <p class="sub">52 ideas, 33 philosophers, ages 5 to 12.<br>Every page: one question, a story, something to try.</p>
+  <p class="from">From Athens to Kalady to Kyoto.</p>
+
+  <div class="faces">
+    <img src="../src/assets/images/socrates.jpg" alt="Greece">
+    <img src="../src/assets/images/confucius.jpg" alt="China">
+    <img src="../src/assets/images/mencius.jpg" alt="China">
+    <img src="../src/assets/images/hypatia.png" alt="Alexandria">
+    <img src="../src/assets/images/sor-juana.jpg" alt="Mexico">
+    <img src="../src/assets/images/ambedkar.jpg" alt="India">
+    <img src="../src/assets/images/nishida-kitaro.jpg" alt="Japan">
+    <img src="../src/assets/images/du-bois.jpg" alt="USA">
+  </div>
+
+  <div class="rule"></div>
+  <div class="url"><span>Read alone, or read together</span><span>think-small-philosophy.probir.workers.dev</span></div>
+</body>
+</html>

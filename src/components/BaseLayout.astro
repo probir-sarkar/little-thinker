@@ -19,7 +19,11 @@ const navItems = [
   { href: "/ideas", label: "Big Ideas" },
   { href: "/grown-ups", label: "Grown-ups" },
 ];
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// The build emits dist/ideas/money.html, so Astro.url.pathname carries a
+// .html extension that the public URL does not have. Use the cleaned path,
+// which is also what the nav highlight uses.
+const canonical = new URL(path, Astro.site).href;
+const socialCard = new URL("/og.png", Astro.site).href;
 ---
 
 <!doctype html>
@@ -31,9 +35,21 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" sizes="48x48" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Think Small" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialCard} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Think Small — big questions, cut down to size. Philosophy for children, ages 5 to 12." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialCard} />
     <meta name="theme-color" content="#fbf6ec" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,7 +63,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
     <header class="bar">
       <a class="brand" href="/">
-        <span class="brand-mark" aria-hidden="true"></span>
+        <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 23.3V8.6" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          <path d="M16 12.4c0-4.8 3.2-8 8-8 0 4.8-3.2 8-8 8Z" fill="currentColor" />
+          <path d="M16 12.4c0-4.8-3.2-8-8-8 0 4.8 3.2 8 8 8Z" fill="currentColor" />
+          <circle cx="16" cy="24.4" r="3.3" fill="currentColor" />
+        </svg>
         <span class="brand-text">
           Think&nbsp;Small
           <small>philosophy for children</small>
