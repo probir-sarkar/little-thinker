@@ -4,7 +4,6 @@ import Icon from "./Icon.astro";
 import SearchPalette from "./islands/SearchPalette.tsx";
 import ReadingSettings from "./islands/ReadingSettings.tsx";
 import ReadAloud from "./islands/ReadAloud.tsx";
-import ThemePicker from "./islands/ThemePicker.tsx";
 
 interface Props {
   title: string;
@@ -41,7 +40,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Archivo:wght@400;700;900&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Caveat:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -67,7 +66,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       </nav>
       <div class="bar-tools">
         <SearchPalette client:idle />
-        <ThemePicker client:idle />
         <ReadingSettings client:load />
         <ReadAloud client:idle />
       </div>

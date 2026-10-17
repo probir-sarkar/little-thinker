@@ -4,6 +4,7 @@ import BaseLayout from "../../components/BaseLayout.astro";
 import PhilosopherCard from "../../components/PhilosopherCard.astro";
 import TimelineChart from "../../components/charts/TimelineChart.astro";
 import Icon from "../../components/Icon.astro";
+import FilterChips from "../../components/islands/FilterChips.tsx";
 import BranchChart from "../../components/charts/BranchChart.astro";
 import { localeCount } from "../../lib/count";
 
@@ -36,12 +37,18 @@ const timeline = philosophers.map((p) => ({
   </header>
 
   <div class="filterbar">
-    <div class="chips" role="group" aria-label="Filter by era">
-      <button class="chip is-on" data-filter="all">Everyone</button>
-      <button class="chip" data-filter="ancient">Ancient</button>
-      <button class="chip" data-filter="medieval">Medieval</button>
-      <button class="chip" data-filter="modern">Modern</button>
-    </div>
+    <FilterChips
+      client:load
+      kind="era"
+      target="#p-grid"
+      ariaLabel="Filter by era"
+      options={[
+        { value: "all", label: "Everyone" },
+        { value: "ancient", label: "Ancient" },
+        { value: "medieval", label: "Medieval" },
+        { value: "modern", label: "Modern" },
+      ]}
+    />
     <p class="filter-count" id="p-count"></p>
   </div>
 

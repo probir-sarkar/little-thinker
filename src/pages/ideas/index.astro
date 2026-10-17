@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../components/BaseLayout.astro";
 import ConceptCard from "../../components/ConceptCard.astro";
 import AgeRangeChart from "../../components/charts/AgeRangeChart.astro";
+import FilterChips from "../../components/islands/FilterChips.tsx";
 import Icon from "../../components/Icon.astro";
 import { branchList } from "../../lib/site";
 
@@ -46,12 +47,19 @@ const totalWord = wordNumber[concepts.length] ?? String(concepts.length);
     </header>
 
   <div class="filterbar">
-    <div class="chips" role="group" aria-label="Filter by age">
-      <button class="chip is-on" data-age="all">All ages</button>
-      <button class="chip" data-age="5">5+</button>
-      <button class="chip" data-age="7">7+</button>
-      <button class="chip" data-age="9">9+</button>
-    </div>
+    <FilterChips
+      client:load
+      kind="ageBand"
+      target=".branch"
+      hideEmptyGroups=".branch"
+      ariaLabel="Filter by age"
+      options={[
+        { value: "all", label: "All ages" },
+        { value: "5", label: "5+" },
+        { value: "7", label: "7+" },
+        { value: "9", label: "9+" },
+      ]}
+    />
     <p class="filter-count" id="c-count"></p>
   </div>
 

@@ -74,8 +74,33 @@ scripts/import-content.py    one-off importer from the original prototype
 - **No accounts, no tracking, no backend.** A static site with no database has
   nothing to log in to — which is the point for an audience of children.
 
+## Styling
+
+Tailwind 4. Tokens live in `@theme` in `src/styles/global.css`; the repeated
+composites (card, door, tool, qblock, facts, chart) are built from those tokens
+with `@apply` in `@layer components`, so markup stays readable —
+`class="card"` rather than fifteen utilities — while colour, spacing and type
+still come from one source of truth.
+
+Branch accents are not markup classes. Components pass the branch colour in as
+`--card-accent`, because the value comes from `src/data/branches.json`:
+
+```astro
+<a class="card" style={`--card-accent:${branchOf(p.data.branch).color}`}>
+```
+
+One theme, deliberately. A five-theme experiment (riso/bauhaus/botanic/chalk)
+was built on the token system and then retired — a theme that is harder to read
+is a theme that fails the brief for six-to-twelve-year-olds.
+
+**Pitfall:** a bare container selector catches SVGs you did not mean. `.chart
+svg { width: 100% }` also matched the 14px icon in `.chart-head` and stretched
+it to the width of the panel. Scope container rules to the plot
+(`.chart-scroll svg`), never to `svg`.
+
 ## Honest limits
 
 - Vote percentages on idea pages are **sample pilot figures**, not live data.
 - Stories are retold for young readers and simplified on purpose.
 - Portraits are historical artworks, not photographs of the subjects.
+- The theme lab and four alternate themes were removed; only `ink` ships.

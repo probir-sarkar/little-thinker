@@ -11,7 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path.home() / "philosophy-for-kids"))
-from content import BRANCHES, SYMBOLS, PHILOSOPHERS, CONCEPTS, WONDER_PROMPTS  # noqa: E402
+from content import BRANCHES, PHILOSOPHERS, CONCEPTS, WONDER_PROMPTS  # noqa: E402
 
 CONTENT = ROOT / "src" / "content"
 DATA = ROOT / "src" / "data"
@@ -38,9 +38,7 @@ HERO = {
 
 
 def inline(t: str) -> str:
-    """Inline markdown -> HTML, including [[word|definition]] glossary hooks."""
-    t = re.sub(r"\[\[([^|\]]+)\|([^\]]+)\]\]",
-               lambda m: f'<span class="gloss" tabindex="0" data-def="{m.group(2)}">{m.group(1)}</span>', t)
+    """Inline markdown -> HTML: **bold**, *italic*."""
     t = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", t)
     t = re.sub(r"\*([^*\n]+)\*", r"<em>\1</em>", t)
     return t
@@ -129,7 +127,6 @@ def main():
     DATA.mkdir(parents=True, exist_ok=True)
     (DATA / "branches.json").write_text(json.dumps(BRANCHES, ensure_ascii=False, indent=2))
     (DATA / "wonders.json").write_text(json.dumps(WONDER_PROMPTS, ensure_ascii=False, indent=2))
-    (DATA / "icons.json").write_text(json.dumps(sorted(SYMBOLS), indent=2))
     print(f"imported {len(PHILOSOPHERS)} philosophers, {len(CONCEPTS)} concepts")
 
 

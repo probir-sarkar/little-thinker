@@ -12,7 +12,6 @@
  */
 
 @import "tailwindcss";
-@import "./themes.css";
 
 @theme {
   /* Paper and ink */
@@ -227,8 +226,6 @@
     filter: sepia(0.3) saturate(0.8) contrast(1.02);
   }
   .scene figcaption { @apply mt-2 text-[0.8rem] text-muted; }
-  .scene-wide { @apply grid-cols-1 border-t border-line pt-6.5; }
-  .scene-wide img { aspect-ratio: 16 / 5; }
 
   /* ---------- question ticker ---------- */
   .strip { @apply border-b border-line pb-2 pt-5.5; }
@@ -361,15 +358,8 @@
   .side-link span { @apply block text-[0.85rem] font-normal text-muted; }
   .side-small { @apply m-0 text-[0.88rem] text-muted; }
 
-  /* ---------- glossary ---------- */
-  .gloss {
-    @apply cursor-help border-0 border-b-2 border-dotted border-accent bg-transparent p-0
-           font-body text-[length:inherit] text-[color:inherit];
-  }
-  .gloss-def {
-    @apply absolute z-[50] max-w-[min(320px,80vw)] rounded-page bg-ink px-3.5 py-2.5
-           text-[0.9rem] leading-snug text-paper;
-  }
+  /* ---------- icons ---------- */
+  .icon { @apply inline-block shrink-0 align-[-0.15em]; }
 
   /* ---------- charts ---------- */
   .chart { @apply my-7 rounded-page border-2 border-ink bg-paper px-5 py-5 pb-4; }
@@ -378,7 +368,9 @@
   }
   .chart-title { @apply mb-1.5 font-display text-[1.25rem] font-bold; }
   .chart-note { @apply mt-2.5 text-[0.86rem] text-muted; }
-  .chart svg { @apply block h-auto w-full overflow-visible; }
+  /* Scoped to the plot. A bare `.chart svg` also hit the 14px icon in
+     .chart-head and stretched it to the width of the panel. */
+  .chart-scroll svg { @apply block h-auto w-full overflow-visible; }
   .chart-scroll { @apply overflow-x-auto; }
   .chart-tick { font-family: var(--font-body); font-size: 11px; fill: var(--color-muted); }
   .chart-label { font-family: var(--font-body); font-size: 12px; fill: var(--color-ink); }
@@ -500,7 +492,6 @@
     mix-blend-mode: multiply;
   }
   .portrait-sm { --portrait-size: 64px; @apply border-[1.5px]; }
-  .portrait-md { --portrait-size: 120px; }
   .portrait-lg { --portrait-size: 168px; }
 
   .medal {
