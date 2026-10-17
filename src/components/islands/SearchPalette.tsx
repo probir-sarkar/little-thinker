@@ -25,6 +25,14 @@ export default function SearchPalette() {
   const [active, setActive] = useState(0);
   const input = useRef<HTMLInputElement>(null);
   const button = useRef<HTMLButtonElement>(null);
+  const palette = useRef<HTMLDivElement>(null);
+
+  // Closing hands focus back to the button that opened the palette, so the
+  // keyboard user is not dropped at the top of the document.
+  function close() {
+    setOpen(false);
+    button.current?.focus();
+  }
 
   // Load the index only once the palette is first opened.
   useEffect(() => {
@@ -47,11 +55,29 @@ export default function SearchPalette() {
         e.preventDefault();
         setOpen(true);
       }
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") close();
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
+
+  // The dialog is aria-modal, so Tab must cycle inside it.
+  function trapTab(e: KeyboardEvent) {
+    if (e.key !== "Tab" || !palette.current) return;
+    const focusables = Array.from(
+      palette.current.querySelectorAll<HTMLElement>("a[href], input, button"),
+    );
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
 
   const fuse = useMemo(() => new Fuse(entries, { keys: KEYS, threshold: 0.38 }), [entries]);
 
@@ -89,8 +115,16 @@ export default function SearchPalette() {
 
       {open && (
         <>
-          <div class="palette-backdrop" onClick={() => setOpen(false)} aria-hidden="true" />
-          <div id="palette" class="palette" role="dialog" aria-modal="true" aria-label="Search">
+          <div class="palette-backdrop" onClick={close} aria-hidden="true" />
+          <div
+            id="palette"
+            class="palette"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Search"
+            ref={palette}
+            onKeyDown={trapTab}
+          >
             <input
               ref={input}
               type="search"

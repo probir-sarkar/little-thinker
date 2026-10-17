@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# python (one-off import tooling)
+__pycache__/
+*.pyc
+
+# wrangler local state
+.wrangler/

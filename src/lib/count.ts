@@ -1,4 +1,4 @@
-const WORDS = [
+const ONES = [
   "no",
   "one",
   "two",
@@ -9,6 +9,9 @@ const WORDS = [
   "seven",
   "eight",
   "nine",
+];
+
+const TEENS = [
   "ten",
   "eleven",
   "twelve",
@@ -19,18 +22,23 @@ const WORDS = [
   "seventeen",
   "eighteen",
   "nineteen",
-  "twenty",
 ];
+
+const TENS = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
 
 /** Small counts are written as words in running copy — "9 philosophers"
  *  reads like a database row, "nine philosophers" reads like a sentence.
  *  Centralised so the number and the copy can never drift apart. */
-export function localeCount(n: number): string {
-  return `${WORDS[n] ?? n} ${n === 1 ? "philosopher" : "philosophers"}`;
-}
-
-export function wordCount(n: number): string {
-  return WORDS[n] ?? String(n);
+export function wordOf(n: number): string {
+  if (n < 0 || !Number.isInteger(n)) return String(n);
+  if (n < 10) return ONES[n];
+  if (n < 20) return TEENS[n - 10];
+  if (n < 100) {
+    const tens = TENS[Math.floor(n / 10) - 2];
+    const ones = n % 10;
+    return ones ? `${tens}-${ONES[ones]}` : tens;
+  }
+  return String(n);
 }
 
 /** 1 -> "one philosopher", 15 -> "fifteen philosophers" */
@@ -38,12 +46,8 @@ export function countOf(n: number, singular: string, plural = `${singular}s`): s
   return `${wordOf(n)} ${n === 1 ? singular : plural}`;
 }
 
-export function wordOf(n: number): string {
-  return WORDS[n] ?? String(n);
-}
-
-/** "fifteen" -> "Fifteen", for the start of a sentence or a heading. */
-export function Capitalised(n: number): string {
+/** "fifty-two" -> "Fifty-two", for the start of a sentence or a heading. */
+export function capitalise(n: number): string {
   const w = wordOf(n);
   return w.charAt(0).toUpperCase() + w.slice(1);
 }

@@ -5,7 +5,7 @@ import ConceptCard from "../../components/ConceptCard.astro";
 import FilterChips from "../../components/islands/FilterChips.tsx";
 import Icon from "../../components/Icon.astro";
 import { branchList } from "../../lib/site";
-import { Capitalised } from "../../lib/count";
+import { capitalise } from "../../lib/count";
 
 const concepts = await getCollection("concepts");
 const groups = branchList
@@ -20,7 +20,7 @@ const groups = branchList
 >
   <header class="page-head">
     <p class="kicker">The big ideas</p>
-    <h1>{Capitalised(concepts.length)} questions with no answer at the bottom</h1>
+    <h1>{capitalise(concepts.length)} questions with no answer at the bottom</h1>
     <p class="lede">
       Every page has the same four parts: the question, the story, a thing to try, and questions to argue about on the
       way home. Grouped by what the idea is about.
@@ -41,6 +41,7 @@ const groups = branchList
       client:load
       kind="ageBand"
       target=".branch"
+      countSelector="#c-count"
       hideEmptyGroups=".branch"
       ariaLabel="Filter by age"
       options={[

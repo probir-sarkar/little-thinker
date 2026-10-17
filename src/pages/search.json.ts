@@ -7,6 +7,7 @@ import { BRANCHES } from "../lib/site";
 export const GET: APIRoute = async () => {
   const philosophers = await getCollection("philosophers");
   const concepts = await getCollection("concepts");
+  const stories = await getCollection("stories");
 
   const index = [
     ...philosophers.map((p) => ({
@@ -23,7 +24,16 @@ export const GET: APIRoute = async () => {
       s: `${BRANCHES[c.data.branch].name} · ages ${c.data.agesMin}–${c.data.agesMax}`,
       q: c.data.hook,
     })),
+    ...stories.map((s) => ({
+      t: s.data.title,
+      u: `/stories/${s.id}`,
+      k: "story",
+      s: s.data.sourceShort,
+      q: s.data.ask,
+    })),
     { t: "For grown-ups", u: "/grown-ups", k: "page", s: "The ten-minute ritual", q: "" },
+    { t: "Stories", u: "/stories", k: "page", s: "Old tales with the question left open", q: "" },
+    { t: "About", u: "/about", k: "page", s: "A library of questions, not answers", q: "" },
     { t: "Image credits", u: "/credits", k: "page", s: "Where the pictures come from", q: "" },
   ];
 

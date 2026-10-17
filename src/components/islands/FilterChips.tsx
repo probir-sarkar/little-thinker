@@ -24,6 +24,8 @@ interface Props {
   options: Option[];
   /** Selector for the container holding the server-rendered cards. */
   target: string;
+  /** Selector for the element that shows "N shown" — owned by the page, not this island. */
+  countSelector: string;
   /** Optional second selector whose direct children hide when all their cards are filtered out. */
   hideEmptyGroups?: string;
   ariaLabel: string;
@@ -31,7 +33,7 @@ interface Props {
 
 const ALL = "all";
 
-export default function FilterChips({ kind, options, target, hideEmptyGroups, ariaLabel }: Props) {
+export default function FilterChips({ kind, options, target, countSelector, hideEmptyGroups, ariaLabel }: Props) {
   const [active, setActive] = useState(ALL);
 
   useEffect(() => {
@@ -56,14 +58,14 @@ export default function FilterChips({ kind, options, target, hideEmptyGroups, ar
       }
     }
 
-    const count = document.querySelector(`#${kind === "era" ? "p" : "c"}-count`);
+    const count = document.querySelector(countSelector);
     if (count) {
       count.textContent =
         kind === "era"
           ? `${shown} ${shown === 1 ? "philosopher" : "philosophers"} shown`
           : `${shown} of ${cards.length} ideas shown`;
     }
-  }, [active, kind, target, hideEmptyGroups]);
+  }, [active, kind, target, countSelector, hideEmptyGroups]);
 
   return (
     <div class="chips" role="group" aria-label={ariaLabel}>

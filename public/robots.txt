@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://little-thinker.probir.dev/sitemap-index.xml

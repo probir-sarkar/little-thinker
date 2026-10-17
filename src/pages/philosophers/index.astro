@@ -4,7 +4,7 @@ import BaseLayout from "../../components/BaseLayout.astro";
 import PhilosopherCard from "../../components/PhilosopherCard.astro";
 import Icon from "../../components/Icon.astro";
 import FilterChips from "../../components/islands/FilterChips.tsx";
-import { Capitalised, countOf } from "../../lib/count";
+import { capitalise, countOf } from "../../lib/count";
 
 const philosophers = (await getCollection("philosophers")).sort((a, b) => a.data.birthYear - b.data.birthYear);
 ---
@@ -15,7 +15,7 @@ const philosophers = (await getCollection("philosophers")).sort((a, b) => a.data
 >
   <header class="page-head">
     <p class="kicker">The shelf</p>
-    <h1>{Capitalised(philosophers.length)} people who would not stop asking</h1>
+    <h1>{capitalise(philosophers.length)} people who would not stop asking</h1>
     <p class="lede">
       From Athens to Kalady to Kyoto. Each one gets a page — their question, their story, a thing to try, and one
       line worth remembering.
@@ -27,6 +27,7 @@ const philosophers = (await getCollection("philosophers")).sort((a, b) => a.data
       client:load
       kind="era"
       target="#p-grid"
+      countSelector="#p-count"
       ariaLabel="Filter by era"
       options={[
         { value: "all", label: "Everyone" },

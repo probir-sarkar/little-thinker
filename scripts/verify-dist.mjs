@@ -67,7 +67,7 @@ for (const file of html) {
 // 3. no link should rely on a trailing slash (would need an index.html)
 for (const file of html) {
   const text = readFileSync(file, "utf8");
-  for (const m of text.matchAll(/href="(\/(?:philosophers|ideas|grown-ups|wonder-wall|credits)\/)"/g)) {
+  for (const m of text.matchAll(/href="(\/(?:philosophers|ideas|stories|grown-ups|about|credits)\/)"/g)) {
     failures.push(`${relative(root, file)} -> ${m[1]} has a trailing slash but no index.html exists there`);
   }
 }

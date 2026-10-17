@@ -25,6 +25,8 @@ if (!existsSync(root)) {
 }
 
 // Words that mean nothing to a reader and everything about how the site is made.
+// Not "island": it is an ordinary English word (Ibn Tufayl's book is about a
+// boy on an island), and any real jargon use says "astro" first, which is banned.
 const BANNED = [
   "astro",
   "tailwind",
@@ -48,7 +50,6 @@ const BANNED = [
   "build time",
   "deploy",
   "preact",
-  "island",
   "chart · ",
 ];
 

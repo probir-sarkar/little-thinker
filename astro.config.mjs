@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 import preact from '@astrojs/preact';
+import sitemap from '@astrojs/sitemap';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -12,7 +13,7 @@ import tailwindcss from '@tailwindcss/vite';
 // Cloudflare."
 //
 // So there is no adapter and no `main` entrypoint. Deploying dist/ as Workers
-// static assets serves all 30 routes with zero bindings. The adapter earns its
+// static assets serves every route with zero bindings. The adapter earns its
 // place the day this site gains an on-demand route (the vote tally is the
 // obvious candidate) — and not before.
 export default defineConfig({
@@ -29,7 +30,7 @@ export default defineConfig({
   },
 
   devToolbar: { enabled: false },
-  integrations: [preact()],
+  integrations: [preact(), sitemap()],
 
   vite: {
     plugins: [tailwindcss()],
