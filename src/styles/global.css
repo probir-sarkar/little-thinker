@@ -149,16 +149,37 @@
   .rp-btns { @apply flex gap-1.5; }
   .rp-note { @apply mb-1 mt-2.5 text-[0.8rem] text-muted; }
 
-  /* ---------- search palette ---------- */
+  /* ---------- search palette ----------
+     A fixed overlay, not a block inside the toolbar. Rendered in the header it
+     was 614px wide starting at x=112 — wedged over the navigation, which is
+     exactly what "Find is broken" looked like. */
+  .palette-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    background: rgb(34 28 23 / 0.18);
+    backdrop-filter: blur(1.5px);
+  }
   .palette {
-    @apply sticky top-[66px] z-[35] mx-auto max-w-[1180px] border-b-2 border-ink
-           bg-paper-2 px-[clamp(18px,4vw,44px)] pb-1 pt-3.5;
+    position: fixed;
+    top: clamp(56px, 9vh, 110px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 71;
+    width: min(720px, calc(100vw - 24px));
+    max-height: min(70vh, 620px);
+    overflow: auto;
+    background: var(--color-paper);
+    border: 2px solid var(--color-ink);
+    border-radius: var(--radius-page);
+    box-shadow: 8px 8px 0 rgb(34 28 23 / 0.22);
+    padding: 14px;
   }
   .palette input {
     @apply w-full rounded-page border-[1.5px] border-ink bg-paper px-3.5 py-3
            font-body text-[1.05rem] text-ink;
   }
-  .palette-list { @apply my-2.5 max-h-[46vh] list-none overflow-auto p-0; }
+  .palette-list { @apply my-2.5 list-none p-0; }
   .palette-list a { @apply block rounded-page px-3 py-2.5 no-underline; }
   .palette-list a:hover, .palette-list a.is-active { @apply bg-ink text-paper; }
   .palette-list .pk { @apply block text-[0.78rem] uppercase tracking-[0.08em] opacity-70; }
@@ -323,15 +344,45 @@
     background: var(--card-accent, var(--color-accent));
   }
 
-  .tryit { @apply my-7 rounded-page border-2 border-dashed border-ink bg-paper-2 px-5 py-4.5; }
+  .tryit { @apply my-7 rounded-page border-2 border-ink bg-paper-2 px-5 py-4.5; }
   .tryit-label {
-    @apply mb-2.5 flex items-center gap-2 text-[0.76rem] font-bold uppercase tracking-[0.14em];
+    @apply mb-2.5 flex items-center gap-2 text-[0.84rem] font-bold uppercase tracking-[0.13em];
     color: var(--card-accent, var(--color-accent));
   }
   .tryit p:last-child { @apply m-0; }
 
   .talk-list { @apply mb-0 mt-3 list-disc pl-5; }
   .talk-list li { @apply mb-2.5; }
+
+  /* ---------- depth sections on an idea page ---------- */
+  .objections,
+  .thinkers,
+  .gofurther { @apply mt-9 border-t-2 border-ink pt-6.5; }
+
+  .objection-list,
+  .thinker-list,
+  .source-list { @apply m-0 list-none p-0; }
+
+  .objection-list li { @apply mb-6 border-l-4 pl-4; border-left-color: var(--card-accent, var(--color-accent)); }
+  .objection-q { @apply mb-2 font-display text-[1.12rem] font-bold; }
+  .objection-q::before { content: "“"; }
+  .objection-q::after { content: "”"; }
+  /* The marker and the muted colour are what stop the reply reading as a
+     continuation of the challenge above it. */
+  .objection-a { @apply m-0 pl-4 text-ink-2; }
+  .objection-a::before {
+    content: "→ ";
+    @apply font-bold;
+    color: var(--card-accent, var(--color-accent));
+  }
+
+  .thinker-list li,
+  .source-list li { @apply border-b border-line py-3; }
+  .thinker-list b,
+  .source-list b { @apply font-display text-[1.05rem]; }
+  .thinker-list span,
+  .source-list span { @apply mt-1 block text-[0.95rem] text-ink-2; }
+  .source-list li b { font-style: italic; }
 
   /* ---------- sidebar ---------- */
   .sidebox { @apply grid gap-5.5 lg:sticky lg:top-20; }

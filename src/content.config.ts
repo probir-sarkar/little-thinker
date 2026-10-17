@@ -43,6 +43,12 @@ const concepts = defineCollection({
     tryIt: z.string(),
     talk: z.array(z.string()).min(3),
     related: z.array(z.string()),
+    // Optional depth. A page with these filled in is a place to think, not
+    // just a place to read: the objection is the argument a child will
+    // actually make, and the reply is somebody having thought about it.
+    keyThinkers: z.array(z.object({ who: z.string(), view: z.string() })).default([]),
+    objections: z.array(z.object({ challenge: z.string(), reply: z.string() })).default([]),
+    goFurther: z.array(z.object({ title: z.string(), who: z.string(), note: z.string() })).default([]),
   }),
 });
 

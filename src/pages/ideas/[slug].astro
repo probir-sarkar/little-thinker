@@ -2,7 +2,6 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../components/BaseLayout.astro";
 import ConceptCard from "../../components/ConceptCard.astro";
-import AgeRangeChart from "../../components/charts/AgeRangeChart.astro";
 import Icon from "../../components/Icon.astro";
 import { branchOf } from "../../lib/site";
 import VoteBox from "../../components/islands/VoteBox.tsx";
@@ -48,7 +47,15 @@ const related = c.related
           <p set:html={c.tryIt} />
         </section>
 
-        <VoteBox client:visible slug={entry.id} question={c.talk[0]} />
+        {/* The vote asks for a stance on the question itself, so the same
+            three buttons make sense on every idea. The specific discussion
+            questions live in "Talk about it" below — using talk[0] here
+            printed it twice. */}
+        <VoteBox
+          client:visible
+          slug={entry.id}
+          question="Do you think there is a right answer to this question?"
+        />
 
         <section class="talk">
           <p class="tryit-label"><Icon name="speech" size={15} /> Talk about it</p>
@@ -57,15 +64,63 @@ const related = c.related
           </ul>
         </section>
 
-        <AgeRangeChart
-          ideas={concepts.map((x) => ({
-            title: x.data.title,
-            branch: x.data.branch,
-            agesMin: x.data.agesMin,
-            agesMax: x.data.agesMax,
-            href: `/ideas/${x.id}`,
-          }))}
-        />
+        {
+          c.objections.length > 0 && (
+            <section class="objections">
+              <p class="tryit-label">
+                <Icon name="knot" size={15} /> Yes, but… — the arguments people actually make
+              </p>
+              <ul class="objection-list">
+                {c.objections.map((o) => (
+                  <li>
+                    <p class="objection-q" set:html={o.challenge} />
+                    <p class="objection-a" set:html={o.reply} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          c.keyThinkers.length > 0 && (
+            <section class="thinkers">
+              <p class="tryit-label">
+                <Icon name="scales" size={15} /> What other philosophers think
+              </p>
+              <ul class="thinker-list">
+                {c.keyThinkers.map((k) => (
+                  <li>
+                    <b>{k.who}</b>
+                    <span set:html={k.view} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          c.goFurther.length > 0 && (
+            <section class="gofurther">
+              <p class="tryit-label">
+                <Icon name="scroll" size={15} /> If you want to go further
+              </p>
+              <ul class="source-list">
+                {c.goFurther.map((g) => (
+                  <li>
+                    <b>{g.title}</b> — {g.who}
+                    <span set:html={g.note} />
+                  </li>
+                ))}
+              </ul>
+              <p class="side-small">
+                Most of these were written for adults, which is why it is worth reading them with someone older.
+              </p>
+            </section>
+          )
+        }
+
       </div>
 
       <aside class="sidebox">
@@ -99,8 +154,8 @@ const related = c.related
         <div class="side-block">
           <p class="side-h">Read alone or together</p>
           <p class="side-small">
-            Works read silently, read aloud by an adult, or played with the <b>Listen</b> button. The &ldquo;Try it&rdquo;
-            box is the part that makes it stick.
+            Works read silently, or read aloud by an adult. The &ldquo;Try it&rdquo; box is the part that makes it
+            stick.
           </p>
         </div>
 

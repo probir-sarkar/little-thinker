@@ -3,7 +3,6 @@ import "../styles/global.css";
 import Icon from "./Icon.astro";
 import SearchPalette from "./islands/SearchPalette.tsx";
 import ReadingSettings from "./islands/ReadingSettings.tsx";
-import ReadAloud from "./islands/ReadAloud.tsx";
 
 interface Props {
   title: string;
@@ -66,7 +65,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       <div class="bar-tools">
         <SearchPalette client:idle />
         <ReadingSettings client:load />
-        <ReadAloud client:idle />
       </div>
     </header>
 

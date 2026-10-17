@@ -88,35 +88,38 @@ export default function SearchPalette() {
       </button>
 
       {open && (
-        <div id="palette" class="palette" role="dialog" aria-label="Search">
-          <input
-            ref={input}
-            type="search"
-            placeholder="Type a name, or an idea…"
-            autocomplete="off"
-            value={query}
-            aria-label="Search"
-            aria-controls="palette-list"
-            onInput={(e) => {
-              setQuery((e.target as HTMLInputElement).value);
-              setActive(0);
-            }}
-            onKeyDown={onInputKey}
-          />
-          <ul id="palette-list" class="palette-list">
-            {results.map((r, i) => (
-              <li key={r.u}>
-                <a href={r.u} class={i === active ? "is-active" : ""} onMouseEnter={() => setActive(i)}>
-                  <span class="pk">{r.k}</span>
-                  {r.t} — <em>{r.s}</em>
-                </a>
-              </li>
-            ))}
-            {query.trim() !== "" && results.length === 0 && (
-              <li class="palette-empty">Nothing matches “{query}”. Which is itself a good question.</li>
-            )}
-          </ul>
-        </div>
+        <>
+          <div class="palette-backdrop" onClick={() => setOpen(false)} aria-hidden="true" />
+          <div id="palette" class="palette" role="dialog" aria-modal="true" aria-label="Search">
+            <input
+              ref={input}
+              type="search"
+              placeholder="Type a name, or an idea…"
+              autocomplete="off"
+              value={query}
+              aria-label="Search"
+              aria-controls="palette-list"
+              onInput={(e) => {
+                setQuery((e.target as HTMLInputElement).value);
+                setActive(0);
+              }}
+              onKeyDown={onInputKey}
+            />
+            <ul id="palette-list" class="palette-list">
+              {results.map((r, i) => (
+                <li key={r.u}>
+                  <a href={r.u} class={i === active ? "is-active" : ""} onMouseEnter={() => setActive(i)}>
+                    <span class="pk">{r.k}</span>
+                    {r.t} — <em>{r.s}</em>
+                  </a>
+                </li>
+              ))}
+              {query.trim() !== "" && results.length === 0 && (
+                <li class="palette-empty">Nothing matches “{query}”. Which is itself a good question.</li>
+              )}
+            </ul>
+          </div>
+        </>
       )}
     </>
   );

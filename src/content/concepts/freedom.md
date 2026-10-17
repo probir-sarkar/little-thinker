@@ -13,6 +13,32 @@ related:
   - "rules"
   - "justice-and-power"
   - "invisible-ring"
+keyThinkers:
+  - who: "John Stuart Mill"
+    view: "Your freedom may be limited only to prevent harm to others — not because they disapprove, and not because they think it is bad for you."
+  - who: "Isaiah Berlin"
+    view: "Distinguished freedom from interference from freedom as self-mastery, and warned that the second can be used to tell people what they really want."
+  - who: "Jean-Jacques Rousseau"
+    view: "Argued you can be forced to be free, which most people since have found a chilling sentence — and a useful one to test against any argument about liberty."
+  - who: "Hannah Arendt"
+    view: "Said freedom is not a private feeling but something that happens between people, in acting together."
+objections:
+  - challenge: "If it doesn't hurt anyone, how could it ever be wrong?"
+    reply: "Ask whether it hurts anyone slowly, or many people a little, or someone who cannot complain. Mill admitted these cases were the work of a lifetime."
+  - challenge: "Children can't have full freedom, so the rule isn't real."
+    reply: "Then you owe an account of what changes with age — and 'they're not ready' needs to say ready for what, exactly."
+  - challenge: "Freedom means doing whatever you want."
+    reply: "That is licence, and it collapses the moment two people both want incompatible things. Freedom in a group has to mean something compatible with everyone else's."
+goFurther:
+  - title: "On Liberty"
+    who: "John Stuart Mill"
+    note: "1859. Chapter 1 contains the whole principle in about two pages."
+  - title: "Two Concepts of Liberty"
+    who: "Isaiah Berlin"
+    note: "1958 lecture, short, and it changes how you hear the word 'free'."
+  - title: "The Social Contract"
+    who: "Jean-Jacques Rousseau"
+    note: "1762. Read it to see how the language of freedom can be turned against freedom."
 ---
 
 Everybody is in favour of freedom. The argument is always about where it stops — and it stops somewhere, because your freedom to play the drums at midnight is somebody else's freedom to sleep.

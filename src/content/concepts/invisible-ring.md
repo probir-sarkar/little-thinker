@@ -13,6 +13,30 @@ related:
   - "fairness"
   - "courage"
   - "being-yourself"
+keyThinkers:
+  - who: "Glaucon"
+    view: "In the Republic he argues that anyone given the ring would behave unjustly, and that the just life is only praised because people fear getting caught."
+  - who: "Socrates"
+    view: "Replied that the person who takes everything is not free but enslaved to wanting more, while the one who can take and does not is in charge of himself."
+  - who: "Immanuel Kant"
+    view: "Thought morality does not depend on anyone finding out: an action is right if you could will it as a rule for everyone, no exceptions for you."
+objections:
+  - challenge: "If nobody is hurt and nobody knows, no harm done."
+    reply: "Try it on yourself: who do you become while doing it? The character you build in secret is the one you have to live in."
+  - challenge: "Socrates never proved his answer."
+    reply: "Correct, and nobody has since. It is still the most useful question in the book: what would you actually do?"
+  - challenge: "Everyone would use the ring, so I would be a fool not to."
+    reply: "That is Glaucon's argument and it is a strong one. Notice it depends on a claim about everyone — which you might test with the people you know."
+goFurther:
+  - title: "The Republic"
+    who: "Plato"
+    note: "Book II for the ring, Book IV for the answer. The oldest version of 'why be good if it costs you?'"
+  - title: "Groundwork of the Metaphysics of Morals"
+    who: "Immanuel Kant"
+    note: "1785. Duty without reward, worked out in detail."
+  - title: "Leviathan"
+    who: "Thomas Hobbes"
+    note: "For the opposing view: that without being watched, we do not hold back."
 ---
 
 Plato tells this story in the Republic. A shepherd is looking after his flock when the ground shakes, a crack opens in the hillside, and he climbs down. Inside he finds a bronze horse, and in the horse a body wearing a gold ring. He takes it.
