@@ -1,0 +1,167 @@
+---
+import { getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
+import BaseLayout from "../../components/BaseLayout.astro";
+import Portrait from "../../components/Portrait.astro";
+import ConceptCard from "../../components/ConceptCard.astro";
+import Icon from "../../components/Icon.astro";
+import { branchOf, lifespan } from "../../lib/site";
+import credits from "../../data/credits.json";
+
+export async function getStaticPaths() {
+  const philosophers = await getCollection("philosophers");
+  return philosophers.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const p = entry.data;
+const b = branchOf(p.branch);
+const { Content } = await render(entry);
+
+const all = await getCollection("philosophers");
+const concepts = await getCollection("concepts");
+const others = all.filter((x) => x.id !== entry.id);
+const sameTheme = others.filter((x) => x.data.branch === p.branch);
+const neighbours = [...sameTheme, ...others.filter((x) => x.data.branch !== p.branch)].slice(0, 3);
+const nearbyIdeas = concepts.filter((c) => c.data.branch === p.branch).slice(0, 3);
+
+const credit = (credits as any[]).find((c) => c.slug === entry.id);
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpg,jpeg,png,webp}", { eager: true });
+const heroKey = p.heroImage ? Object.keys(images).find((k) => k.endsWith(`/${p.heroImage}`)) : undefined;
+const heroSrc = heroKey ? images[heroKey].default : undefined;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: p.name,
+  description: p.oneLiner,
+  birthDate: String(p.birthYear),
+  deathDate: String(p.deathYear),
+  image: credit?.direct_url,
+};
+---
+
+<BaseLayout title={`${p.name} — Think Small`} description={p.oneLiner}>
+  <article class="detail" style={`--c:${b.color}`}>
+    <nav class="crumbs">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/philosophers">Philosophers</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{p.name}</span>
+    </nav>
+
+    <header class="detail-head">
+      <Portrait
+        file={p.heroImage}
+        alt={p.heroImageAlt ?? `Portrait of ${p.name}`}
+        monogram={p.monogram}
+        icon={p.icon}
+        size="lg"
+        color={b.color}
+      />
+      <div>
+        <p class="kicker">
+          <Icon name={p.icon} size={14} /> {b.name} · {p.years}
+        </p>
+        <h1>{p.name}</h1>
+        <p class="lede">{p.oneLiner}</p>
+        <p class="detail-place">{p.place} · lived {lifespan(p.birthYear, p.deathYear)}</p>
+      </div>
+    </header>
+
+    <div class="detail-body">
+      <div class="prose">
+        <section class="qblock">
+          <p class="qblock-label">Their big question</p>
+          <p class="qblock-q">{p.bigQuestion}</p>
+        </section>
+
+        <Content />
+
+        <blockquote class="pull">
+          <p>&ldquo;{p.quote}&rdquo;</p>
+          <cite set:html={p.quoteNote} />
+        </blockquote>
+
+        <h2>Three things worth knowing</h2>
+        <ul class="facts">
+          {p.facts.map((f) => <li set:html={f} />)}
+        </ul>
+
+        <section class="tryit">
+          <p class="tryit-label"><Icon name="compass" size={15} /> Try it — think like {p.name.split(" ")[0]}</p>
+          <p set:html={p.activity} />
+        </section>
+
+        {
+          credit && (
+            <p class="side-small" style="border-top:1px solid var(--line); padding-top:12px">
+              Portrait: <a href={credit.source_url} rel="noopener">{credit.title}</a> — {credit.author},{" "}
+              <a href={credit.license_url} rel="noopener nofollow">{credit.license}</a>.{" "}
+              <a href="/credits">All image credits</a>.{" "}
+              <a href={`https://commons.wikimedia.org/wiki/${encodeURIComponent(credit.title)}`} rel="noopener">
+                Source file
+              </a>
+            </p>
+          )
+        }
+      </div>
+
+      <aside class="sidebox">
+        <div class="side-block">
+          <p class="side-h">Same shelf</p>
+          {
+            neighbours.map((x) => (
+              <a class="side-link" href={`/philosophers/${x.id}`}>
+                {x.data.name}
+                <span>{x.data.bigQuestion}</span>
+              </a>
+            ))
+          }
+        </div>
+
+        {
+          nearbyIdeas.length > 0 && (
+            <div class="side-block">
+              <p class="side-h">Big ideas nearby</p>
+              {nearbyIdeas.map((c) => (
+                <a class="side-link" href={`/ideas/${c.id}`}>
+                  {c.data.title}
+                  <span>ages {c.data.agesMin}–{c.data.agesMax}</span>
+                </a>
+              ))}
+            </div>
+          )
+        }
+
+        <div class="side-block">
+          <p class="side-h">Say it out loud</p>
+          <p class="side-small">
+            Tap <b>Listen</b> at the top and the story is read to you — useful for tired eyes, long words and bedtimes.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  {
+    heroSrc && (
+      <div class="scene scene-wide" style="border-top:1px solid var(--line); padding-top:26px">
+        <figure>
+          <Image
+            src={heroSrc}
+            alt={p.heroImageAlt ?? `Portrait of ${p.name}`}
+            widths={[600, 1200, 1800]}
+            sizes="100vw"
+            format="webp"
+            loading="lazy"
+          />
+          <figcaption>
+            {p.heroImageAlt} — {credit?.author ?? "unknown"}, {credit?.license ?? "see credits"}
+          </figcaption>
+        </figure>
+      </div>
+    )
+  }
+</BaseLayout>

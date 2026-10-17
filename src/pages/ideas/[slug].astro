@@ -1,0 +1,141 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../components/BaseLayout.astro";
+import ConceptCard from "../../components/ConceptCard.astro";
+import AgeRangeChart from "../../components/charts/AgeRangeChart.astro";
+import Icon from "../../components/Icon.astro";
+import { branchOf } from "../../lib/site";
+
+export async function getStaticPaths() {
+  const concepts = await getCollection("concepts");
+  return concepts.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const c = entry.data;
+const b = branchOf(c.branch);
+const { Content } = await render(entry);
+
+const concepts = await getCollection("concepts");
+const related = c.related
+  .map((id) => concepts.find((x) => x.id === id))
+  .filter((x): x is NonNullable<typeof x> => Boolean(x));
+
+// Sample pilot figures. Honest about being sample data — see the note under
+// the chart. Real tallies need a backend (Cloudflare D1 + a Worker route).
+const sample = { yes: 58, no: 26, unsure: 16 };
+---
+
+<BaseLayout title={`${c.title} — Think Small`} description={c.hook}>
+  <article class="detail idea-detail" style={`--c:${b.color}`}>
+    <nav class="crumbs">
+      <a href="/">Home</a><span aria-hidden="true">/</span>
+      <a href="/ideas">Big Ideas</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{c.title}</span>
+    </nav>
+
+    <header class="detail-head compact">
+      <div>
+        <p class="kicker"><Icon name="idea" size={14} /> {b.name} · ages {c.agesMin}–{c.agesMax}</p>
+        <h1>{c.title}</h1>
+        <p class="hook">{c.hook}</p>
+      </div>
+    </header>
+
+    <div class="detail-body">
+      <div class="prose">
+        <Content />
+
+        <section class="tryit">
+          <p class="tryit-label"><Icon name="compass" size={15} /> Try it</p>
+          <p set:html={c.tryIt} />
+        </section>
+
+        <section class="vote" data-slug={entry.id}>
+          <p class="vote-label">What do you think?</p>
+          <p class="vote-q" set:html={c.talk[0]} />
+          <div class="vote-btns">
+            <button class="vote-btn" data-vote="yes" type="button">Yes, I think so</button>
+            <button class="vote-btn" data-vote="no" type="button">No &mdash; and here&rsquo;s why</button>
+            <button class="vote-btn" data-vote="unsure" type="button">I&rsquo;m not sure yet</button>
+          </div>
+          <div class="vote-results" id="vote-results" hidden>
+            <p class="vote-thanks" id="vote-thanks"></p>
+            <div class="vbar">
+              <span style={`--w:${sample.yes}%`}></span><i>Yes, I think so</i><b>{sample.yes}%</b>
+            </div>
+            <div class="vbar">
+              <span style={`--w:${sample.no}%`}></span><i>No &mdash; and here&rsquo;s why</i><b>{sample.no}%</b>
+            </div>
+            <div class="vbar">
+              <span style={`--w:${sample.unsure}%`}></span><i>I&rsquo;m not sure yet</i><b>{sample.unsure}%</b>
+            </div>
+            <p class="vote-note">
+              Sample figures from a pilot class, <strong>not live data</strong>. A real tally needs a database behind
+              this button.
+            </p>
+          </div>
+        </section>
+
+        <section class="talk">
+          <p class="tryit-label"><Icon name="speech" size={15} /> Talk about it</p>
+          <ul class="talk-list">
+            {c.talk.map((t) => <li set:html={t} />)}
+          </ul>
+        </section>
+
+        <AgeRangeChart
+          ideas={concepts.map((x) => ({
+            title: x.data.title,
+            branch: x.data.branch,
+            agesMin: x.data.agesMin,
+            agesMax: x.data.agesMax,
+            href: `/ideas/${x.id}`,
+          }))}
+        />
+      </div>
+
+      <aside class="sidebox">
+        {
+          related.length > 0 && (
+            <div class="side-block">
+              <p class="side-h">Goes with</p>
+              {related.map((r) => (
+                <a class="side-link" href={`/ideas/${r.id}`}>
+                  {r.data.title}
+                  <span>{branchOf(r.data.branch).name}</span>
+                </a>
+              ))}
+            </div>
+          )
+        }
+
+        <div class="side-block">
+          <p class="side-h">Thinkers on this theme</p>
+          {(await getCollection("philosophers"))
+            .filter((p) => p.data.branch === c.branch)
+            .slice(0, 3)
+            .map((p) => (
+              <a class="side-link" href={`/philosophers/${p.id}`}>
+                {p.data.name}
+                <span>{p.data.bigQuestion}</span>
+              </a>
+            ))}
+        </div>
+
+        <div class="side-block">
+          <p class="side-h">Read alone or together</p>
+          <p class="side-small">
+            Works read silently, read aloud by an adult, or played with the <b>Listen</b> button. The &ldquo;Try it&rdquo;
+            box is the part that makes it stick.
+          </p>
+        </div>
+
+        <div class="side-block">
+          <p class="side-h">Teachers</p>
+          <p class="side-small"><a href="/grown-ups">Ten-minute lesson ritual &rarr;</a></p>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

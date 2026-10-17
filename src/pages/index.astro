@@ -1,0 +1,149 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import BaseLayout from "../components/BaseLayout.astro";
+import PhilosopherCard from "../components/PhilosopherCard.astro";
+import ConceptCard from "../components/ConceptCard.astro";
+import TimelineChart from "../components/charts/TimelineChart.astro";
+import Icon from "../components/Icon.astro";
+import wonders from "../data/wonders.json";
+import credits from "../data/credits.json";
+
+const philosophers = await getCollection("philosophers");
+const concepts = await getCollection("concepts");
+
+const picked = ["socrates", "hypatia", "confucius", "descartes", "ibn-sina", "arendt"];
+const shelf = picked.map((id) => philosophers.find((p) => p.id === id)!).filter(Boolean);
+const ideaShelf = ["fairness", "truth", "time", "your-thoughts"]
+  .map((id) => concepts.find((c) => c.id === id)!)
+  .filter(Boolean);
+
+const timeline = philosophers.map((p) => ({
+  name: p.data.name,
+  icon: p.data.icon,
+  birthYear: p.data.birthYear,
+  deathYear: p.data.deathYear,
+  branch: p.data.branch,
+  href: `/philosophers/${p.id}`,
+}));
+
+// Decorative photographs, only if the credited ones were fetched.
+const sceneImages = import.meta.glob<{ default: ImageMetadata }>("/src/assets/images/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+});
+const scenes = (credits as any[])
+  .filter((c) => String(c.slug).startsWith("scene-"))
+  .slice(0, 3)
+  .map((c) => {
+    const key = Object.keys(sceneImages).find((k) => k.endsWith(`/${c.file}`));
+    return key ? { ...c, src: sceneImages[key].default } : null;
+  })
+  .filter(Boolean) as any[];
+---
+
+<BaseLayout
+  title="Think Small — philosophy for children"
+  description="Philosophy for children: one big question per page, one philosopher per page, no answers printed in the back."
+>
+  <section class="hero">
+    <div class="hero-left">
+      <p class="kicker">Philosophy for children 6–12</p>
+      <h1>Big questions,<br />cut down to size.</h1>
+      <p class="lede">
+        One idea per page. One philosopher per page. No answers at the bottom — just better questions, and things to try
+        at the kitchen table.
+      </p>
+      <div class="hero-doors">
+        <a class="door" href="/philosophers">
+          <span class="door-n">01</span>
+          <span class="door-t">Meet the philosophers</span>
+          <span class="door-s">Nine people who asked too many questions</span>
+          <span class="door-a" aria-hidden="true"><Icon name="door" size={22} /></span>
+        </a>
+        <a class="door" href="/ideas">
+          <span class="door-n">02</span>
+          <span class="door-t">Start with a big idea</span>
+          <span class="door-s">Fairness, time, truth, courage and ten more</span>
+          <span class="door-a" aria-hidden="true"><Icon name="idea" size={22} /></span>
+        </a>
+      </div>
+    </div>
+
+    <aside class="board">
+      <p class="board-label">Today&rsquo;s wonder</p>
+      <p class="board-q" id="wonder-q">{wonders[0]}</p>
+      <div class="board-actions">
+        <button class="tool" type="button" id="next-wonder">Another one</button>
+        <label class="board-think"><input type="checkbox" id="think-it" /> I&rsquo;ll think about this today</label>
+      </div>
+      <p class="board-count" id="think-count"></p>
+      <div class="board-rule" aria-hidden="true"></div>
+      <p class="board-note">
+        A wonder is not a test. Nothing here has a right answer, and &ldquo;I don&rsquo;t know yet&rdquo; counts as an
+        answer.
+      </p>
+    </aside>
+  </section>
+
+  <section class="strip">
+    <p class="strip-h">Questions children actually send us</p>
+    <ul class="ticker" aria-label="Questions other children wondered about">
+      {wonders.map((w) => <li>{w}</li>)}
+    </ul>
+  </section>
+
+  {
+    scenes.length > 0 && (
+      <section class="scene">
+        {scenes.map((s: any) => (
+          <figure>
+            <Image
+              src={s.src}
+              alt={s.title}
+              widths={[400, 800]}
+              sizes="(max-width: 900px) 100vw, 33vw"
+              format="webp"
+              loading="lazy"
+            />
+            <figcaption>
+              {s.title} — {s.author}, {s.license}
+            </figcaption>
+          </figure>
+        ))}
+      </section>
+    )
+  }
+
+  <section class="row">
+    <div class="row-head">
+      <h2>Meet the philosophers</h2>
+      <a class="more" href="/philosophers">All nine &rarr;</a>
+    </div>
+    <div class="grid grid-shelf">
+      {shelf.map((p) => <PhilosopherCard entry={p} />)}
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="row-head">
+      <h2>Start with a big idea</h2>
+      <a class="more" href="/ideas">All fourteen &rarr;</a>
+    </div>
+    <div class="grid grid-shelf">
+      {ideaShelf.map((c) => <ConceptCard entry={c} />)}
+    </div>
+  </section>
+
+  <TimelineChart people={timeline} />
+
+  <section class="how">
+    <h2>How every page works</h2>
+    <ol class="how-list">
+      <li><b>The question</b><span>One line any child can hold in their head.</span></li>
+      <li><b>The story</b><span>A real philosopher, a real problem, no jargon.</span></li>
+      <li><b>Try it</b><span>Two minutes, a sheet of paper, something to do.</span></li>
+      <li><b>Talk about it</b><span>Three questions with nothing printed underneath.</span></li>
+    </ol>
+    <p class="how-foot"><a href="/grown-ups">Reading this with a class? Start here &rarr;</a></p>
+  </section>
+</BaseLayout>

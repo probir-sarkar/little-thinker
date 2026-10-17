@@ -1,0 +1,116 @@
+---
+/**
+ * "When did they live?" — a dumbbell timeline of every philosopher on one
+ * shared axis, ~2,450 years wide.
+ *
+ * Why dumbbells and not bars: on a span this large a 70-year life is a
+ * 3%-wide sliver that vanishes. Fixed-size end markers stay legible no
+ * matter how short the life is, and the connecting rule carries the
+ * duration honestly.
+ */
+import { branchOf, formatYear } from "../../lib/site";
+import Icon from "../Icon.astro";
+
+interface Person {
+  name: string;
+  icon: string;
+  birthYear: number;
+  deathYear: number;
+  branch: string;
+  href: string;
+}
+interface Props {
+  people: Person[];
+}
+const { people } = Astro.props;
+const rows = [...people].sort((a, b) => a.birthYear - b.birthYear);
+
+const rowH = 34;
+const padTop = 44;
+const padLeft = 178;
+const padRight = 40;
+const W = 900;
+const H = padTop + rows.length * rowH + 34;
+const plotW = W - padLeft - padRight;
+
+const min = Math.min(...rows.map((r) => r.birthYear));
+const max = Math.max(...rows.map((r) => r.deathYear));
+const pad = (max - min) * 0.02;
+const lo = min - pad;
+const hi = max + pad;
+const x = (year: number) => padLeft + ((year - lo) / (hi - lo)) * plotW;
+
+// Century gridlines on rounded 500s.
+const first = Math.ceil(lo / 500) * 500;
+const ticks: number[] = [];
+for (let t = first; t <= hi; t += 500) ticks.push(t);
+
+const eras = [
+  { label: "Ancient", from: lo, to: 500 },
+  { label: "Medieval", from: 500, to: 1500 },
+  { label: "Modern", from: 1500, to: hi },
+];
+const usedBranches = [...new Set(rows.map((r) => r.branch))];
+---
+
+<div class="chart">
+  <p class="chart-head"><Icon name="hourglass" size={14} /> Chart · one row per philosopher</p>
+  <h2 class="chart-title">Twenty-five centuries of asking questions</h2>
+  <p class="chart-note" style="margin-top:0">
+    Each line runs from a thinker's birth to their death. The gaps are as interesting as the lines.
+  </p>
+
+  <div class="chart-scroll">
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Timeline of the nine philosophers from Socrates to Hannah Arendt">
+      <!-- era bands -->
+      {eras.map((e, i) => (
+        <g>
+          <rect
+            x={x(e.from)}
+            y={padTop - 24}
+            width={Math.max(0, x(e.to) - x(e.from))}
+            height={H - padTop - 4}
+            fill={i % 2 === 0 ? "rgba(34,28,23,0.035)" : "transparent"}
+          />
+          <text class="chart-tick" x={x(e.from) + 6} y={padTop - 30}>{e.label}</text>
+        </g>
+      ))}
+
+      <!-- century gridlines -->
+      {ticks.map((t) => (
+        <g>
+          <line x1={x(t)} y1={padTop - 18} x2={x(t)} y2={H - 26} stroke="#dccfb8" stroke-width="1" />
+          <text class="chart-tick" x={x(t)} y={H - 10} text-anchor="middle">
+            {formatYear(t)}
+          </text>
+        </g>
+      ))}
+
+      <!-- rows -->
+      {rows.map((r, i) => {
+        const y = padTop + i * rowH + rowH / 2;
+        const b = branchOf(r.branch);
+        return (
+          <g class="chart-bar">
+            <a href={r.href}>
+              <text class="chart-label" x={padLeft - 14} y={y + 4} text-anchor="end">{r.name}</text>
+              <line x1={x(r.birthYear)} y1={y} x2={x(r.deathYear)} y2={y} stroke={b.color} stroke-width="7" stroke-linecap="round" opacity="0.32" />
+              <circle cx={x(r.birthYear)} cy={y} r="6" fill={b.color} stroke="#221c17" stroke-width="1.5" />
+              <circle cx={x(r.deathYear)} cy={y} r="6" fill="#fbf6ec" stroke={b.color} stroke-width="3" />
+            </a>
+          </g>
+        );
+      })}
+    </svg>
+  </div>
+
+  <p class="chart-note">
+    Filled dot = birth, hollow dot = death. Colour is the thinker's theme:{" "}
+    {usedBranches.map((key, i) => (
+      <span style={`color:${branchOf(key).color}; font-weight:700`}>
+        {branchOf(key).name}
+        {i < usedBranches.length - 1 ? " · " : ""}
+      </span>
+    ))}
+  </p>
+</div>

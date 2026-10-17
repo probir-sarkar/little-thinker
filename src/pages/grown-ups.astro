@@ -1,0 +1,217 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../components/BaseLayout.astro";
+import AgeRangeChart from "../components/charts/AgeRangeChart.astro";
+import BranchChart from "../components/charts/BranchChart.astro";
+import Icon from "../components/Icon.astro";
+import { branchList, branchOf } from "../lib/site";
+
+const concepts = (await getCollection("concepts")).sort((a, b) => a.data.agesMin - b.data.agesMin);
+const philosophers = await getCollection("philosophers");
+
+const byBranch = concepts.reduce<Record<string, number>>((acc, c) => {
+  acc[c.data.branch] = (acc[c.data.branch] ?? 0) + 1;
+  return acc;
+}, {});
+
+const ladder = concepts.map((c) => ({
+  title: c.data.title,
+  branch: c.data.branch,
+  agesMin: c.data.agesMin,
+  agesMax: c.data.agesMax,
+  href: `/ideas/${c.id}`,
+}));
+
+const themes: Record<string, string> = {
+  "how-to-live": "PSHE · values · behaviour",
+  "what-is-real": "Science · reality · time",
+  "how-we-know": "Evidence · critical thinking · media literacy",
+  "who-am-i": "Identity · wellbeing · self",
+  together: "Citizenship · rules · democracy",
+  beauty: "Art · music · creative writing",
+};
+---
+
+<BaseLayout
+  title="For grown-ups — Think Small"
+  description="How to run a ten-minute philosophy session with a child or a class, plus the themes and age bands of every page."
+>
+  <header class="page-head">
+    <p class="kicker">For grown-ups</p>
+    <h1>How to use this with a child or a class</h1>
+    <p class="lede">
+      You do not need to know any philosophy. You need about ten minutes and the willingness to say &ldquo;I don&rsquo;t
+      know&rdquo; out loud.
+    </p>
+  </header>
+
+  <div class="detail-body">
+    <div class="prose">
+      <h2>The ten-minute ritual</h2>
+      <ol class="how-list">
+        <li>
+          <b>Read the question only</b>
+          <span>Read the title. Stop. Ask what they think before anything else on the page is read. This is the whole trick.</span>
+        </li>
+        <li>
+          <b>Read the story together</b>
+          <span>Or press Listen. Keep it short — the story is a doorway, not the lesson.</span>
+        </li>
+        <li>
+          <b>Do the Try it box</b>
+          <span>Moving, drawing, timing, watching. All the retention lives here.</span>
+        </li>
+        <li>
+          <b>Ask two of the Talk about it questions</b>
+          <span>Then stop. Never resolve it. Leave the question open on purpose.</span>
+        </li>
+      </ol>
+
+      <h2>What makes a philosophy conversation with children work</h2>
+      <ul class="facts">
+        <li><b>Answer with a question.</b> &ldquo;What do you mean by fair?&rdquo; beats any definition you could give.</li>
+        <li>
+          <b>Name the move, not the answer.</b> &ldquo;You just gave a reason — that&rsquo;s what philosophers do&rdquo;
+          teaches more than praise for being right.
+        </li>
+        <li><b>Let silence sit for five seconds.</b> Children need the gap to think inside. Adults normally fill it.</li>
+        <li><b>Let them disagree with you.</b> If they can, they have understood the page.</li>
+        <li>
+          <b>Do not settle it.</b> A page that ends in a conclusion teaches that thinking is a race to a finish line.
+        </li>
+      </ul>
+
+      <AgeRangeChart ideas={ladder} />
+
+      <BranchChart counts={byBranch} unit="ideas" title="Coverage across the six themes" />
+    </div>
+  </div>
+
+  <h2>Themes, if you need them for planning</h2>
+  <div class="table-wrap">
+    <table class="ctable">
+      <thead>
+        <tr>
+          <th>Big idea</th>
+          <th>Theme</th>
+          <th>Curriculum area it usually sits in</th>
+          <th>Ages</th>
+          <th>Opening question</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          concepts.map((c) => (
+            <tr>
+              <td>
+                <a href={`/ideas/${c.id}`}>{c.data.title}</a>
+              </td>
+              <td>{branchOf(c.data.branch).name}</td>
+              <td>{themes[c.data.branch]}</td>
+              <td>
+                {c.data.agesMin}–{c.data.agesMax}
+              </td>
+              <td set:html={c.data.talk[0]} />
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="detail-body">
+    <div class="prose">
+      <h2>The philosophers, for your own reference</h2>
+      <p>
+        Nine thinkers, one page each, chosen so that no single tradition carries the whole subject — and so that a child
+        meets at least one person who is not a European man. Each page names its own big question, which is the line
+        worth reading aloud before you open the story.
+      </p>
+      <ul class="facts">
+        {
+          philosophers.map((p) => (
+            <li>
+              <b>
+                <a href={`/philosophers/${p.id}`}>{p.data.name}</a> — {p.data.years}
+              </b>{" "}
+              {p.data.bigQuestion}
+            </li>
+          ))
+        }
+      </ul>
+
+      <h2>Accessibility notes</h2>
+      <ul class="facts">
+        <li>
+          <b>Read aloud:</b> the Listen button uses the browser&rsquo;s own voice. Works offline, costs nothing, needs no
+          service.
+        </li>
+        <li><b>Reading settings:</b> three text sizes, calm mode and letter spacing, remembered per device.</li>
+        <li>
+          <b>Type:</b> Atkinson Hyperlegible for body text — designed for low-vision readers and friendlier to young
+          readers than a default sans.
+        </li>
+        <li><b>Contrast:</b> body ink on paper is above WCAG AA; each theme colour has a dark pairing for text.</li>
+        <li><b>No accounts, no tracking, no ads, no comments.</b> The Wonder Wall writes to the device only.</li>
+        <li>
+          <b>Works without JavaScript</b> except for reading settings, search, the wonder board and the vote buttons.
+        </li>
+      </ul>
+
+      <h2>What is honest about this site and what is not</h2>
+      <ul class="facts">
+        <li>
+          <b>Stories are retold.</b> Written for young readers and simplified on purpose, not quoted from a textbook.
+        </li>
+        <li>
+          <b>The vote percentages are sample figures.</b> They come from a pilot class, not from live use. A real tally
+          needs a database behind the button.
+        </li>
+        <li>
+          <b>Portraits are historical artworks</b>, not photographs of the people, except for the two born after 1750
+          (Wollstonecraft and Arendt). Socrates sat for nobody — anything you see of him is a later sculptor&rsquo;s
+          idea. See <a href="/credits">image credits</a>.
+        </li>
+        <li>
+          <b>Icons and charts are original</b> — hand-written SVG paths, generated at build time from the same content
+          files that generate the pages.
+        </li>
+      </ul>
+
+      <h2>Adding to the library</h2>
+      <p>
+        A new big idea is one Markdown file with frontmatter; a new philosopher is the same. The pages, the cards, the
+        charts and the search index all regenerate from those files, so nothing can drift out of sync. This is a static
+        site with no database and no admin panel — which is why there are no accounts and nothing to log in to.
+      </p>
+
+      <p class="side-small">
+        <Icon name="scroll" size={14} /> Built with Astro. Charts and icons drawn for this project. Images from Wikimedia
+        Commons — <a href="/credits">credited here</a>.
+      </p>
+    </div>
+
+    <aside class="sidebox">
+      <div class="side-block">
+        <p class="side-h">By theme</p>
+        {
+          branchList
+            .filter((b) => byBranch[b.key])
+            .map((b) => (
+              <a class="side-link" href="/ideas">
+                {b.name}
+                <span>{byBranch[b.key]} ideas · {b.note}</span>
+              </a>
+            ))
+        }
+      </div>
+      <div class="side-block">
+        <p class="side-h">Print it</p>
+        <p class="side-small">
+          These pages print cleanly — the header, buttons and footer drop out and the charts keep their lines. Print a
+          story, a Try it box, or this whole page as a planning sheet.
+        </p>
+      </div>
+    </aside>
+  </div>
+</BaseLayout>

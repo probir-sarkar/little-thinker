@@ -1,0 +1,53 @@
+---
+/**
+ * A philosopher's portrait, or a monogram medallion when no properly
+ * licensed photograph exists for them. Both paths render at the same
+ * size so layouts never shift.
+ *
+ * Images are optimised at build time by astro:assets (sharp) and served
+ * as both webp and the original format.
+ */
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+interface Props {
+  /** Credit-verified image file, e.g. "socrates.jpg". */
+  file?: string | null;
+  alt?: string | null;
+  monogram: string;
+  icon?: string;
+  size?: "sm" | "lg" | "md";
+  color?: string;
+}
+const { file, alt, monogram, icon, size = "md", color } = Astro.props;
+
+// Every image in src/assets/images, keyed by filename, resolved at build time.
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/images/*.{jpg,jpeg,png,webp}",
+  { eager: true },
+);
+const key = file ? Object.keys(images).find((k) => k.endsWith(`/${file}`)) : undefined;
+const src = key ? images[key].default : undefined;
+const sizeClass = size === "sm" ? "portrait-sm" : size === "lg" ? "portrait-lg" : "";
+const px = size === "sm" ? 128 : size === "lg" ? 340 : 240;
+---
+
+{
+  src ? (
+    <span class={`portrait ${sizeClass}`}>
+      <Image
+        src={src}
+        alt={alt ?? `Portrait of ${monogram}`}
+        widths={[px, px * 2]}
+        sizes={`${px}px`}
+        format="webp"
+        loading="lazy"
+        decoding="async"
+      />
+    </span>
+  ) : (
+    <span class="medal" style={color ? `--c:${color}` : undefined} aria-hidden="true">
+      {icon ? <Icon name={icon} size={size === "lg" ? 54 : 34} /> : null}
+      <b>{monogram}</b>
+    </span>
+  )
+}

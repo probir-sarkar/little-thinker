@@ -1,0 +1,81 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../components/BaseLayout.astro";
+import PhilosopherCard from "../../components/PhilosopherCard.astro";
+import TimelineChart from "../../components/charts/TimelineChart.astro";
+import Icon from "../../components/Icon.astro";
+import BranchChart from "../../components/charts/BranchChart.astro";
+import { localeCount } from "../../lib/count";
+
+const philosophers = (await getCollection("philosophers")).sort((a, b) => a.data.birthYear - b.data.birthYear);
+const byBranch = philosophers.reduce<Record<string, number>>((acc, p) => {
+  acc[p.data.branch] = (acc[p.data.branch] ?? 0) + 1;
+  return acc;
+}, {});
+const timeline = philosophers.map((p) => ({
+  name: p.data.name,
+  icon: p.data.icon,
+  birthYear: p.data.birthYear,
+  deathYear: p.data.deathYear,
+  branch: p.data.branch,
+  href: `/philosophers/${p.id}`,
+}));
+---
+
+<BaseLayout
+  title="Philosophers — Think Small"
+  description="Nine philosophers explained for children, from Socrates to Hannah Arendt, each with a page of their own."
+>
+  <header class="page-head">
+    <p class="kicker">The shelf</p>
+    <h1>Nine people who would not stop asking</h1>
+    <p class="lede">
+      From Athens to Bukhara to New York. Each one gets a page — their question, their story, a thing to try, and one
+      line worth remembering.
+    </p>
+  </header>
+
+  <div class="filterbar">
+    <div class="chips" role="group" aria-label="Filter by era">
+      <button class="chip is-on" data-filter="all">Everyone</button>
+      <button class="chip" data-filter="ancient">Ancient</button>
+      <button class="chip" data-filter="medieval">Medieval</button>
+      <button class="chip" data-filter="modern">Modern</button>
+    </div>
+    <p class="filter-count" id="p-count"></p>
+  </div>
+
+  <div class="grid grid-4" id="p-grid">
+    {philosophers.map((p) => <PhilosopherCard entry={p} />)}
+  </div>
+
+  <TimelineChart people={timeline} />
+
+  <BranchChart counts={byBranch} unit="thinkers" title="Who came from which tradition" />
+
+  <div class="how">
+    <h2>Why so few, and why these?</h2>
+    <ol class="how-list">
+      <li>
+        <b>One idea each</b>
+        <span>Every page carries a single question, so a child can hold the whole person in their head.</span>
+      </li>
+      <li>
+        <b>Not only the famous ones</b>
+        <span>Alexandria, Bukhara and Tehran are in here, because philosophy did not happen in one country.</span>
+      </li>
+      <li>
+        <b>Honest about what is lost</b>
+        <span>Where writing did not survive — Hypatia, Socrates, Confucius — the page says so instead of inventing.</span>
+      </li>
+      <li>
+        <b>Still growing</b>
+        <span>Adding a philosopher means adding one text file. See <a href="/grown-ups">the note for grown-ups</a>.</span>
+      </li>
+    </ol>
+    <p class="how-foot"><span style="color:var(--muted); font-size:0.9rem">
+      {localeCount(philosophers.length)} on the shelf today ·
+      <a href="/credits"><Icon name="eye" size={14} /> portrait credits</a>
+    </span></p>
+  </div>
+</BaseLayout>

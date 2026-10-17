@@ -1,0 +1,51 @@
+---
+import Portrait from "./Portrait.astro";
+import { branchOf, eraOf, lifespan } from "../lib/site";
+
+interface Props {
+  entry: {
+    id: string;
+    data: {
+      name: string;
+      monogram: string;
+      icon: string;
+      branch: string;
+      place: string;
+      bigQuestion: string;
+      oneLiner: string;
+      birthYear: number;
+      deathYear: number;
+      heroImage: string | null;
+      heroImageAlt: string | null;
+    };
+  };
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const b = branchOf(d.branch);
+---
+
+<a
+  class="card"
+  href={`/philosophers/${entry.id}`}
+  style={`--c:${b.color}`}
+  data-era={eraOf(d.birthYear)}
+  data-text={`${d.name} ${d.place} ${d.bigQuestion}`}
+>
+  <span class="card-top">
+    <Portrait
+      file={d.heroImage}
+      alt={d.heroImageAlt}
+      monogram={d.monogram}
+      icon={d.icon}
+      size="sm"
+      color={b.color}
+    />
+    <span>
+      <span class="card-name" style="display:block">{d.name}</span>
+      <span class="card-meta">{lifespan(d.birthYear, d.deathYear)}</span>
+      <span class="card-meta" style="display:block">{d.place}</span>
+    </span>
+  </span>
+  <span class="card-line">{d.bigQuestion}</span>
+</a>

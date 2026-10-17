@@ -1,0 +1,34 @@
+---
+import Icon from "./Icon.astro";
+import { branchOf } from "../lib/site";
+
+interface Props {
+  entry: {
+    id: string;
+    data: {
+      title: string;
+      branch: string;
+      agesMin: number;
+      agesMax: number;
+      hook: string;
+    };
+  };
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const b = branchOf(d.branch);
+---
+
+<a
+  class="card idea"
+  href={`/ideas/${entry.id}`}
+  style={`--c:${b.color}`}
+  data-age={d.agesMin}
+  data-text={`${d.title} ${b.name} ${d.hook}`}
+>
+  <span class="card-branch">
+    <Icon name="idea" size={14} /> {b.name} · ages {d.agesMin}–{d.agesMax}
+  </span>
+  <span class="card-name">{d.title}</span>
+  <span class="card-line">{d.hook}</span>
+</a>

@@ -1,0 +1,32 @@
+{
+  "how-to-live": {
+    "name": "How to Live",
+    "color": "#C4622D",
+    "note": "Friendship, courage, happiness, fairness"
+  },
+  "what-is-real": {
+    "name": "What Is Real",
+    "color": "#2F6E6A",
+    "note": "Time, dreams, the world, what exists"
+  },
+  "how-we-know": {
+    "name": "How We Know",
+    "color": "#3E5C9A",
+    "note": "Truth, proof, being sure, mistakes"
+  },
+  "who-am-i": {
+    "name": "Who Am I",
+    "color": "#8A4E9B",
+    "note": "Thinking, the mind, your self"
+  },
+  "together": {
+    "name": "Living Together",
+    "color": "#6E7A34",
+    "note": "Rules, promises, groups, power"
+  },
+  "beauty": {
+    "name": "Beauty & Making",
+    "color": "#B03A5B",
+    "note": "Art, music, stories, taste"
+  }
+}

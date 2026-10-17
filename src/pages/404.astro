@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<BaseLayout title="Page not found — Think Small" description="This page is missing. Which is a philosophical question, actually.">
+  <header class="page-head">
+    <p class="kicker">Error 404</p>
+    <h1>This page is missing</h1>
+    <p class="lede">
+      Which is a good moment to ask: how do you know a page is missing, if you never saw it there in the first place?
+    </p>
+    <div class="hero-doors">
+      <a class="door" href="/philosophers">
+        <span class="door-n">01</span>
+        <span class="door-t">Meet the philosophers</span>
+        <span class="door-s">Nine people who asked too many questions</span>
+        <span class="door-a" aria-hidden="true"><Icon name="door" size={22} /></span>
+      </a>
+      <a class="door" href="/ideas">
+        <span class="door-n">02</span>
+        <span class="door-t">Start with a big idea</span>
+        <span class="door-s">Fairness, time, truth, courage and ten more</span>
+        <span class="door-a" aria-hidden="true"><Icon name="idea" size={22} /></span>
+      </a>
+    </div>
+  </header>
+</BaseLayout>

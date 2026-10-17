@@ -1,0 +1,55 @@
+---
+/**
+ * How the library is distributed across the six themes — horizontal bars,
+ * counted from content, so the chart can never drift out of sync with the
+ * pages it describes.
+ */
+import { branchList } from "../../lib/site";
+import Icon from "../Icon.astro";
+
+interface Props {
+  counts: Record<string, number>;
+  unit?: string;
+  title?: string;
+}
+const { counts, unit = "ideas", title = "What the library covers" } = Astro.props;
+const rows = branchList
+  .map((b) => ({ ...b, n: counts[b.key] ?? 0 }))
+  .sort((a, b) => b.n - a.n);
+const max = Math.max(...rows.map((r) => r.n), 1);
+const total = rows.reduce((s, r) => s + r.n, 0);
+
+const W = 640;
+const rowH = 40;
+const padLeft = 152;
+const padRight = 54;
+const H = rows.length * rowH + 16;
+const plotW = W - padLeft - padRight;
+const barH = 20;
+---
+
+<div class="chart">
+  <p class="chart-head"><Icon name="scales" size={14} /> Chart · counted from this site's own content</p>
+  <h2 class="chart-title">{title}</h2>
+  <div class="chart-scroll">
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Bar chart of ${total} ${unit} across ${rows.length} themes`}>
+      <line x1={padLeft} y1="0" x2={padLeft} y2={H - 10} stroke="#dccfb8" stroke-width="1" />
+      {rows.map((r, i) => {
+        const y = i * rowH + 8;
+        const w = (r.n / max) * plotW;
+        return (
+          <g class="chart-bar">
+            <text class="chart-label" x={padLeft - 12} y={y + barH - 4} text-anchor="end">{r.name}</text>
+            <rect x={padLeft} y={y} width={Math.max(w, 2)} height={barH} fill={r.color} rx="4" />
+            <text class="chart-tick" x={padLeft + Math.max(w, 2) + 8} y={y + barH - 4}>
+              {r.n} {unit}
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  </div>
+  <p class="chart-note">
+    {total} {unit} in total. Bars are generated at build time from the same files that generate the pages.
+  </p>
+</div>

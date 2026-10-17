@@ -1,0 +1,131 @@
+---
+import "../styles/global.css";
+import Icon from "./Icon.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Philosophy for children: one big question per page, one philosopher per page." } =
+  Astro.props;
+
+const path = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
+const isCurrent = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+
+const navItems = [
+  { href: "/philosophers", label: "Philosophers" },
+  { href: "/ideas", label: "Big Ideas" },
+  { href: "/wonder-wall", label: "Wonder Wall" },
+  { href: "/grown-ups", label: "Grown-ups" },
+];
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#fbf6ec" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="bar">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">
+          Think&nbsp;Small
+          <small>philosophy for children</small>
+        </span>
+      </a>
+      <nav class="bar-nav" aria-label="Main">
+        {
+          navItems.map((item) => (
+            <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <div class="bar-tools">
+        <button id="find" class="tool" type="button" aria-expanded="false">
+          <Icon name="eye" size={16} /> Find
+        </button>
+        <button id="reader" class="tool" type="button" aria-expanded="false" aria-label="Reading settings">Aa</button>
+        <button id="speak" class="tool" type="button" aria-pressed="false">
+          <Icon name="speech" size={16} /> Listen
+        </button>
+      </div>
+    </header>
+
+    <div id="palette" class="palette" hidden>
+      <input id="palette-input" type="search" placeholder="Type a name, or an idea…" autocomplete="off" aria-label="Search" />
+      <ul id="palette-list" class="palette-list"></ul>
+    </div>
+
+    <div id="reader-panel" class="reader-panel" hidden>
+      <p class="rp-title">Reading settings</p>
+      <div class="rp-row">
+        <span>Text size</span>
+        <span class="rp-btns">
+          <button class="tool" data-size="0">A</button><button class="tool" data-size="1">A+</button><button
+            class="tool"
+            data-size="2">A++</button>
+        </span>
+      </div>
+      <div class="rp-row">
+        <span>Calm mode</span><button class="tool" id="calm" type="button" aria-pressed="false">Off</button>
+      </div>
+      <div class="rp-row">
+        <span>Wide letter spacing</span><button class="tool" id="spacing" type="button" aria-pressed="false">Off</button>
+      </div>
+      <p class="rp-note">Saved on this device. Nothing leaves it.</p>
+    </div>
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer class="foot">
+      <div class="foot-inner">
+        <div class="foot-col">
+          <p class="foot-brand">Think&nbsp;Small</p>
+          <p>A free library of big questions, written for children and readable by anyone.</p>
+        </div>
+        <div class="foot-col">
+          <p class="foot-h">Go to</p>
+          <a href="/philosophers">Philosophers</a>
+          <a href="/ideas">Big Ideas</a>
+          <a href="/wonder-wall">Wonder Wall</a>
+          <a href="/grown-ups">For grown-ups</a>
+        </div>
+        <div class="foot-col">
+          <p class="foot-h">Images &amp; accuracy</p>
+          <p class="foot-small">
+            Portraits are public-domain or openly licensed works from Wikimedia Commons — see
+            <a href="/credits">image credits</a>. Stories about philosophers are retold for young readers and
+            simplified on purpose. Every idea page ends in a question; there are no answers printed in the back.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      import "../scripts/client.js";
+    </script>
+  </body>
+</html>
