@@ -8,8 +8,9 @@
   "scripts": {
     "dev": "astro dev",
     "check:icons": "node scripts/check-icons.mjs",
+    "check:assets": "node scripts/check-assets.mjs",
     "check:copy": "node scripts/check-copy.mjs",
-    "build": "npm run check:icons && astro build && npm run check:copy",
+    "build": "npm run check:icons && npm run check:assets && astro build && npm run check:copy",
     "verify": "node scripts/verify-dist.mjs",
     "preview": "astro preview",
     "deploy": "npm run build && wrangler deploy",

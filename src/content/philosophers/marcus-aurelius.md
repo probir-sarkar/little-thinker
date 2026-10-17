@@ -11,7 +11,7 @@ oneLiner: "The most powerful person in the world kept a notebook telling himself
 bigQuestion: "What is actually up to you?"
 quote: "Is it not better to use what is in thy power like a free man than to desire in a slavish and abject way what is not in thy power?"
 quoteNote: "He wrote it in Greek, to himself, in a war camp near a river. He never meant anyone to read it, which is exactly why it is honest."
-heroImage: "marcus-aurelius.jpg"
+heroImage: "marcus-aurelius.png"
 heroImageAlt: "Marble bust of Marcus Aurelius"
 facts:
   - "He was Roman emperor for nineteen years, and spent much of that time away from Rome, fighting on the northern frontier."

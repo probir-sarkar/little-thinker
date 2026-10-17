@@ -11,8 +11,8 @@ oneLiner: "He went to live in a cave and worked out for himself what he thought 
 bigQuestion: "Can you work out what is right without being told?"
 quote: "I have learnt more while living alone in a cave than when I was living with scholars."
 quoteNote: "He wrote that down about himself, years after the cave. The cave was not the point. The thinking was."
-heroImage: "zera-yacob.jpg"
-heroImageAlt: "Zera Yacob as depicted in a later portrait"
+heroImage: ""
+heroImageAlt: "No portrait of Zera Yacob from his lifetime is known"
 facts:
   - "He fled a war over religion in Ethiopia and spent two years alone in a cave near the Tekezé river."
   - "In about 1667 he wrote down his inquiry — and argued that a husband and wife are equal in marriage, which almost nobody was arguing then."

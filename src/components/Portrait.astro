@@ -1,24 +1,27 @@
 ---
 /**
- * A philosopher's portrait, or a monogram medallion when no properly
- * licensed photograph exists for them. Both paths render at the same
- * size so layouts never shift.
+ * A philosopher's portrait, or an engraved monogram plate when no portrait is
+ * known. Both paths render at the same size, border weight and paper tone, so
+ * a card with no photograph reads as deliberate rather than as a broken image.
  *
- * Images are optimised at build time by astro:assets (sharp) and served
- * as both webp and the original format.
+ * Deliberate choice: the fallback is a monogram, not a drawn face. Inventing a
+ * likeness for someone nobody ever painted would be the one thing this site
+ * must not do — and an icon glyph in a portrait slot reads as UI, not as a
+ * person. Letters are honest about being letters.
+ *
+ * Images are optimised at build time by astro:assets (sharp).
  */
 import { Image } from "astro:assets";
-import Icon from "./Icon.astro";
+
 interface Props {
-  /** Credit-verified image file, e.g. "socrates.jpg". */
+  /** Credit-verified image file, e.g. "socrates.jpg". Empty for "none known". */
   file?: string | null;
   alt?: string | null;
   monogram: string;
-  icon?: string;
   size?: "sm" | "lg" | "md";
-  color?: string;
 }
-const { file, alt, monogram, icon, size = "md", color } = Astro.props;
+
+const { file, alt, monogram, size = "md" } = Astro.props;
 
 // Every image in src/assets/images, keyed by filename, resolved at build time.
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -45,9 +48,8 @@ const px = size === "sm" ? 128 : size === "lg" ? 340 : 240;
       />
     </span>
   ) : (
-    <span class="medal" style={color ? `--card-accent:${color}` : undefined} aria-hidden="true">
-      {icon ? <Icon name={icon} size={size === "lg" ? 54 : 34} /> : null}
-      <b>{monogram}</b>
+    <span class={`medal ${sizeClass}`} role="img" aria-label={alt ?? `No portrait known for ${monogram}`}>
+      <span class="medal-initials" aria-hidden="true">{monogram}</span>
     </span>
   )
 }

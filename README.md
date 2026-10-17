@@ -67,8 +67,12 @@ scripts/import-content.py    one-off importer from the original prototype
 - **Charts are generated, not drawn.** Every chart reads the collections, so the
   numbers on screen are the numbers in the content.
 - **Images are optimised at build.** `astro:assets` + sharp emits webp at several
-  widths. Portraits fall back to a drawn monogram medallion when no correctly
-  licensed photograph exists, so nobody gets an uncredited face.
+  widths. Portraits fall back to an **engraved monogram plate** when no portrait
+  is known — same size, border and paper tone as a photograph, so the grid reads
+  as one set. It is deliberately letters and not a drawn face: inventing a
+  likeness for someone nobody ever painted is the one thing this site must not
+  do. `heroImage: ""` declares "none known", which is different from a wrong
+  filename; `check:assets` tells the two apart.
 - **Progressive enhancement.** The site reads fine with JavaScript off; the JS
   adds reading settings, read-aloud, search and votes, all in localStorage.
 - **No accounts, no tracking, no backend.** A static site with no database has
@@ -115,6 +119,12 @@ not mention the build.
 
 `scripts/check-copy.mjs` enforces this against the built HTML and fails the
 build if tooling vocabulary reaches a rendered page.
+
+`scripts/check-assets.mjs` fails the build if a page declares an image file that
+does not exist, if a credit has no matching entry, or if an image on disk has no
+credit. A declared-but-missing image does not error — the component silently
+falls back to the monogram plate, so the only symptom is one card looking
+different. That shipped three times before this check existed.
 
 ## Honest limits
 

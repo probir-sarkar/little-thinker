@@ -33,14 +33,7 @@ const b = branchOf(d.branch);
   data-text={`${d.name} ${d.place} ${d.bigQuestion}`}
 >
   <span class="card-top">
-    <Portrait
-      file={d.heroImage}
-      alt={d.heroImageAlt}
-      monogram={d.monogram}
-      icon={d.icon}
-      size="sm"
-      color={b.color}
-    />
+    <Portrait file={d.heroImage} alt={d.heroImageAlt} monogram={d.monogram} size="sm" />
     <span>
       <span class="card-name" style="display:block">{d.name}</span>
       <span class="card-meta">{lifespan(d.birthYear, d.deathYear)}</span>

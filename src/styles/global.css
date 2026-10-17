@@ -463,16 +463,32 @@
   .portrait-sm { --portrait-size: 64px; @apply border-[1.5px]; }
   .portrait-lg { --portrait-size: 168px; }
 
+  /* Engraved monogram plate, for someone no one ever painted. It holds the same
+     size, border and paper tone as a photograph so the grid still reads as one
+     set — a flat disc with a coloured glyph next to fourteen sepia portraits
+     looks like a missing file, which is exactly what it is not. */
   .medal {
-    @apply relative grid shrink-0 place-items-center rounded-full border-2 border-ink
-           bg-paper-2 text-accent;
+    @apply relative grid shrink-0 place-items-center overflow-hidden rounded-full
+           border-2 border-ink;
     inline-size: var(--portrait-size, 120px);
     block-size: var(--portrait-size, 120px);
+    color: var(--color-ink);
+    background-color: var(--color-paper-3);
+    /* Ruled hatching, the way an engraved plate is worked, plus a vignette so
+       the plate has the tonal weight of a photograph. */
+    background-image:
+      radial-gradient(circle at 50% 42%, rgb(251 246 236 / 0.9), rgb(34 28 23 / 0.16) 78%),
+      repeating-linear-gradient(90deg, rgb(34 28 23 / 0.07) 0 1px, transparent 1px 4px);
+    filter: sepia(0.28) contrast(1.05);
   }
-  .medal b {
-    @apply absolute -bottom-0.5 -right-0.5 grid size-10 place-items-center rounded-full
-           border-[1.5px] border-ink bg-paper-3 font-display text-[1.1rem] text-ink;
+  .medal-initials {
+    @apply font-display font-bold;
+    font-size: calc(var(--portrait-size, 120px) * 0.4);
+    letter-spacing: 0.02em;
+    opacity: 0.72;
+    line-height: 1;
   }
+  .medal.portrait-sm .medal-initials { letter-spacing: 0.04em; }
 }
 
 @utility sr-only {
