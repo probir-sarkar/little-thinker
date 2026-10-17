@@ -89,12 +89,7 @@ const structuredData = {
         {
           credit && (
             <p class="side-small" style="border-top:1px solid var(--line); padding-top:12px">
-              Portrait: <a href={credit.source_url} rel="noopener">{credit.title}</a> — {credit.author},{" "}
-              <a href={credit.license_url} rel="noopener nofollow">{credit.license}</a>.{" "}
-              <a href="/credits">All image credits</a>.{" "}
-              <a href={`https://commons.wikimedia.org/wiki/${encodeURIComponent(credit.title)}`} rel="noopener">
-                Source file
-              </a>
+              {credit.title} — {credit.author}. <a href="/credits">Where this picture comes from</a>.
             </p>
           )
         }

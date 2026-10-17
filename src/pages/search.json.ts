@@ -23,7 +23,6 @@ export const GET: APIRoute = async () => {
       s: `${BRANCHES[c.data.branch].name} · ages ${c.data.agesMin}–${c.data.agesMax}`,
       q: c.data.hook,
     })),
-    { t: "Wonder Wall", u: "/wonder-wall", k: "page", s: "Questions we have been sent", q: "" },
     { t: "For grown-ups", u: "/grown-ups", k: "page", s: "The ten-minute ritual", q: "" },
     { t: "Image credits", u: "/credits", k: "page", s: "Where the pictures come from", q: "" },
   ];

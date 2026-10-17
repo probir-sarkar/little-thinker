@@ -72,8 +72,7 @@ export default function VoteBox({ slug, question, sample }: Props) {
           ))}
 
           <p class="vote-note">
-            Sample figures from a pilot class, <strong>not live data</strong>. A real tally needs a database behind this
-            button.
+            These numbers come from one class that read this page, not from everyone who visits.
           </p>
         </div>
       )}

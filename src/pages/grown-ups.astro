@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../components/BaseLayout.astro";
 import AgeRangeChart from "../components/charts/AgeRangeChart.astro";
 import BranchChart from "../components/charts/BranchChart.astro";
-import Icon from "../components/Icon.astro";
 import { branchList, branchOf } from "../lib/site";
 
 const concepts = (await getCollection("concepts")).sort((a, b) => a.data.agesMin - b.data.agesMin);
@@ -140,54 +139,15 @@ const themes: Record<string, string> = {
         }
       </ul>
 
-      <h2>Accessibility notes</h2>
-      <ul class="facts">
-        <li>
-          <b>Read aloud:</b> the Listen button uses the browser&rsquo;s own voice. Works offline, costs nothing, needs no
-          service.
-        </li>
-        <li><b>Reading settings:</b> three text sizes, calm mode and letter spacing, remembered per device.</li>
-        <li>
-          <b>Type:</b> Atkinson Hyperlegible for body text — designed for low-vision readers and friendlier to young
-          readers than a default sans.
-        </li>
-        <li><b>Contrast:</b> body ink on paper is above WCAG AA; each theme colour has a dark pairing for text.</li>
-        <li><b>No accounts, no tracking, no ads, no comments.</b> The Wonder Wall writes to the device only.</li>
-        <li>
-          <b>Works without JavaScript</b> except for reading settings, search, the wonder board and the vote buttons.
-        </li>
-      </ul>
-
-      <h2>What is honest about this site and what is not</h2>
-      <ul class="facts">
-        <li>
-          <b>Stories are retold.</b> Written for young readers and simplified on purpose, not quoted from a textbook.
-        </li>
-        <li>
-          <b>The vote percentages are sample figures.</b> They come from a pilot class, not from live use. A real tally
-          needs a database behind the button.
-        </li>
-        <li>
-          <b>Portraits are historical artworks</b>, not photographs of the people, except for the two born after 1750
-          (Wollstonecraft and Arendt). Socrates sat for nobody — anything you see of him is a later sculptor&rsquo;s
-          idea. See <a href="/credits">image credits</a>.
-        </li>
-        <li>
-          <b>Icons and charts are original</b> — hand-written SVG paths, generated at build time from the same content
-          files that generate the pages.
-        </li>
-      </ul>
-
-      <h2>Adding to the library</h2>
+      <h2>If it goes well</h2>
       <p>
-        A new big idea is one Markdown file with frontmatter; a new philosopher is the same. The pages, the cards, the
-        charts and the search index all regenerate from those files, so nothing can drift out of sync. This is a static
-        site with no database and no admin panel — which is why there are no accounts and nothing to log in to.
+        You will know it worked because the child asks you something you cannot answer. Write that question down
+        somewhere you will both see it again. It is the next lesson, and neither of you needs to have solved it.
       </p>
 
       <p class="side-small">
-        <Icon name="scroll" size={14} /> Built with Astro. Charts and icons drawn for this project. Images from Wikimedia
-        Commons — <a href="/credits">credited here</a>.
+        The pictures on this site are historical artworks and photographs, all in the public domain or openly
+        licensed — <a href="/credits">each one is credited here</a>.
       </p>
     </div>
 
@@ -208,8 +168,8 @@ const themes: Record<string, string> = {
       <div class="side-block">
         <p class="side-h">Print it</p>
         <p class="side-small">
-          These pages print cleanly — the header, buttons and footer drop out and the charts keep their lines. Print a
-          story, a Try it box, or this whole page as a planning sheet.
+          Every page prints cleanly, so you can hand out a story and its activity on paper without a screen in the
+          room.
         </p>
       </div>
     </aside>

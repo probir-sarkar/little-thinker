@@ -29,7 +29,7 @@ const barH = 20;
 ---
 
 <div class="chart">
-  <p class="chart-head"><Icon name="scales" size={14} /> Chart · counted from this site's own content</p>
+  <p class="chart-head"><Icon name="scales" size={14} /> Across the themes</p>
   <h2 class="chart-title">{title}</h2>
   <div class="chart-scroll">
     <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Bar chart of ${total} ${unit} across ${rows.length} themes`}>
@@ -50,6 +50,6 @@ const barH = 20;
     </svg>
   </div>
   <p class="chart-note">
-    {total} {unit} in total. Bars are generated at build time from the same files that generate the pages.
+    {total} {unit} in total.
   </p>
 </div>

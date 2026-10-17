@@ -52,7 +52,7 @@ src/
     charts/AgeRangeChart.astro     "reading ladder" of age bands
   pages/
     index.astro   philosophers/{index,[slug]}.astro   ideas/{index,[slug]}.astro
-    wonder-wall.astro   grown-ups.astro   credits.astro   404.astro
+    grown-ups.astro   credits.astro   404.astro
     search.json.ts         search index generated from the collections
 public/icons.svg             hand-authored 24-icon sprite
 src/assets/images/           source images (optimised into dist/ at build)
@@ -97,6 +97,24 @@ is a theme that fails the brief for six-to-twelve-year-olds.
 svg { width: 100% }` also matched the 14px icon in `.chart-head` and stretched
 it to the width of the panel. Scope container rules to the plot
 (`.chart-scroll svg`), never to `svg`.
+
+## Copy rules
+
+This is a public site for readers, not a project page. Reader-facing copy must
+not mention the build.
+
+- **Never** put tooling words in page copy: Astro, Tailwind, SVG, JSON,
+  Markdown, frontmatter, localStorage, build, deploy, database, island.
+- Provenance lives in exactly one place: `/credits`. Pages link to it; they do
+  not explain it.
+- No section explaining the project to itself. "How the site was made",
+  "accessibility notes" and "adding to the library" are engineering notes and
+  belong in this README, not on a page a child might open.
+- Charts and controls get reader-facing labels ("The long view", "Ages, at a
+  glance"), never implementation labels ("Chart · counted from site content").
+
+`scripts/check-copy.mjs` enforces this against the built HTML and fails the
+build if tooling vocabulary reaches a rendered page.
 
 ## Honest limits
 
