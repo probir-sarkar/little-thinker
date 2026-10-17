@@ -188,7 +188,10 @@
   /* ---------- layout ---------- */
   .page-main { @apply mx-auto max-w-[1180px] px-[clamp(18px,4vw,44px)]; }
   .page-head { @apply py-[clamp(30px,5vw,58px)] pb-2; }
-  .page-head h1 { @apply max-w-[22ch]; }
+  /* Preflight sets headings to font-size: inherit, so an h1 without an explicit
+     size renders at body size — which is what the index and detail titles did on
+     a phone. The clamp minimums are what keep a phone readable. */
+  .page-head h1 { @apply max-w-[22ch] text-[clamp(1.9rem,5vw,3rem)]; }
   .kicker { @apply mb-2.5 text-[0.78rem] font-bold uppercase tracking-[0.14em] text-accent; }
   .lede { @apply max-w-[58ch] text-[1.12rem] text-ink-2; }
   .skip { @apply absolute -left-[9999px]; }
@@ -295,7 +298,7 @@
     border-bottom-color: var(--card-accent, var(--color-accent));
   }
   .branch-head h2 {
-    @apply m-0 flex items-center gap-2.5;
+    @apply m-0 flex items-center gap-2.5 text-[clamp(1.15rem,2.2vw,1.45rem)];
     color: var(--card-accent, var(--color-accent));
   }
   .branch-head p { @apply m-0 text-[0.92rem] text-muted; }
@@ -307,7 +310,7 @@
     @apply flex flex-col gap-[clamp(16px,3vw,34px)] border-b-2 border-ink pb-6.5 pt-5.5
            sm:flex-row sm:items-start;
   }
-  .detail-head h1 { @apply my-[0.1em] mb-[0.25em]; }
+  .detail-head h1 { @apply my-[0.1em] mb-[0.25em] text-[clamp(1.7rem,4.4vw,2.9rem)]; }
   .detail-head .hook { @apply max-w-[34ch] font-display text-[1.3rem] leading-tight text-ink-2; }
   .detail-place { @apply m-0 text-[0.92rem] text-muted; }
   .detail-body {
@@ -406,6 +409,12 @@
      .chart-head and stretched it to the width of the panel. */
   .chart-scroll svg { @apply block h-auto w-full overflow-visible; }
   .chart-scroll { @apply overflow-x-auto; }
+  /* The lifespan chart has 33 rows in a 900-wide viewBox. Squeezed to a phone's
+     ~310px of panel it becomes unreadable, so give it a floor and let the
+     wrapper scroll instead of shrinking. */
+  @media (max-width: 700px) {
+    .chart-scroll svg { min-width: 620px; }
+  }
   .chart-tick { font-family: var(--font-body); font-size: 11px; fill: var(--color-muted); }
   .chart-label { font-family: var(--font-body); font-size: 12px; fill: var(--color-ink); }
   .chart-bar { @apply transition-opacity duration-150; }
@@ -540,6 +549,30 @@
     line-height: 1;
   }
   .medal.portrait-sm .medal-initials { letter-spacing: 0.04em; }
+
+  /* ---------- phones ----------
+     At 390px the bar wrapped to three rows (175px tall) and the pills sat at
+     38px. Below 640px the bar becomes two deliberate rows — brand and tools,
+     then a full-width nav — and every control gets a 44px tap target. */
+  @media (max-width: 640px) {
+    .bar { @apply gap-x-3 gap-y-1.5 py-2; }
+    .brand-mark { @apply size-[22px]; }
+    .brand-text { @apply text-[1rem]; }
+    /* The tagline is the first thing to go: it is already in the footer, and it
+       was what pushed the bar onto a third row. */
+    .brand-text small { @apply hidden; }
+    .bar-nav { @apply order-3 w-full justify-between gap-1 text-[0.92rem]; }
+    .bar-nav a { @apply px-1 py-2.5; }
+    .bar-tools { @apply gap-1.5; }
+    .tool { @apply min-h-[44px] px-3; }
+    .chip { @apply min-h-[44px] py-2; }
+    .brand { @apply py-1.5; }
+    .filterbar { @apply mt-5 gap-2.5; }
+    .board-think { @apply gap-2.5 py-1; }
+    .board-think input { @apply size-6; }
+    .page-head h1 { @apply max-w-none; }
+    .side-small, .filter-count { @apply text-[0.92rem]; }
+  }
 }
 
 @utility sr-only {
