@@ -11,7 +11,7 @@ oneLiner: "A mathematician who taught that clean thinking and the night sky belo
 bigQuestion: "Can numbers explain the sky?"
 quote: "Reserve your right to think, for even to think wrongly is better than not to think at all."
 quoteNote: "Being wrong on your own is more useful than being right only because someone told you."
-heroImage: "hypatia.jpg"
+heroImage: "hypatia.png"
 heroImageAlt: "Hypatia of Alexandria in a 19th-century painting"
 facts:
   - "She was one of the first women in history recorded as a teacher of advanced mathematics."

@@ -34,7 +34,16 @@ const totalWord = wordNumber[concepts.length] ?? String(concepts.length);
       Every page has the same four parts: the question, the story, a thing to try, and questions to argue about on the
       way home. Grouped by what the idea is about.
     </p>
-  </header>
+    <figure class="mt-5.5">
+      <img
+        src="/illustration-ladder.svg"
+        alt="A small figure looking up at a ladder leaning against a giant question mark, with a trail of stars"
+        width="800"
+        height="400"
+        class="h-auto w-full rounded-page border-[1.5px] border-ink bg-paper-2"
+      />
+    </figure>
+    </header>
 
   <div class="filterbar">
     <div class="chips" role="group" aria-label="Filter by age">
@@ -50,7 +59,7 @@ const totalWord = wordNumber[concepts.length] ?? String(concepts.length);
 
   {
     groups.map((g) => (
-      <section class="branch" style={`--c:${g.color}`}>
+      <section class="branch" style={`--card-accent:${g.color}`}>
         <div class="branch-head">
           <h2>
             <Icon name="leaf" size={18} />

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-label="Two owls on a branch, facing each other and talking">
+  <g fill="none" stroke="#221c17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- branch -->
+    <path d="M20 306c120-16 240-18 380-10 130 8 260 12 380-4"/>
+    <path d="M96 300c-14 18-30 32-48 40M690 296c12 16 26 28 42 34"/>
+  </g>
+
+  <!-- left owl -->
+  <g fill="none" stroke="#6e7a34" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M212 214c0-40 26-66 62-66s62 26 62 66v34c0 38-26 64-62 64s-62-26-62-64z"/>
+    <path d="M222 156l-10-30 32 14M326 156l10-30-32 14"/>
+    <circle cx="252" cy="212" r="18"/>
+    <circle cx="296" cy="212" r="18"/>
+    <circle cx="252" cy="212" r="5" fill="#6e7a34"/>
+    <circle cx="296" cy="212" r="5" fill="#6e7a34"/>
+    <path d="M274 232l-6 14 6 6 6-6z"/>
+    <path d="M252 302v14M296 302v14"/>
+    <path d="M240 138c14-8 30-8 44 0" opacity="0.5"/>
+  </g>
+
+  <!-- right owl -->
+  <g fill="none" stroke="#3e5c9a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M464 214c0-40 26-66 62-66s62 26 62 66v34c0 38-26 64-62 64s-62-26-62-64z"/>
+    <path d="M474 156l-10-30 32 14M578 156l10-30-32 14"/>
+    <circle cx="504" cy="212" r="18"/>
+    <circle cx="548" cy="212" r="18"/>
+    <circle cx="504" cy="212" r="5" fill="#3e5c9a"/>
+    <circle cx="548" cy="212" r="5" fill="#3e5c9a"/>
+    <path d="M526 232l-6 14 6 6 6-6z"/>
+    <path d="M504 302v14M548 302v14"/>
+    <path d="M492 138c14-8 30-8 44 0" opacity="0.5"/>
+  </g>
+
+  <!-- speech bubbles, meeting in the middle. Tails point back at their speaker. -->
+  <g fill="none" stroke="#c4622d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M338 92h42a10 10 0 0 1 10 10v24a10 10 0 0 1-10 10h-28l-18 16v-16h-6a10 10 0 0 1-10-10v-24a10 10 0 0 1 10-10z"/>
+    <path d="M362 104h.01M376 104h.01"/>
+  </g>
+  <g fill="none" stroke="#3e5c9a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M462 176h-42a10 10 0 0 1-10-10v-24a10 10 0 0 1 10-10h28l18-16v16h6a10 10 0 0 1 10 10v24a10 10 0 0 1-10 10z"/>
+    <path d="M438 164h.01M424 164h.01"/>
+  </g>
+
+  <!-- stars -->
+  <g fill="#6e7a34" opacity="0.75">
+    <path d="M120 96l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/>
+    <path d="M676 118l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+  </g>
+</svg>

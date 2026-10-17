@@ -5,6 +5,7 @@ import ConceptCard from "../../components/ConceptCard.astro";
 import AgeRangeChart from "../../components/charts/AgeRangeChart.astro";
 import Icon from "../../components/Icon.astro";
 import { branchOf } from "../../lib/site";
+import VoteBox from "../../components/islands/VoteBox.tsx";
 
 export async function getStaticPaths() {
   const concepts = await getCollection("concepts");
@@ -27,7 +28,7 @@ const sample = { yes: 58, no: 26, unsure: 16 };
 ---
 
 <BaseLayout title={`${c.title} — Think Small`} description={c.hook}>
-  <article class="detail idea-detail" style={`--c:${b.color}`}>
+  <article class="detail idea-detail" style={`--card-accent:${b.color}`}>
     <nav class="crumbs">
       <a href="/">Home</a><span aria-hidden="true">/</span>
       <a href="/ideas">Big Ideas</a><span aria-hidden="true">/</span>
@@ -51,31 +52,7 @@ const sample = { yes: 58, no: 26, unsure: 16 };
           <p set:html={c.tryIt} />
         </section>
 
-        <section class="vote" data-slug={entry.id}>
-          <p class="vote-label">What do you think?</p>
-          <p class="vote-q" set:html={c.talk[0]} />
-          <div class="vote-btns">
-            <button class="vote-btn" data-vote="yes" type="button">Yes, I think so</button>
-            <button class="vote-btn" data-vote="no" type="button">No &mdash; and here&rsquo;s why</button>
-            <button class="vote-btn" data-vote="unsure" type="button">I&rsquo;m not sure yet</button>
-          </div>
-          <div class="vote-results" id="vote-results" hidden>
-            <p class="vote-thanks" id="vote-thanks"></p>
-            <div class="vbar">
-              <span style={`--w:${sample.yes}%`}></span><i>Yes, I think so</i><b>{sample.yes}%</b>
-            </div>
-            <div class="vbar">
-              <span style={`--w:${sample.no}%`}></span><i>No &mdash; and here&rsquo;s why</i><b>{sample.no}%</b>
-            </div>
-            <div class="vbar">
-              <span style={`--w:${sample.unsure}%`}></span><i>I&rsquo;m not sure yet</i><b>{sample.unsure}%</b>
-            </div>
-            <p class="vote-note">
-              Sample figures from a pilot class, <strong>not live data</strong>. A real tally needs a database behind
-              this button.
-            </p>
-          </div>
-        </section>
+        <VoteBox client:visible slug={entry.id} question={c.talk[0]} sample={sample} />
 
         <section class="talk">
           <p class="tryit-label"><Icon name="speech" size={15} /> Talk about it</p>

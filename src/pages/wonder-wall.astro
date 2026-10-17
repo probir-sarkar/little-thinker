@@ -2,6 +2,7 @@
 import BaseLayout from "../components/BaseLayout.astro";
 import Icon from "../components/Icon.astro";
 import wonders from "../data/wonders.json";
+import WonderWall from "../components/islands/WonderWall.tsx";
 
 // Seed questions, rendered server-side so the wall is never empty for a
 // reader with JavaScript off. The client script prepends the visitor's own.
@@ -22,35 +23,18 @@ const seed = [
     <p class="lede">
       A question is the smallest unit of philosophy. Add one — it stays on your device and is waiting for you next time.
     </p>
+    <figure class="mt-5.5">
+      <img
+        src="/illustration-owls.svg"
+        alt="Two owls on a branch facing each other, talking"
+        width="800"
+        height="400"
+        class="h-auto w-full rounded-page border-[1.5px] border-ink bg-paper-2"
+      />
+    </figure>
   </header>
 
-  <form class="wonder-form" id="wonder-form">
-    <label for="wonder-input">What do you wonder about?</label>
-    <div class="wf-row">
-      <input
-        id="wonder-input"
-        type="text"
-        maxlength="120"
-        placeholder="Why do we have to sleep?"
-        required
-        aria-describedby="wf-hint"
-      />
-      <button class="btn" type="submit">Put it on the wall</button>
-    </div>
-    <p class="wf-hint" id="wf-hint">
-      Nothing is sent anywhere. No account, no name, no email, no tracking — your question is saved in this browser only.
-    </p>
-  </form>
-
-  <div class="wall" id="wall" aria-live="polite"></div>
-  <div id="wall-seed" hidden>
-    {seed.map((s) => (
-      <div class="wq">
-        {s.q}
-        <small>Sent in by {s.a}</small>
-      </div>
-    ))}
-  </div>
+  <WonderWall client:visible seed={seed} />
 
   <section class="how">
     <h2>What makes a good wonder?</h2>
@@ -72,7 +56,7 @@ const seed = [
         <span>Fair. Real. Kind. Good. Those are the ones nobody has finished answering.</span>
       </li>
     </ol>
-    <p class="how-foot"><span style="color:var(--muted); font-size:0.9rem">
+    <p class="how-foot"><span class="text-[0.9rem] text-muted">
       <Icon name="knot" size={14} /> Grown-ups: <a href="/grown-ups">how to run this in ten minutes</a>
     </span></p>
   </section>

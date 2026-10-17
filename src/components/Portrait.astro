@@ -45,7 +45,7 @@ const px = size === "sm" ? 128 : size === "lg" ? 340 : 240;
       />
     </span>
   ) : (
-    <span class="medal" style={color ? `--c:${color}` : undefined} aria-hidden="true">
+    <span class="medal" style={color ? `--card-accent:${color}` : undefined} aria-hidden="true">
       {icon ? <Icon name={icon} size={size === "lg" ? 54 : 34} /> : null}
       <b>{monogram}</b>
     </span>

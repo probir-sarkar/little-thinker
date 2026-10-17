@@ -1,0 +1,158 @@
+---
+/**
+ * Theme lab — the same slice of the site rendered under each candidate theme,
+ * side by side, plus a one-click way to apply one to the whole site.
+ *
+ * Because a theme is only a set of token overrides, this page needs no
+ * duplicated markup per theme: each panel sets data-theme and the cascade does
+ * the rest. That is the real test of whether the token system is doing its job.
+ */
+import BaseLayout from "../components/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { THEMES } from "../components/islands/ThemePicker";
+
+const slices = THEMES.map((theme) => ({ ...theme }));
+---
+
+<BaseLayout
+  title="Theme lab — Think Small"
+  description="Four candidate visual themes for Think Small, compared side by side on identical content."
+>
+  <header class="page-head">
+    <p class="kicker">Experiment</p>
+    <h1>Five themes, same content</h1>
+    <p class="lede">
+      Each panel below is the identical markup — heading, card, big question, activity box — with only the theme
+      variables changed. Pick one with <b>Apply to the whole site</b>, or use the <b>Theme</b> button in the header to
+      try them on any page.
+    </p>
+    <p class="side-small mt-4">
+      Paper texture and page-level backgrounds only appear in the full-page preview, not inside these panels.
+    </p>
+  </header>
+
+  <div class="grid gap-8 py-6">
+    {
+      slices.map((theme) => (
+        <section data-theme={theme.id} class="rounded-page border-2 border-ink bg-paper p-5 text-ink">
+          <div class="mb-4 flex flex-wrap items-baseline justify-between gap-3 border-b-2 border-ink pb-2">
+            <h2 class="m-0 font-display text-[1.7rem]">{theme.label}</h2>
+            <p class="m-0 text-[0.9rem] text-muted">
+              {theme.note}
+              {theme.id === "ink" && " · shipped default"}
+            </p>
+          </div>
+
+          <div class="grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p class="kicker">How to live · ages 6–8</p>
+              <p class="font-display text-[1.9rem] leading-tight">Big questions, cut down to size.</p>
+              <p class="max-w-[46ch] text-ink-2">
+                One idea per page. One philosopher per page. No answers at the bottom — just better questions.
+              </p>
+
+              <div class="qblock mt-5">
+                <p class="qblock-label">Their big question</p>
+                <p class="qblock-q">What does it mean to live a good life?</p>
+              </div>
+
+              <div class="tryit">
+                <p class="tryit-label">
+                  <Icon name="compass" size={15} /> Try it
+                </p>
+                <p class="m-0">
+                  Pick one word you use a lot. Ask three people what it means. Write down where their answers disagree.
+                </p>
+              </div>
+            </div>
+
+            <div class="grid gap-3.5">
+              <a class="card" style="--card-accent:var(--color-know)" href="/philosophers/socrates">
+                <span class="card-top">
+                  <span class="medal" style="--portrait-size:64px">
+                    <Icon name="question" size={30} />
+                    <b>SO</b>
+                  </span>
+                  <span>
+                    <span class="card-name block">Socrates</span>
+                    <span class="card-meta">469–399 BCE</span>
+                    <span class="card-meta block">Athens, Greece</span>
+                  </span>
+                </span>
+                <span class="card-line">What does it mean to live a good life?</span>
+              </a>
+
+              <a class="card" style="--card-accent:var(--color-live)" href="/ideas/fairness">
+                <span class="card-branch">How to live · ages 6–8</span>
+                <span class="card-name">What is fair?</span>
+                <span class="card-line">Two kids share one cake. One is hungrier. One did the work.</span>
+              </a>
+
+              <div class="flex flex-wrap gap-2 pt-1">
+                <button class="chip is-on" type="button">Everyone</button>
+                <button class="chip" type="button">Ancient</button>
+                <button class="btn" type="button">Put it on the wall</button>
+              </div>
+
+              <div class="flex flex-wrap gap-2 pt-1">
+                <button class="tool" type="button">Find</button>
+                <button class="tool" type="button">Theme</button>
+                <button class="tool" aria-pressed="true" type="button">Listen</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-5 mb-0 border-t border-line pt-4">
+            <a class="font-bold" href={`/theme-lab?theme=${theme.id}`}>
+              Apply {theme.label} to the whole site &rarr;
+            </a>
+          </p>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="how">
+    <h2>What each direction is testing</h2>
+    <ol class="how-list">
+      <li>
+        <b>Paper &amp; ink</b>
+        <span
+          >Trust and quiet. Looks like a book, reads well for a long time, and does not shout "kids' app". Risk: safe to
+          the point of forgettable.</span
+        >
+      </li>
+      <li>
+        <b>Risograph</b>
+        <span
+          >Energy and craft. Two flat inks, deliberate misregistration, uppercase display type. Reads as a printed zine
+          you would pick up. Risk: busy at small sizes.</span
+        >
+      </li>
+      <li>
+        <b>Bauhaus</b>
+        <span
+          >Structure. Primaries as scaffolding, heavy rules, no rounded corners. Makes the site feel designed rather than
+          defaulted. Risk: cold, and ruthlessly unforgiving of loose content.</span
+        >
+      </li>
+      <li>
+        <b>Field notebook</b>
+        <span
+          >Slow and naturalist. Ruled paper, italic serif headings, plate-label small caps. Suits "look closely at one
+          idea". Risk: too quiet for a seven-year-old.</span
+        >
+      </li>
+      <li>
+        <b>Chalkboard</b>
+        <span
+          >Play and imperfection. Dark board, dashed chalk lines, handwriting. Feels like a classroom someone actually
+          uses. Risk: dark backgrounds are harder for early readers.</span
+        >
+      </li>
+    </ol>
+    <p class="how-foot">
+      <a href="/">Back to the site &rarr;</a>
+    </p>
+  </section>
+</BaseLayout>

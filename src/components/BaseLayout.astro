@@ -1,6 +1,10 @@
 ---
 import "../styles/global.css";
 import Icon from "./Icon.astro";
+import SearchPalette from "./islands/SearchPalette.tsx";
+import ReadingSettings from "./islands/ReadingSettings.tsx";
+import ReadAloud from "./islands/ReadAloud.tsx";
+import ThemePicker from "./islands/ThemePicker.tsx";
 
 interface Props {
   title: string;
@@ -37,7 +41,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Archivo:wght@400;700;900&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Caveat:wght@600;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -62,41 +66,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
         }
       </nav>
       <div class="bar-tools">
-        <button id="find" class="tool" type="button" aria-expanded="false">
-          <Icon name="eye" size={16} /> Find
-        </button>
-        <button id="reader" class="tool" type="button" aria-expanded="false" aria-label="Reading settings">Aa</button>
-        <button id="speak" class="tool" type="button" aria-pressed="false">
-          <Icon name="speech" size={16} /> Listen
-        </button>
+        <SearchPalette client:idle />
+        <ThemePicker client:idle />
+        <ReadingSettings client:load />
+        <ReadAloud client:idle />
       </div>
     </header>
 
-    <div id="palette" class="palette" hidden>
-      <input id="palette-input" type="search" placeholder="Type a name, or an idea…" autocomplete="off" aria-label="Search" />
-      <ul id="palette-list" class="palette-list"></ul>
-    </div>
-
-    <div id="reader-panel" class="reader-panel" hidden>
-      <p class="rp-title">Reading settings</p>
-      <div class="rp-row">
-        <span>Text size</span>
-        <span class="rp-btns">
-          <button class="tool" data-size="0">A</button><button class="tool" data-size="1">A+</button><button
-            class="tool"
-            data-size="2">A++</button>
-        </span>
-      </div>
-      <div class="rp-row">
-        <span>Calm mode</span><button class="tool" id="calm" type="button" aria-pressed="false">Off</button>
-      </div>
-      <div class="rp-row">
-        <span>Wide letter spacing</span><button class="tool" id="spacing" type="button" aria-pressed="false">Off</button>
-      </div>
-      <p class="rp-note">Saved on this device. Nothing leaves it.</p>
-    </div>
-
-    <main id="main" tabindex="-1">
+    <main id="main" class="page-main" tabindex="-1">
       <slot />
     </main>
 
@@ -124,8 +101,5 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
       </div>
     </footer>
 
-    <script>
-      import "../scripts/client.js";
-    </script>
   </body>
 </html>

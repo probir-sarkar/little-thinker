@@ -44,7 +44,7 @@ const licences = [...new Set(rows.map((r) => r.license))];
               {r.src ? (
                 <Image src={r.src} alt={r.title} widths={[400, 800]} sizes="(max-width: 700px) 100vw, 300px" format="webp" loading="lazy" />
               ) : (
-                <div style="aspect-ratio:4/3; display:grid; place-items:center; background:var(--paper-2)">
+                <div class="grid aspect-[4/3] place-items-center bg-paper-2">
                   <Icon name="eye" size={30} />
                 </div>
               )}
