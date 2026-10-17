@@ -32,3 +32,18 @@ export function localeCount(n: number): string {
 export function wordCount(n: number): string {
   return WORDS[n] ?? String(n);
 }
+
+/** 1 -> "one philosopher", 15 -> "fifteen philosophers" */
+export function countOf(n: number, singular: string, plural = `${singular}s`): string {
+  return `${wordOf(n)} ${n === 1 ? singular : plural}`;
+}
+
+export function wordOf(n: number): string {
+  return WORDS[n] ?? String(n);
+}
+
+/** "fifteen" -> "Fifteen", for the start of a sentence or a heading. */
+export function Capitalised(n: number): string {
+  const w = wordOf(n);
+  return w.charAt(0).toUpperCase() + w.slice(1);
+}

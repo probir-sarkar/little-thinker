@@ -1,6 +1,6 @@
 # Think Small — philosophy for children
 
-A real Astro project: 30 routes, content collections, build-time image
+A real Astro project: 39 routes, content collections, build-time image
 optimisation, and charts drawn as SVG from the content itself.
 
 Live: <https://think-small-philosophy.probir.workers.dev>
@@ -38,8 +38,8 @@ trailing slash.
 ```
 src/
   content.config.ts            content collection schemas (zod)
-  content/philosophers/*.md    9 entries: story body + frontmatter
-  content/concepts/*.md        14 entries: body + frontmatter
+  content/philosophers/*.md   15 entries: story body + frontmatter
+  content/concepts/*.md       18 entries: body + frontmatter
   data/branches.json           the six themes and their colours
   data/credits.json            image provenance — powers /credits
   lib/site.ts                  branch lookup, era buckets, year formatting
@@ -118,7 +118,8 @@ build if tooling vocabulary reaches a rendered page.
 
 ## Honest limits
 
-- Vote percentages on idea pages are **sample pilot figures**, not live data.
+- There is no tally anywhere on the site. "What do you think?" records the reader's own
+  answer on their own device; no answer is sent or counted, because there is no backend.
 - Stories are retold for young readers and simplified on purpose.
 - Portraits are historical artworks, not photographs of the subjects.
 - The theme lab and four alternate themes were removed; only `ink` ships.

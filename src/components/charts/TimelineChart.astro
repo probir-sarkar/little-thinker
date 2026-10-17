@@ -61,7 +61,7 @@ const usedBranches = [...new Set(rows.map((r) => r.branch))];
   </p>
 
   <div class="chart-scroll">
-    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Timeline of the nine philosophers from Socrates to Hannah Arendt">
+    <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`Timeline of all ${rows.length} philosophers`}>
       <!-- era bands -->
       {eras.map((e, i) => (
         <g>

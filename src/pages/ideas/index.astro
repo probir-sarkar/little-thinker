@@ -6,6 +6,7 @@ import AgeRangeChart from "../../components/charts/AgeRangeChart.astro";
 import FilterChips from "../../components/islands/FilterChips.tsx";
 import Icon from "../../components/Icon.astro";
 import { branchList } from "../../lib/site";
+import { Capitalised } from "../../lib/count";
 
 const concepts = await getCollection("concepts");
 const groups = branchList
@@ -20,8 +21,6 @@ const ladder = concepts.map((c) => ({
   href: `/ideas/${c.id}`,
 }));
 
-const wordNumber = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"];
-const totalWord = wordNumber[concepts.length] ?? String(concepts.length);
 ---
 
 <BaseLayout
@@ -30,7 +29,7 @@ const totalWord = wordNumber[concepts.length] ?? String(concepts.length);
 >
   <header class="page-head">
     <p class="kicker">The big ideas</p>
-    <h1>{totalWord.charAt(0).toUpperCase() + totalWord.slice(1)} questions with no answer at the bottom</h1>
+    <h1>{Capitalised(concepts.length)} questions with no answer at the bottom</h1>
     <p class="lede">
       Every page has the same four parts: the question, the story, a thing to try, and questions to argue about on the
       way home. Grouped by what the idea is about.

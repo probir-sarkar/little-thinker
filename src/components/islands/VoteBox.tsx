@@ -1,13 +1,14 @@
 /**
  * Island: "What do you think?" on an idea page.
  *
- * The three answers are the page's own first "Talk about it" question, so the
- * vote is never a generic agree/disagree widget.
+ * There is no tally and no percentages. An earlier version showed bars with
+ * sample figures from "a pilot class" — numbers that did not come from anywhere,
+ * which is just a lie with decimal points. Counting answers would need a
+ * database, and this site deliberately has no backend.
  *
- * The percentages shown are SAMPLE PILOT FIGURES and the component says so in
- * the interface, not just in a code comment. A real tally needs a database
- * behind the button (Cloudflare D1 + one on-demand route), which this static
- * build deliberately does not have yet.
+ * So the interaction is honest and smaller: the reader picks an answer, it is
+ * remembered on their own device, and they are invited to change their mind.
+ * The question is the point; the count never was.
  */
 import { useEffect, useState } from "preact/hooks";
 import { load, save } from "../../lib/storage";
@@ -17,7 +18,6 @@ type Choice = "yes" | "no" | "unsure";
 interface Props {
   slug: string;
   question: string;
-  sample: Record<Choice, number>;
 }
 
 const CHOICES: { key: Choice; label: string }[] = [
@@ -26,7 +26,7 @@ const CHOICES: { key: Choice; label: string }[] = [
   { key: "unsure", label: "I'm not sure yet" },
 ];
 
-export default function VoteBox({ slug, question, sample }: Props) {
+export default function VoteBox({ slug, question }: Props) {
   const [choice, setChoice] = useState<Choice | null>(null);
 
   useEffect(() => {
@@ -37,6 +37,8 @@ export default function VoteBox({ slug, question, sample }: Props) {
     setChoice(next);
     save(`vote:${slug}`, next);
   }
+
+  const chosen = CHOICES.find((c) => c.key === choice)?.label;
 
   return (
     <section class="vote">
@@ -58,23 +60,9 @@ export default function VoteBox({ slug, question, sample }: Props) {
       </div>
 
       {choice && (
-        <div class="vote-results">
-          <p class="vote-thanks">
-            You said: {CHOICES.find((c) => c.key === choice)?.label}. You can change your mind.
-          </p>
-
-          {CHOICES.map((c) => (
-            <div class="vbar" key={c.key}>
-              <span style={`--w:${sample[c.key]}%`} />
-              <i>{c.label}</i>
-              <b>{sample[c.key]}%</b>
-            </div>
-          ))}
-
-          <p class="vote-note">
-            These numbers come from one class that read this page, not from everyone who visits.
-          </p>
-        </div>
+        <p class="vote-thanks" aria-live="polite">
+          You said: {chosen}. You can change your mind — most philosophers did.
+        </p>
       )}
     </section>
   );

@@ -8,6 +8,7 @@ import TimelineChart from "../components/charts/TimelineChart.astro";
 import Icon from "../components/Icon.astro";
 import WonderBoard from "../components/islands/WonderBoard.tsx";
 import wonders from "../data/wonders.json";
+import { countOf } from "../lib/count";
 import credits from "../data/credits.json";
 
 const philosophers = await getCollection("philosophers");
@@ -70,7 +71,7 @@ const scenes = (credits as any[])
         <a class="door" href="/philosophers">
           <span class="door-n">01</span>
           <span class="door-t">Meet the philosophers</span>
-          <span class="door-s">Nine people who asked too many questions</span>
+          <span class="door-s">{countOf(philosophers.length, "person", "people")} who asked too many questions</span>
           <span class="door-a" aria-hidden="true"><Icon name="door" size={22} /></span>
         </a>
         <a class="door" href="/ideas">
@@ -83,13 +84,6 @@ const scenes = (credits as any[])
     </div>
 
     <WonderBoard client:load wonders={wonders} />
-  </section>
-
-  <section class="strip">
-    <p class="strip-h">Questions children actually send us</p>
-    <ul class="ticker" aria-label="Questions other children wondered about">
-      {wonders.slice(1).map((w) => <li>{w}</li>)}
-    </ul>
   </section>
 
   {
@@ -123,7 +117,7 @@ const scenes = (credits as any[])
   <section class="row">
     <div class="row-head">
       <h2>Three to start with</h2>
-      <a class="more" href="/philosophers">All nine &rarr;</a>
+      <a class="more" href="/philosophers">All {philosophers.length} &rarr;</a>
     </div>
     <div class="grid grid-shelf">
       {shelf.map((p) => <PhilosopherCard entry={p} />)}
@@ -133,7 +127,7 @@ const scenes = (credits as any[])
   <section class="row">
     <div class="row-head">
       <h2>Start with a big idea</h2>
-      <a class="more" href="/ideas">All fourteen &rarr;</a>
+      <a class="more" href="/ideas">All {concepts.length} &rarr;</a>
     </div>
     <div class="grid grid-shelf">
       {ideaShelf.map((c) => <ConceptCard entry={c} />)}

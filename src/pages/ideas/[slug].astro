@@ -21,10 +21,6 @@ const concepts = await getCollection("concepts");
 const related = c.related
   .map((id) => concepts.find((x) => x.id === id))
   .filter((x): x is NonNullable<typeof x> => Boolean(x));
-
-// Sample pilot figures. Honest about being sample data — see the note under
-// the chart. Real tallies need a backend (Cloudflare D1 + a Worker route).
-const sample = { yes: 58, no: 26, unsure: 16 };
 ---
 
 <BaseLayout title={`${c.title} — Think Small`} description={c.hook}>
@@ -52,7 +48,7 @@ const sample = { yes: 58, no: 26, unsure: 16 };
           <p set:html={c.tryIt} />
         </section>
 
-        <VoteBox client:visible slug={entry.id} question={c.talk[0]} sample={sample} />
+        <VoteBox client:visible slug={entry.id} question={c.talk[0]} />
 
         <section class="talk">
           <p class="tryit-label"><Icon name="speech" size={15} /> Talk about it</p>

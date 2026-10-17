@@ -167,5 +167,70 @@
     "width": 564,
     "height": 698,
     "notes": "downloaded 782 KiB; identification of Hypatia in historical art is contested"
+  },
+  {
+    "slug": "sor-juana",
+    "file": "sor-juana.jpg",
+    "title": "Sor Juana Inés de la Cruz (1772).jpg",
+    "author": "Andrés de Islas",
+    "license": "Public domain",
+    "license_url": "",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sor_Juana_In%C3%A9s_de_la_Cruz_(1772).jpg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/7/79/Sor_Juana_In%C3%A9s_de_la_Cruz_%281772%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 768,
+    "height": 968,
+    "notes": "downloaded 461 KiB"
+  },
+  {
+    "slug": "marcus-aurelius",
+    "file": "marcus-aurelius.png",
+    "title": "Marcus Aurelius Metropolitan Museum.png",
+    "author": "User:Steerpike",
+    "license": "Public domain",
+    "license_url": "",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Marcus_Aurelius_Metropolitan_Museum.png",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Marcus_Aurelius_Metropolitan_Museum.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 561,
+    "height": 694,
+    "notes": "downloaded 605 KiB"
+  },
+  {
+    "slug": "mill",
+    "file": "mill.jpg",
+    "title": "John-stuart-mill 1.jpg",
+    "author": "George Frederic Watts",
+    "license": "Public domain",
+    "license_url": "",
+    "source_url": "https://commons.wikimedia.org/wiki/File:John-stuart-mill_1.jpg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/John-stuart-mill_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 366,
+    "height": 458,
+    "notes": "downloaded 83 KiB"
+  },
+  {
+    "slug": "diogenes",
+    "file": "diogenes.jpg",
+    "title": "Diogenes Mosaic Römisch-Germanisches Museum.jpg",
+    "author": "Unknown authorUnknown author",
+    "license": "Public domain",
+    "license_url": "",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Diogenes_Mosaic_R%C3%B6misch-Germanisches_Museum.jpg",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Diogenes_Mosaic_R%C3%B6misch-Germanisches_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "width": 1000,
+    "height": 1075,
+    "notes": "downloaded 290 KiB"
+  },
+  {
+    "slug": "nagarjuna",
+    "file": "nagarjuna.jpg",
+    "title": "Nagarjuna, Tibet, 1644-1911 AD - Sichuan Provincial Museum - Chengdu, China - DSC04486.jpg",
+    "author": "Daderot",
+    "license": "Public domain",
+    "license_url": "",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Nagarjuna,_Tibet,_1644-1911_AD_-_Sichuan_Provincial_Museum_-_Chengdu,_China_-_DSC04486.jpg",
+    "direct_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Nagarjuna%2C_Tibet%2C_1644-1911_AD_-_Sichuan_Provincial_Museum_-_Chengdu%2C_China_-_DSC04486.jpg/1280px-Nagarjuna%2C_Tibet%2C_1644-1911_AD_-_Sichuan_Provincial_Museum_-_Chengdu%2C_China_-_DSC04486.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "width": 1402,
+    "height": 1920,
+    "notes": "downloaded 565 KiB; a traditional depiction, made centuries after his death"
   }
 ]

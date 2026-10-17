@@ -87,9 +87,14 @@ const structuredData = {
         </section>
 
         {
-          credit && (
-            <p class="side-small" style="border-top:1px solid var(--line); padding-top:12px">
+          credit ? (
+            <p class="side-small">
               {credit.title} — {credit.author}. <a href="/credits">Where this picture comes from</a>.
+            </p>
+          ) : (
+            <p class="side-small">
+              No portrait of {p.name.split(" ")[0]} from their own lifetime survives, so this page uses a drawn mark
+              instead of inventing a face. <a href="/credits">About the pictures</a>.
             </p>
           )
         }

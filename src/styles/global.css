@@ -96,7 +96,6 @@
   body.calm .reader-panel { box-shadow: none; }
   body.calm .card:hover,
   body.calm .door:hover { transform: none; }
-  body.calm .ticker li { border-style: solid; }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -226,22 +225,6 @@
     filter: sepia(0.3) saturate(0.8) contrast(1.02);
   }
   .scene figcaption { @apply mt-2 text-[0.8rem] text-muted; }
-
-  /* ---------- question ticker ---------- */
-  .strip { @apply border-b border-line pb-2 pt-5.5; }
-  .strip-h { @apply mb-3 text-[0.78rem] uppercase tracking-[0.14em] text-muted; }
-  .ticker {
-    @apply mb-5.5 flex list-none gap-2.5 overflow-x-auto p-0 pb-1.5;
-    /* A clipped pill at the edge looked like a bug; fade it so the row reads
-       as scrollable rather than broken. */
-    mask-image: linear-gradient(to right, #000 0, #000 92%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, #000 0, #000 92%, transparent 100%);
-  }
-  .ticker li {
-    @apply shrink-0 overflow-hidden text-ellipsis whitespace-nowrap rounded-full border-[1.5px]
-           border-dashed border-line-2 bg-paper px-3.5 py-2 text-[0.93rem] text-ink-2;
-    max-width: 46ch;
-  }
 
   /* ---------- rows and grids ---------- */
   .row { @apply pb-1.5 pt-8.5; }
@@ -391,22 +374,8 @@
     &:hover { @apply bg-ink text-paper; }
     &[aria-pressed="true"] { @apply border-accent bg-accent text-white; }
   }
-  .vote-results { @apply mt-4.5; }
-  .vote-thanks { @apply mb-3 text-[0.94rem] text-ink-2; }
-  .vbar {
-    @apply mb-3 grid gap-x-2.5 gap-y-1;
-    grid-template-areas: "label pct" "bar bar";
-    grid-template-columns: 1fr auto;
-  }
-  .vbar i { grid-area: label; @apply text-[0.9rem] not-italic; }
-  .vbar b { grid-area: pct; @apply text-[0.9rem]; }
-  .vbar span {
-    grid-area: bar;
-    @apply block h-3 rounded-full border-[1.5px] border-ink;
-    background: var(--card-accent, var(--color-accent));
-    width: var(--w);
-  }
-  .vote-note { @apply mb-0 mt-3.5 text-[0.84rem] text-muted; }
+
+  .vote-thanks { @apply mb-0 mt-4 text-[0.94rem] text-ink-2; }
 
   /* ---------- wonder wall ---------- */
   .wonder-form { @apply my-6.5 rounded-page border-2 border-ink bg-paper-2 p-5 shadow-hard; }

@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "../components/BaseLayout.astro";
 import Icon from "../components/Icon.astro";
+import { getCollection } from "astro:content";
+import { countOf } from "../lib/count";
+
+const philosophers = await getCollection("philosophers");
 ---
 
 <BaseLayout title="Page not found — Think Small" description="This page is missing. Which is a philosophical question, actually.">
@@ -14,7 +18,7 @@ import Icon from "../components/Icon.astro";
       <a class="door" href="/philosophers">
         <span class="door-n">01</span>
         <span class="door-t">Meet the philosophers</span>
-        <span class="door-s">Nine people who asked too many questions</span>
+        <span class="door-s">{countOf(philosophers.length, "person", "people")} who asked too many questions</span>
         <span class="door-a" aria-hidden="true"><Icon name="door" size={22} /></span>
       </a>
       <a class="door" href="/ideas">
