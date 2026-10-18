@@ -17,7 +17,7 @@ import tailwindcss from '@tailwindcss/vite';
 // place the day this site gains an on-demand route (the vote tally is the
 // obvious candidate) — and not before.
 export default defineConfig({
-  site: 'https://little-thinker.probir.dev',
+  site: 'https://little-thinker.browserstay.com',
 
   // "file" keeps the URL contract every internal link is generated against:
   // dist/ideas.html is served at /ideas, with NO trailing slash, via
