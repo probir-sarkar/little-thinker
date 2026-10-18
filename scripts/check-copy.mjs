@@ -53,18 +53,6 @@ const BANNED = [
   "chart · ",
 ];
 
-// Phrases where a banned word is ordinary English, not jargon. Removed from the
-// page text before scanning. The one entry today: Ibn Tufayl's thought experiment
-// is literally about a boy alone on an island — "island" there is geography, not
-// Astro's islands architecture.
-const ALLOWED_PHRASES = [
-  "alone on an island",
-  "on an island",
-  "desert island",
-  "deserted island",
-  "the island",
-];
-
 function walk(dir, out = []) {
   for (const entry of readdirSync(dir)) {
     const p = join(dir, entry);
@@ -88,8 +76,7 @@ const problems = [];
 const pages = walk(root);
 
 for (const page of pages) {
-  let text = visibleText(readFileSync(page, "utf8")).toLowerCase();
-  for (const phrase of ALLOWED_PHRASES) text = text.replaceAll(phrase, " ");
+  const text = visibleText(readFileSync(page, "utf8")).toLowerCase();
   for (const word of BANNED) {
     // Word-boundary match on both sides: "astro" must not fire on "astronomy",
     // and "api" must not fire inside "rapidly".
