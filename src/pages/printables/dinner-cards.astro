@@ -1,0 +1,150 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../components/BaseLayout.astro";
+
+const stories = (await getCollection("stories")).sort((a, b) => a.data.agesMin - b.data.agesMin);
+
+export const prerender = true;
+---
+
+<BaseLayout
+  title="Dinner cards — Little Thinker"
+  description="Twenty printable cards, one question each, for the table, the car or a classroom. Cut them out and argue."
+>
+  <article class="print-page">
+    <header class="print-head">
+      <p class="kicker">Printable</p>
+      <h1>Twenty questions for the table</h1>
+      <p class="lede">
+        One card per story. Cut them out, put them in a jar, and pull one at dinner, in the car, or at the end of a
+        lesson. Each card carries a question the story leaves open — there is no answer on the back, on purpose.
+      </p>
+      <p class="print-download"><a href="/printables/dinner-cards.pdf">Download the PDF (5 pages, A4)</a> — or print this page directly.</p>
+      <p class="print-hint">
+        Printing: A4 or Letter, actual size, background graphics on. Four cards per sheet, dashed lines are cut lines.
+      </p>
+    </header>
+
+    <div class="cards">
+      {
+        stories.map((s) => (
+          <section class="card">
+            <p class="card-src">{s.data.sourceShort}</p>
+            <h2>{s.data.title}</h2>
+            <p class="card-hook">{s.data.hook}</p>
+            <p class="card-ask">{s.data.ask}</p>
+            <p class="card-foot">Ages {s.data.agesMin}–{s.data.agesMax} · little-thinker.browserstay.com</p>
+          </section>
+        ))
+      }
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .print-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+  .print-head {
+    max-width: 620px;
+    margin-bottom: 2.5rem;
+  }
+  .print-head h1 {
+    font-family: var(--font-display, serif);
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    line-height: 1.1;
+    margin: 0.4rem 0 1rem;
+  }
+  .print-download {
+    margin: 0.2rem 0 0.6rem;
+    font-size: 0.95rem;
+  }
+  .print-download a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .print-hint {
+    font-size: 0.85rem;
+    color: var(--color-muted, #6b6257);
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .card {
+    border: 1px dashed var(--color-ink, #2a2118);
+    border-radius: 10px;
+    padding: 16px 18px 12px;
+    background: var(--color-paper, #fdfaf3);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    break-inside: avoid;
+    min-height: 210px;
+  }
+  .card-src {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted, #6b6257);
+    margin: 0;
+  }
+  .card h2 {
+    font-family: var(--font-display, serif);
+    font-size: 1.22rem;
+    line-height: 1.15;
+    margin: 0;
+  }
+  .card-hook {
+    font-size: 0.86rem;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--color-muted, #4a4137);
+  }
+  .card-ask {
+    font-size: 0.95rem;
+    line-height: 1.35;
+    margin: auto 0 0;
+    font-weight: 600;
+  }
+  .card-foot {
+    font-size: 0.62rem;
+    color: var(--color-muted, #6b6257);
+    margin: 6px 0 0;
+  }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+    .print-page {
+      padding: 0;
+      max-width: none;
+    }
+    .print-head {
+      margin-bottom: 8mm;
+    }
+    .cards {
+      gap: 6mm;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .card {
+      min-height: 62mm;
+      box-shadow: none;
+    }
+    /* four cards per sheet, then a fresh page */
+    .card:nth-child(4n) {
+      break-after: page;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
