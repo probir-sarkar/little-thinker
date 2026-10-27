@@ -32,4 +32,8 @@ This is what Gyges did. He got himself appointed as a messenger to the court. He
 
 Glaucon, who tells the story, is not really interested in Gyges. He is making a point to Socrates. Give anyone on earth that ring, he says, and you will find out what they are really like. And he asks Socrates to prove that justice — being fair even when it costs you — is worth having for its own sake, and not just because of getting caught.
 
+The story is about 2,400 years old, and Plato did not invent it. Herodotus tells a near-identical tale about a different king and a different shepherd, with no magic at all, which suggests the Greeks had been passing it around long before anyone wrote it down. Plato's addition is the ring.
+
+Glaucon's challenge is sharper than it looks. He is not saying people are wicked. He is saying that if being decent were never rewarded, and being cruel never punished, fairness would have nothing to recommend it except itself. Socrates has to show that justice is good for you from the inside, even when everyone believes you are a monster. Whether he manages it is still argued about, which is unusual for a question that old.
+
 Plato spends the rest of the book trying. He is still working on it. So are we.

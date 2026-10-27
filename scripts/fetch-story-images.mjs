@@ -28,6 +28,14 @@ const STORIES = [
   { id: "the-heap", q: ["sheaf of wheat painting", "wheat sheaves Van Gogh", "harvest sheaf painting"] },
   { id: "achilles-and-the-tortoise", q: ["Achilles red-figure amphora", "Achilles vase painting", "Achilles tortoise"] },
   { id: "the-bundle-of-sticks", q: ["bundle of sticks fable", "father bundle sticks Aesop", "faggot sticks fable illustration"] },
+  { id: "the-sword-of-damocles", q: ["sword of Damocles painting", "Damocles sword engraving", "Damocles Cicero illustration"] },
+  { id: "the-happy-fish", q: ["Zhuangzi fish painting", "Chinese painting fish swimming", "fish album leaf painting China"] },
+  { id: "the-useless-tree", q: ["Zhou Wenjing-Ancient Tree and Jackdaws", "古木寒鸦图 Zhou Wenjing"] },
+  { id: "the-poisoned-arrow", q: ["Buddha Gandhara relief", "Gandhara Buddha teaching relief", "Buddha schist sculpture"] },
+  { id: "the-mustard-seed", q: ["Kisa Gotami", "Buddha life mural Thailand jataka", "Buddhist mural jataka painting"] },
+  { id: "the-empty-pot", q: ["Yue ware jar Chinese celadon", "Song dynasty celadon jar", "Chinese stoneware jar Han"] },
+  { id: "stand-out-of-my-sunlight", q: ["Diogenes and Alexander painting", "Diogenes barrel painting", "Diogenes lantern painting"] },
+  { id: "the-tortoise-and-the-hare", q: ["hare and tortoise illustration", "tortoise hare medieval manuscript", "Aesop hare tortoise engraving"] },
 ];
 
 const OK_LICENSE = /public domain|cc0|no restrictions|cc by(-sa)? \d/i;

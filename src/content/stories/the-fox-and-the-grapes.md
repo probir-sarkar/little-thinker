@@ -9,7 +9,7 @@ hook: "Have you ever decided you didn't want something — the exact moment you 
 ask: "When we can't have what we want, is it better to change what we want — or to pretend we never wanted it?"
 tellIt: "It takes thirty seconds to tell. Tell it, then wait. The argument starts when you ask whether the fox really changed his mind."
 heroImage: "the-fox-and-the-grapes.jpg"
-heroImageAlt: "A Victorian illustration of a fox leaping up at a grape vine"
+heroImageAlt: "A medieval woodcut of a fox reaching up for grapes growing on a trellis"
 ideas:
   - "happiness"
   - "truth"
@@ -27,6 +27,10 @@ Finally the fox gave up. He turned up his nose, walked away, and said, just loud
 That is the whole story. Here is what makes it strange: the grapes did not change. Not one of them got sourer while the fox was jumping. The only thing that changed between his first jump and his last words was the fox's <em>story</em> about the grapes.
 
 So did the fox actually change his mind? Or did he only say he did — and which of those is worse?
+
+Aesop's version is about two and a half thousand years old and takes four lines. Everything else, the running start, the panting, the remark aimed at the whole forest, is later telling. English took the phrase “sour grapes” from it, which is a sign the story worked: it gave us a name for something before most of us had noticed we did it.
+
+There is a reason it is hard to catch yourself doing it. Wanting something you cannot have is uncomfortable, and the discomfort does not go away by being ignored. Changing the story is faster than changing the situation. The trouble is that the same move works in both directions: you can talk yourself out of wanting something silly, and you can talk yourself out of wanting something you should have fought for. From the inside, they feel identical.
 
 Everyone does some version of this. The game you couldn't join was boring anyway. The party you weren't invited to would have been full of annoying people. Sometimes that is wisdom — letting go of something you can't have is a real skill. Sometimes it is just the fox.
 

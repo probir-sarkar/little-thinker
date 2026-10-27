@@ -30,4 +30,8 @@ This puzzle is more than two thousand years old, and the uncomfortable part is t
 
 Once you see the shape of the puzzle, it turns up everywhere. How many hairs does a person need before they are not bald? How many minutes late is it fair to say the bus is “late”? How many euros make someone rich? How many drops of water make a puddle? Our words feel solid — <em>heap, bald, rich, late</em> — and each of them has one grain of vagueness hiding inside it.
 
+The puzzle comes from Eubulides, a Greek philosopher who lived about 2,400 years ago and was famous for arguments that ended in traps. He had a whole family of them. This one is about a heap; another is about a man who says he is lying. They are not jokes, though they are funny. They are tests of whether our words can carry the weight we put on them.
+
+Philosophers have three main moves. One: there really is a line, and we simply do not know where it is. Two: vague words have no line, so many statements about heaps are neither true nor false. Three: truth comes in degrees, so “is a heap” can be nearly true. Each move fixes something and breaks something else. None of them tells you which grain it was.
+
 Some philosophers say the lesson is that words are blunter than the world. Others say there really is a line, we just can't see it. One of them is wrong. Finding out which grain it is has kept philosophers busy since the time of the ancient Greeks — and they have not finished yet.

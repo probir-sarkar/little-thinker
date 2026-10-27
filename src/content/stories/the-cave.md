@@ -26,6 +26,10 @@ One day a prisoner is set free. At first he is baffled. The people and the thing
 
 Then he is dragged up the tunnel, and the sunlight hurts. He cannot see anything for a while. Slowly, though, he gets used to it. He sees the sky, then the sun, and he works out that the sun is what makes everything else visible. And he thinks of the prisoners still down there, and how they would call him mad if he told them what he had found.
 
+Plato wrote this in the Republic, in a book about how a city should be run, and he was not being gentle about it. The prisoners are not stupid. They are educated in the only thing available to them, and their skill at reading shadows is real skill: they can name a shape faster than you could. What they lack is not intelligence. It is the chance to turn round.
+
+There is a version you can test today. A screen shows you a world somebody chose for you, in an order designed to keep you watching, and you never see what was left out. The people arranging it are not villains either; they are paid to know what you will look at next. So the question is not whether you are in a cave. It is who decides which wall you face.
+
 He goes back. And their eyes are used to the dark, and his are ruined by the light, and he cannot do the shadow-guessing any more. He stumbles.
 
 So what do they say about him? Plato is blunt about it: they would say the trip outside ruined him, and if anyone tried to set them free and take them up that tunnel, they would kill him.

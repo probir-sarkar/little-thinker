@@ -28,6 +28,10 @@ The merchant untied the string and handed each of them a single stick. <em>Now.<
 
 <em>You are the sticks,</em> he said. <em>Together, none of you can be broken. Apart, I could snap every one of you with my thumb.</em>
 
+Aesop's fables include a version, and Plutarch tells a different one: a dying Scythian king called Scilurus hands his many sons a bundle of javelins and makes them try to break it. The story has been used by governments ever since, which should make you look at it twice. A story that powerful men like to tell children is doing a job.
+
+And the bundle has a problem nobody mentions: it works by squeezing. Every stick is held in place by pressure from all the others, and the sticks in the middle do most of the holding. Nobody in the story asks whether the sticks wanted to be in a bundle, or what happens to the one that is weak, or whether being hard to break is the same as being well.
+
 That is the story as it is always told, and the moral comes ready-made: stick together. But it is worth poking at.
 
 A bundle holds because string squeezes every stick toward the others. What is the string in a family, or a class, or a country? And what happens to the stick that does all the holding while another one leans on it? A bundle is strong, all right — nobody says a bundle is fair.
