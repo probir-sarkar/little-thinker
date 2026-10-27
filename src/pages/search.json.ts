@@ -34,7 +34,6 @@ export const GET: APIRoute = async () => {
     { t: "For grown-ups", u: "/grown-ups", k: "page", s: "The ten-minute ritual", q: "" },
     { t: "Stories", u: "/stories", k: "page", s: "Old tales with the question left open", q: "" },
     { t: "About", u: "/about", k: "page", s: "A library of questions, not answers", q: "" },
-    { t: "Image credits", u: "/credits", k: "page", s: "Where the pictures come from", q: "" },
   ];
 
   return new Response(JSON.stringify(index), {

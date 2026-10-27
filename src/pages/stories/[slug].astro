@@ -70,7 +70,7 @@ const creditAuthor = (credit?.author ?? "").replace(/\.$/, "");
             {credit && (
               <figcaption>
                 {creditTitle}
-                {creditAuthor ? ` — ${creditAuthor}` : ""}. <a href="/credits">Source on Wikimedia Commons</a>.
+                {creditAuthor ? ` — ${creditAuthor}` : ""}{credit.license ? ` · ${credit.license}` : ""}. <a href={credit.source_url} rel="noopener">Wikimedia Commons</a>.
               </figcaption>
             )}
           </figure>

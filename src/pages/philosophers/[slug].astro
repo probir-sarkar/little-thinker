@@ -94,12 +94,12 @@ const structuredData = {
           credit ? (
             <p class="side-small">
               {prettyTitle(credit.title)}
-              {credit.author ? ` — ${credit.author}` : ""}. <a href="/credits">Source on Wikimedia Commons</a>.
+              {credit.author ? ` — ${credit.author}` : ""}{credit.license ? ` · ${credit.license}` : ""}. <a href={credit.source_url} rel="noopener">Wikimedia Commons</a>.
             </p>
           ) : (
             <p class="side-small">
               We have no portrait of {p.name.split(" ")[0]} that is both authentic and free to use, so this page uses
-              a drawn mark rather than an invented face. <a href="/credits">About the pictures</a>.
+              a drawn mark rather than an invented face.
             </p>
           )
         }
