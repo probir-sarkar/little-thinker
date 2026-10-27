@@ -10,6 +10,7 @@ ask: "What do you actually need, and who decides what that is?"
 tellIt: "Ask each child to name the thing they most want. Then ask what they would want if they could never show it to anyone."
 heroImage: "stand-out-of-my-sunlight.jpg"
 heroImageAlt: "A painting of Alexander visiting Diogenes, who sits on the ground in the sun"
+creditLabel: "Alexander and Diogenes"
 ideas:
   - "what-do-you-need"
   - "freedom"

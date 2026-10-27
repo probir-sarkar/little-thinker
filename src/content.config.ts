@@ -76,6 +76,10 @@ const stories = defineCollection({
     // Empty means "no picture yet" — the card and page simply skip the frame.
     heroImage: z.string().default(""),
     heroImageAlt: z.string().default(""),
+    // A short caption for the picture. Commons filenames are catalogues; printing
+    // one whole under a phone-sized image reads as noise, so each story may name
+    // its own artwork instead.
+    creditLabel: z.string().default(""),
   }),
 });
 

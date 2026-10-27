@@ -10,6 +10,7 @@ ask: "Would you hand in an empty pot?"
 tellIt: "Give each child a real seed and tell them the same rule. Then ask what they would do if nothing grew. Do not answer for them."
 heroImage: "the-empty-pot.jpg"
 heroImageAlt: "A green-glazed Chinese ceramic jar photographed against a plain background"
+creditLabel: "Song Longquan celadon jar"
 ideas:
   - "lies"
   - "truth"

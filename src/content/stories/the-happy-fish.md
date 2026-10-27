@@ -10,6 +10,7 @@ ask: "Can you ever really know what another creature is feeling?"
 tellIt: "Watch a dog or a bird for a minute and say what it is feeling. Then ask the child how they know. Do not rescue them from the difficulty."
 heroImage: "the-happy-fish.jpg"
 heroImageAlt: "A Chinese scroll painting of fish swimming in clear water"
+creditLabel: "The Pleasures of Fishes"
 ideas:
   - "other-minds"
   - "language"

@@ -10,6 +10,7 @@ ask: "Is it better to be useful and used up, or useless and left standing?"
 tellIt: "Ask what each child in the room is useful for. Then ask what would happen to them if they stopped being useful."
 heroImage: "the-useless-tree.jpg"
 heroImageAlt: "A Chinese ink painting of an old, twisted tree with crows perched and flying around it"
+creditLabel: "Ancient Trees and Jackdaws"
 ideas:
   - "work"
   - "winning"

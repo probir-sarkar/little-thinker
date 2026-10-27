@@ -10,6 +10,7 @@ ask: "Would you take the throne if you knew exactly what came with it?"
 tellIt: "Set a heavy book on a high shelf above a chair and let a child sit in it. Ask what they notice first: the view, or the book."
 heroImage: "the-sword-of-damocles.jpg"
 heroImageAlt: "A painting of Damocles at a banquet, with a sword hanging by a thread above his head"
+creditLabel: "The Sword of Damocles"
 ideas:
   - "winning"
   - "happiness"

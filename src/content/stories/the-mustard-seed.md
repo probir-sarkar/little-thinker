@@ -10,6 +10,7 @@ ask: "Does knowing that everyone grieves make grief easier, or heavier?"
 tellIt: "Ask the child to name every person they know who has lost someone. Do not rush to the comforting part. Let the counting be the point."
 heroImage: "the-mustard-seed.jpg"
 heroImageAlt: "A temple mural of a woman kneeling before the Buddha, holding her dead child"
+creditLabel: "Kisagotami with her Dead Child"
 ideas:
   - "death"
   - "hope"

@@ -10,6 +10,7 @@ ask: "What counts as winning, and who decided where the finish line is?"
 tellIt: "Run a race across the room with a head start. Then ask whether the winner was faster, or just less interested in stopping."
 heroImage: "the-tortoise-and-the-hare.jpg"
 heroImageAlt: "An illustration of the hare and the tortoise on the road, with animals watching"
+creditLabel: "The Hare and the Tortoise"
 ideas:
   - "winning"
   - "attention"

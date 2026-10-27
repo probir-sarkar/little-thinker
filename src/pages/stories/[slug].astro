@@ -23,7 +23,27 @@ const ideas = s.ideas
   .filter((c) => c !== undefined);
 
 const credit = (credits as any[]).find((c) => c.slug === entry.id);
-const creditTitle = credit?.title?.replace(/^File:/, "").replace(/\.(jpe?g|png)$/i, "").replace(/_/g, " ");
+
+/**
+ * Commons filenames are catalogues, not captions: "Nava Jetavana Temple -
+ * Shravasti - 007 Kisagotami with her Dead Child (9244545544).jpg". Printed
+ * whole under a picture on a phone they read as noise, so keep the part a
+ * reader can use: drop the id in brackets, drop the museum/collection prefix,
+ * and take the longest surviving fragment.
+ */
+const cleanCreditTitle = (raw?: string) =>
+  (raw ?? "")
+    .replace(/^File:/, "")
+    .replace(/\.(jpe?g|png|webp)$/i, "")
+    .replace(/_/g, " ")
+    .replace(/\s*\(\d+\)\s*$/, "")
+    .split(/\s+[-–—]\s+/)
+    .map((part) => part.replace(/^\d+\s+/, "").trim())
+    .filter((part) => part.length > 3 && !/^[\d\s]+$/.test(part))
+    .sort((a, b) => b.length - a.length)[0] ?? "";
+
+const creditTitle = s.creditLabel || cleanCreditTitle(credit?.title);
+const creditAuthor = (credit?.author ?? "").replace(/\.$/, "");
 ---
 
 <BaseLayout title={`${s.title} — Little Thinker`} description={s.hook}>
@@ -50,7 +70,7 @@ const creditTitle = credit?.title?.replace(/^File:/, "").replace(/\.(jpe?g|png)$
             {credit && (
               <figcaption>
                 {creditTitle}
-                {credit.author ? ` — ${credit.author}` : ""}. <a href="/credits">Source on Wikimedia Commons</a>.
+                {creditAuthor ? ` — ${creditAuthor}` : ""}. <a href="/credits">Source on Wikimedia Commons</a>.
               </figcaption>
             )}
           </figure>

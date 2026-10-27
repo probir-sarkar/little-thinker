@@ -10,6 +10,7 @@ ask: "Which questions must be answered now, and which ones can wait?"
 tellIt: "Ask what you would want to know before taking a nasty medicine. Then ask whether the doctor would wait for the answers."
 heroImage: "the-poisoned-arrow.jpg"
 heroImageAlt: "A grey stone carving of the Buddha from Gandhara"
+creditLabel: "Buddha, from Gandhara"
 ideas:
   - "doubt"
   - "truth"
