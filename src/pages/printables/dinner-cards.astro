@@ -75,7 +75,7 @@ export const prerender = true;
     gap: 14px;
   }
   .card {
-    border: 1px dashed var(--color-ink, #2a2118);
+    border: 1.5px dashed var(--color-ink, #2a2118);
     border-radius: 10px;
     padding: 16px 18px 12px;
     background: var(--color-paper, #fdfaf3);
@@ -117,6 +117,16 @@ export const prerender = true;
   }
 
   @media print {
+    /* hide the site chrome on paper */
+    :global(body > header),
+    :global(body > footer),
+    :global(nav.crumbs),
+    :global(.crumbs) {
+      display: none !important;
+    }
+    :global(main) {
+      padding: 0 !important;
+    }
     @page {
       size: A4;
       margin: 12mm;
