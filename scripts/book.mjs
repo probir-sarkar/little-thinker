@@ -112,6 +112,12 @@ const allPlates = [
   ...[...thinkerPlates.values()],
 ].filter((p) => p?.credit);
 
+const elephant = stories.find((s) => s.slug === "the-elephant");
+const elephantPlate = elephant ? storyPlates.get(elephant.slug) : null;
+const coverPlate = elephantPlate
+  ? { file: elephantPlate.file, alt: elephant.heroImageAlt ?? "Blind men examining an elephant" }
+  : null;
+
 const coverArt = readFileSync(join(ROOT, "public", "illustration-stories.svg"), "utf8")
   .replace(/<\?xml[^>]*\?>/, "")
   .replace(/<svg([^>]*)width="[^"]*"([^>]*)height="[^"]*"/, "<svg$1$2");
@@ -269,15 +275,21 @@ const html = `<!doctype html>
   body { font-family: "Atkinson Hyperlegible", sans-serif; color: #2a2118; line-height: 1.5; margin: 0; hyphens: none; }
   h1, .card-q, .monogram, .part-title { font-family: Fraunces, serif; font-weight: 600; }
 
-  /* cover */
-  .cover { page: cover; height: 297mm; padding: 30mm 24mm 20mm; box-sizing: border-box; display: flex; flex-direction: column; }
-  .cover-kicker { font-size: 8pt; letter-spacing: 0.26em; text-transform: uppercase; color: #6b6257; margin: 0 0 12mm; }
-  .cover h1 { font-size: 44pt; line-height: 1.02; margin: 0 0 6mm; letter-spacing: -0.015em; }
-  .cover-sub { font-size: 11.5pt; line-height: 1.45; max-width: 108mm; margin: 0 0 5mm; }
-  .cover-note { font-size: 8.8pt; color: #6b6257; margin: 0; }
-  .cover-art { margin-top: auto; }
-  .cover-art svg { width: 100%; height: auto; }
-  .cover-imprint { font-size: 7.8pt; letter-spacing: 0.06em; color: #6b6257; margin: 7mm 0 0; }
+  /* cover: ink block, then the plate, then a quiet footer */
+  .cover { page: cover; height: 297mm; padding: 0; display: flex; flex-direction: column; }
+  .cover-top { background: #1e2a24; color: #f7f0e1; padding: 26mm 22mm 18mm; }
+  .cover-kicker { font-size: 8pt; letter-spacing: 0.3em; text-transform: uppercase; color: #c2a878; margin: 0 0 16mm; }
+  .cover h1 { font-family: Fraunces, serif; font-weight: 600; font-size: 56pt; line-height: 0.98; letter-spacing: -0.02em; margin: 0 0 9mm; color: #fdf8ec; }
+  .cover-sub { font-size: 11.5pt; line-height: 1.42; max-width: 104mm; margin: 0 0 6mm; color: #e8dcc5; }
+  .cover-note { font-size: 8.6pt; letter-spacing: 0.04em; color: #c2a878; margin: 0; }
+  .cover-art { flex: 1; background: #f4ead6; display: flex; align-items: center; justify-content: center; padding: 10mm 16mm; }
+  .cover-art img { max-width: 100%; max-height: 92mm; object-fit: contain; border: 0.6pt solid #b9a888; }
+  .cover-art svg { width: 70%; height: auto; }
+  .cover-foot {
+    background: #1e2a24; color: #c2a878; padding: 6mm 22mm;
+    display: flex; justify-content: space-between;
+    font-size: 7.4pt; letter-spacing: 0.12em; text-transform: uppercase;
+  }
 
   /* front matter */
   .front { page: plain; break-before: page; }
@@ -362,12 +374,19 @@ const html = `<!doctype html>
 <body>
 
 <section class="cover">
-  <p class="cover-kicker">Little Thinker</p>
-  <h1>Philosophy<br>for Children</h1>
-  <p class="cover-sub">${stories.length} stories, ${thinkers.length} thinkers, ${concepts.length} questions — and no answers printed.</p>
-  <p class="cover-note">Ages 6–12 · read it aloud</p>
-  <div class="cover-art">${coverArt}</div>
-  <p class="cover-imprint">little-thinker.browserstay.com</p>
+  <div class="cover-top">
+    <p class="cover-kicker">Little Thinker</p>
+    <h1>Philosophy<br>for Children</h1>
+    <p class="cover-sub">${stories.length} stories, ${thinkers.length} thinkers, ${concepts.length} questions.</p>
+    <p class="cover-note">Ages 6–12 · read it aloud</p>
+  </div>
+  <div class="cover-art">
+    ${coverPlate ? `<img src="${coverPlate.file}" alt="${esc(coverPlate.alt)}">` : coverArt}
+  </div>
+  <div class="cover-foot">
+    <span>little-thinker.browserstay.com</span>
+    <span>One volume · three parts</span>
+  </div>
 </section>
 
 <section class="front">
