@@ -7,9 +7,20 @@ import ReadingSettings from "./islands/ReadingSettings.tsx";
 interface Props {
   title: string;
   description?: string;
+  /** A page-specific card. The image should say what the title says. */
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 }
-const { title, description = "Philosophy for children: one big question per page, one philosopher per page." } =
-  Astro.props;
+const {
+  title,
+  description = "Philosophy for children: one big question per page, one philosopher per page.",
+  image,
+  imageAlt,
+  imageWidth = 1200,
+  imageHeight = 630,
+} = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/index\.html$/, "/").replace(/\.html$/, "");
 const isCurrent = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
@@ -24,7 +35,8 @@ const navItems = [
 // .html extension that the public URL does not have. Use the cleaned path,
 // which is also what the nav highlight uses.
 const canonical = new URL(path, Astro.site).href;
-const socialCard = new URL("/og.png", Astro.site).href;
+const socialCard = image ? (image.startsWith("http") ? image : new URL(image, Astro.site).href) : new URL("/og.png", Astro.site).href;
+const cardAlt = imageAlt ?? "Little Thinker — big questions, cut down to size. Philosophy for children, ages 5 to 12.";
 ---
 
 <!doctype html>
@@ -45,9 +57,9 @@ const socialCard = new URL("/og.png", Astro.site).href;
     <meta property="og:site_name" content="Little Thinker" />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={socialCard} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Little Thinker — big questions, cut down to size. Philosophy for children, ages 5 to 12." />
+    <meta property="og:image:width" content={String(imageWidth)} />
+    <meta property="og:image:height" content={String(imageHeight)} />
+    <meta property="og:image:alt" content={cardAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -101,7 +113,7 @@ const socialCard = new URL("/og.png", Astro.site).href;
           <p class="foot-brand">Little&nbsp;Thinker</p>
           <p>A free library of big questions, written for children and readable by anyone.</p>
           <p class="foot-small"><a href="https://browserstay.com/" target="_blank" rel="noopener">Part of BrowserStay</a></p>
-          <p class="foot-small">Say hello: <a href="mailto:connect@browserstay.com">connect@browserstay.com</a></p>
+          <p class="foot-small">Say hello: <a href="mailto:contact@browserstay.com">contact@browserstay.com</a></p>
         </div>
         <div class="foot-col">
           <p class="foot-h">Go to</p>

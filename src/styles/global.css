@@ -375,6 +375,19 @@
   .prose ul { @apply mb-5 list-disc pl-5; }
   .prose li { @apply mb-2; }
 
+  /* the rule between a retelling and the afterword: short, quiet, centred */
+  .prose hr {
+    border: 0;
+    border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+    width: 3rem;
+    margin: 2.2rem auto 1.6rem;
+  }
+  /* "After the story" — a label, not a chapter heading */
+  .prose h3 {
+    @apply mb-3 mt-0 text-[0.74rem] tracking-[0.18em] uppercase;
+    color: var(--color-muted, #6b6257);
+  }
+
   .qblock { @apply mb-6.5 rounded-page bg-ink px-5.5 py-5 text-paper; }
   .qblock-label { @apply mb-2 text-[0.74rem] uppercase tracking-[0.14em] text-paper-3; }
   .qblock-q { @apply m-0 font-display text-[clamp(1.3rem,2.4vw,1.75rem)] font-bold; }

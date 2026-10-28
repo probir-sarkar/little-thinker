@@ -26,10 +26,6 @@ The emperor sent his oldest, most trusted minister to look. The minister stared 
 
 Then he sent another official, and the same thing happened. Then the emperor went himself, with his whole court. Everyone looked. Everyone saw nothing. Everyone said how magnificent it was.
 
-Hans Christian Andersen published this in 1837, and he did not invent it either. A Spanish prince, Don Juan Manuel, told a version five hundred years earlier, with a cloth that is invisible to men who are not the sons of their fathers, and a servant who has to pretend. The trap has been rebuilt in every century since. In this one it is invisible to anyone unfit for their job, which is a much better trap.
-
-Notice that the emperor never has to say anything false. He looks, sees nothing, and says the cloth is beautiful, because the alternative is admitting he cannot see what everyone else claims to see. The lie does not begin with the weavers. It begins with the first person who decides that not seeing is a thing to be ashamed of.
-
 So they dressed him. The weavers pretended to put on each garment, one after another, and the emperor turned this way and that in front of the mirror, and everyone agreed it suited him perfectly.
 
 And he walked out into the street, and the whole town cheered, because not one person wanted to be the one who could not see it.
@@ -37,3 +33,11 @@ And he walked out into the street, and the whole town cheered, because not one p
 Until a small child, who had no job to lose and no idea he was supposed to be careful, said the obvious thing out loud.
 
 He isn't wearing anything.
+
+---
+
+### After the story
+
+Hans Christian Andersen published this in 1837, and he did not invent it either. A Spanish prince, Don Juan Manuel, told a version five hundred years earlier, with a cloth that is invisible to men who are not the sons of their fathers, and a servant who has to pretend. The trap has been rebuilt in every century since. In this one it is invisible to anyone unfit for their job, which is a much better trap.
+
+Notice that the emperor never has to say anything false. He looks, sees nothing, and says the cloth is beautiful, because the alternative is admitting he cannot see what everyone else claims to see. The lie does not begin with the weavers. It begins with the first person who decides that not seeing is a thing to be ashamed of.

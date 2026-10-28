@@ -31,6 +31,10 @@ Above his head, hanging by a single hair from a horse's tail, was a sword. The p
 
 Damocles stopped eating. He stopped laughing. He stopped hearing what people said to him. He asked, very politely, whether he might be excused, and he went home and never asked about the king's life again.
 
+---
+
+### After the story
+
 The story is usually told as a warning about power: that a ruler lives under a threat he cannot put down. But look at where the sword is actually pointing. It does not hang over the throne. It hangs over whoever is sitting in it.
 
 So here is the question the story leaves. Was Damocles wrong to want the throne, or wrong about what the throne was? And if you could have the good part — the silver, the bowing, the afternoon — while knowing about the sword, would you still sit down?

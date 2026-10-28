@@ -26,6 +26,10 @@ The harder the Wind blew, the tighter the coat got. At last the Wind gave up, ou
 
 Then the Sun came out from behind a cloud. It did not blow. It did not pull. It just shone, gently, and the road grew warm. The traveller loosened his grip on the coat. The Sun shone a little warmer, and the man undid his buttons. A few steps further on, with his forehead damp, he took the coat off altogether and carried it over his arm.
 
+---
+
+### After the story
+
 Aesop told this one about 2,500 years ago and it has barely changed since, which is unusual for a story that old. It survives because it is small and complete: two forces, one man, and a result that can be argued about in either direction.
 
 There is a fourth character nobody talks about, and it is the traveller's own reasons. He took his coat off because he was warm, not because he was persuaded. Neither the Wind nor the Sun asked him anything. So the story is not really about gentleness beating force. It is about two powers who never once considered that the man might have a view.

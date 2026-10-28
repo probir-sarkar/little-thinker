@@ -32,6 +32,10 @@ The sixth found a tusk, smooth and pointed and hard. "It is like a spear."
 
 And then they argued, because each one of them was certain, and each one of them was describing something that was really there.
 
+---
+
+### After the story
+
 The story travelled a long way to reach you. Versions exist in India, Persia, China and Japan; in some the men are blind, in others simply in the dark; in the oldest Buddhist telling a king is mocking quarrelling teachers. Rumi, the Persian poet, turned it into a poem about how our senses only ever touch a piece of things.
 
 But there is a twist the moral usually hides. If you say that everyone is partly right and nobody can see the whole, you have just claimed to see the whole. The only way to know that all six are describing one elephant is to stand where the elephant is visible, which is exactly the position the story says nobody is in.

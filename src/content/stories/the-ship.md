@@ -30,6 +30,10 @@ Some people say yes. It is the same ship because it is the same ship — the nam
 
 Some people say no. It is a completely different ship wearing an old ship's name. If you had kept every old plank in a shed, then at the end you would have all the original wood, and you could build the real ship from it. And you cannot have two ships both being the one.
 
+---
+
+### After the story
+
 The story is about 1,900 years old, and it was already old when Plutarch wrote it down: the Athenians really did keep a ship they said was Theseus'. Plutarch noticed that philosophers had been arguing about it for centuries before him, and he mentions, almost in passing, that some people kept the old planks and reassembled them, which gave them two ships claiming to be one.
 
 In 1655 Thomas Hobbes made it worse on purpose. Suppose somebody gathers all the removed planks and builds a second ship from them. Now which one is the ship of Theseus? The harbour one, repaired piece by piece, or the shed one, made of every original timber? Each answer sounds right, and they cannot both be. Hobbes was not confused. He was showing that "the same thing" is not one idea but several, and we use whichever suits us until someone puts them side by side.

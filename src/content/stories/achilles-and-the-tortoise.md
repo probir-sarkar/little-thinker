@@ -28,10 +28,12 @@ To that point, then, and in the meantime the tortoise moves again. The gap shrin
 
 You know this argument is wrong, because runners pass tortoises every day. But watch how hard it is to say <em>where</em> it goes wrong. Every single step of the argument looked perfect.
 
-The mathematical part of the mystery took until about two thousand years after Zeno to settle: infinitely many steps can still add up to a finite distance. Half a gap, plus a quarter, plus an eighth, plus… gets closer and closer to the whole gap without ever passing it, and Achilles reaches it in a finite time. The steps run out of room.
+---
+
+### After the story
 
 Zeno was not a fool playing with words. He was defending a serious idea: that if a distance can always be halved, crossing it would take infinitely many steps, and perhaps nothing ever arrives anywhere. For most of two thousand years the best reply was that he was obviously wrong, which is not a reply.
 
-In the 1800s mathematics caught up and showed that an endless list of ever-smaller steps can add up to something finite. That settled the arithmetic. It did not settle the feeling. Stand halfway between two places, then halfway again: you are always somewhere, never nowhere. So what exactly is happening at the moment you move?
+The mathematical part of the mystery took until about two thousand years after Zeno to settle: infinitely many steps can still add up to a finite distance. Half a gap, plus a quarter, plus an eighth, plus… gets closer and closer to the whole gap without ever passing it, and Achilles reaches it in a finite time. The steps run out of room.
 
 But a puzzle is left, and it is not a maths puzzle. Zeno's real question was about what motion <em>is</em>: how can anything be “at” a place, mid-movement, if between any two places there are always more places? Everyone who has ever run knows the answer with their legs. Saying it with words is harder than it looks — which was exactly Zeno's point.

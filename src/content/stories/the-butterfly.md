@@ -28,6 +28,10 @@ Was he a man who had fallen asleep and dreamed he was a butterfly?
 
 Or was he a butterfly, right then, dreaming that he was a man?
 
+---
+
+### After the story
+
 Zhuangzi lived about 2,300 years ago, in a time of constant war, and wrote in small strange stories instead of arguments. He is not trying to make you doubt everything. He is pointing at something narrower and worse: the feeling of being sure is identical in a dream and in a morning, and the feeling is all you ever have to go on.
 
 You can test the shape of it. You have woken up relieved that something was not real, and you have dreamed something you were certain was happening. In both cases your evidence was exactly the same: it seemed to be happening. So what would count as proof that you are awake right now? Careful. Pinching yourself is something you can also dream.

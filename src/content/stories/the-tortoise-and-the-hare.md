@@ -31,6 +31,10 @@ The tortoise walked. She was not fast, and she was not clever, and she did not h
 
 The hare woke before the end. He saw the tortoise nearly at the line, ran, ran faster than he had ever run, and lost by a length.
 
+---
+
+### After the story
+
 Everyone knows the moral, and it is usually written down as "slow and steady wins the race", which is a comfortable thing to say to a slow child. But look at what actually happened. The hare did not lose because he was fast. He lost because he stopped. The tortoise did not win because she was slow. She won because she kept going, and because she was allowed to choose a race where keeping going was enough.
 
 Now the awkward question that the fable skips. Who set that finish line? The fox. What would have happened on a race twice as long, or uphill, or with a fence? Did the hare actually want to win, or did he just want everyone to watch him run?

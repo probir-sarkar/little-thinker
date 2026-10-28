@@ -24,6 +24,10 @@ He tried again, running faster, jumping higher. The grapes swung on their stem a
 
 Finally the fox gave up. He turned up his nose, walked away, and said, just loudly enough for the forest to hear: <em>They were probably sour anyway. I never wanted them.</em>
 
+---
+
+### After the story
+
 That is the whole story. Here is what makes it strange: the grapes did not change. Not one of them got sourer while the fox was jumping. The only thing that changed between his first jump and his last words was the fox's <em>story</em> about the grapes.
 
 So did the fox actually change his mind? Or did he only say he did — and which of those is worse?

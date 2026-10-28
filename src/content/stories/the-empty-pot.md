@@ -39,6 +39,10 @@ The emperor smiled, and then he laughed, and then he made the announcement.
 
 <em>Every seed you were given,</em> he said, <em>was boiled. None of them could grow. These children have brought me plants I have never seen, grown from seeds that could not sprout. Only this boy told me the truth.</em>
 
+---
+
+### After the story
+
 It is a satisfying ending, and that is the problem. It is only satisfying because Ping's honesty gets rewarded within the hour, in public, by an emperor. Most honesty does not work like that. Most honesty costs you something and nobody claps.
 
 So the real question is not whether Ping was right. It is: would you have done it? And would you have done it if the emperor had looked at your empty pot, said nothing at all, and moved on to the next child?

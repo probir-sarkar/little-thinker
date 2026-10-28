@@ -26,6 +26,10 @@ But follow the argument to the end and you are standing in front of a single gra
 
 Somewhere in there, the heap went away. So: <em>which grain was the guilty one?</em>
 
+---
+
+### After the story
+
 This puzzle is more than two thousand years old, and the uncomfortable part is that no step in it looks wrong. It feels like there should be a line — 4,731 grains is a heap, 4,730 is not — but nobody could ever say where it is, and any line you draw looks made up.
 
 Once you see the shape of the puzzle, it turns up everywhere. How many hairs does a person need before they are not bald? How many minutes late is it fair to say the bus is “late”? How many euros make someone rich? How many drops of water make a puddle? Our words feel solid — <em>heap, bald, rich, late</em> — and each of them has one grain of vagueness hiding inside it.

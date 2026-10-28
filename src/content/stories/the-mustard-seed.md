@@ -35,6 +35,10 @@ She went through the whole village. There was no house. Not one.
 
 And she understood, in the way you understand a thing with your body rather than your thoughts, that she was not being punished, and not singled out, and not the only one. She buried her son. She came back to the teacher and told him what she had found.
 
+---
+
+### After the story
+
 The story gets told as a lesson about accepting death, which is true and also a little convenient, because it is easy to say to someone else. What Kisa actually found was harder and stranger: that going door to door with her question made a room full of strangers into people who had the same wound.
 
 So which helped her more: the teaching, or the doorways? And if it was the doorways, why does it take a dead child to make us knock?

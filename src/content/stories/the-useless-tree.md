@@ -31,6 +31,10 @@ That night the carpenter dreamed about the tree, and the tree talked to him.
 
 The carpenter woke up and told his apprentice, who did not entirely believe him.
 
+---
+
+### After the story
+
 There is a version of this story with a twist. Later, Zhuangzi's friend asks him: if you had to be a goose, would you rather be the one that cackles and is kept, or the one that doesn't and gets cooked? Zhuangzi says he would be neither, and refuses to choose. Which is not an answer, and he knows it.
 
 So the tree survives by being useless. But being useless is not a plan you can choose the way you choose a hat, and a forest of useless trees is still a forest somebody owns.

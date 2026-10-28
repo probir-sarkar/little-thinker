@@ -30,6 +30,10 @@ Now: you are a shepherd, you are nobody, and there is a king's palace a day's wa
 
 This is what Gyges did. He got himself appointed as a messenger to the court. He used the ring to get close to the queen, and together they killed the king, and Gyges took the throne and the kingdom.
 
+---
+
+### After the story
+
 Glaucon, who tells the story, is not really interested in Gyges. He is making a point to Socrates. Give anyone on earth that ring, he says, and you will find out what they are really like. And he asks Socrates to prove that justice — being fair even when it costs you — is worth having for its own sake, and not just because of getting caught.
 
 The story is about 2,400 years old, and Plato did not invent it. Herodotus tells a near-identical tale about a different king and a different shepherd, with no magic at all, which suggests the Greeks had been passing it around long before anyone wrote it down. Plato's addition is the ring.

@@ -29,6 +29,10 @@ Huizi, who liked winning arguments more than he liked fish, said: <em>You are no
 
 Zhuangzi did not give up. <em>Let us go back to where we started,</em> he said. <em>You asked me how I know the fish are happy. That means you already accepted that I know it, and only wanted to hear how. Well: I know it from here. Standing on this bridge, looking at the water.</em>
 
+---
+
+### After the story
+
 That is where the story stops, which is a little rude of it.
 
 Because Zhuangzi has not explained anything. He has only pointed at the river. And Huizi has not been answered either: he asked a fair question and got a joke.

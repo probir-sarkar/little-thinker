@@ -29,6 +29,10 @@ The doctor said the arrow needed to come out.
 
 And while he was asking, the poison did what poison does.
 
+---
+
+### After the story
+
 That is roughly how the Buddha told it, to a monk called Malunkyaputta. The monk had a list of questions he wanted answered before he would commit to the training. Is the world eternal? Is it not? Is the soul the same as the body? Does a person exist after death? And so on.
 
 The Buddha did not say the questions were stupid. That is the part people skip. He said they were the kind of question that can eat a whole life, and that a man with an arrow in him has a more urgent job.

@@ -28,6 +28,10 @@ Then one evening a wolf really did come out of the trees. The boy shouted louder
 
 Down in the village, people looked up at the hill, and then back at what they were doing. <em>More of his games,</em> they said. Nobody went up.
 
+---
+
+### After the story
+
 The fable is about 2,500 years old, and in the oldest versions the boy does not lose sheep to a wolf at all. The villagers simply stop coming, and the story ends there. The wolf is a later addition, and it makes the story easier to take. With the wolf, the boy is punished. Without one, the punishment is only that nobody believes him any more, which is a stranger and more grown-up fear.
 
 There is a second thing the moral skips. The boy's problem was not wickedness. It was boredom, and a job with nothing in it but sheep and weather. Trust is what the village spends, it is slow to rebuild, and the boy is not the only one who pays when it runs out. The sheep do too.

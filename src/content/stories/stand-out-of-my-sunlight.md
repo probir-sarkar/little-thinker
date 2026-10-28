@@ -29,6 +29,10 @@ Alexander stood over him. <em>I am Alexander the Great,</em> he said. <em>Ask me
 
 Diogenes, without sitting up: <em>Then stand a little out of my sun.</em>
 
+---
+
+### After the story
+
 What is worth noticing is how badly Alexander takes it. He does not laugh. He does not have him arrested. He says, according to Plutarch, something like: <em>If I were not Alexander, I would wish to be Diogenes.</em> Which is not a compliment to Diogenes so much as an admission. The man who could have anything had just noticed that he could not have that.
 
 But do not let the philosopher off too easily. Diogenes' freedom depended on a city that tolerated him, in a warm climate, where a man in a barrel did not freeze in the first winter. His need was small because other people were doing the needing for him.
