@@ -29,3 +29,6 @@ __pycache__/
 
 # wrangler local state
 .wrangler/
+
+# Printable PDFs live in R2 (browserstay-assets/little-thinker/printables)
+public/printables/*.pdf
