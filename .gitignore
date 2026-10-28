@@ -32,3 +32,8 @@ __pycache__/
 
 # Printable PDFs live in R2 (browserstay-assets/little-thinker/printables)
 public/printables/*.pdf
+
+# generated book artefacts (build inputs/outputs); the published copies live in R2
+book/*.pdf
+book/*.epub
+book/cover.png

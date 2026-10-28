@@ -1,0 +1,24 @@
+/* EPUB: reflowable, so no page boxes. The hierarchy is the point. */
+body { font-family: "Atkinson Hyperlegible", Georgia, serif; line-height: 1.55; color: #2a2118; }
+h1, h2, .card-q { font-family: Fraunces, Georgia, serif; font-weight: 600; }
+h1 { font-size: 1.9em; line-height: 1.12; margin: 0 0 0.2em; }
+h2 { font-size: 1.5em; line-height: 1.15; margin: 0 0 0.2em; }
+.ch-num, .ch-src, .card-label, .prov-label {
+  font-size: 0.72em; letter-spacing: 0.16em; text-transform: uppercase; color: #6b6257;
+}
+.ch-num { margin: 0 0 0.4em; }
+.ch-src { margin: 0 0 1.6em; }
+p { margin: 0 0 0.85em; }
+.card {
+  margin: 1.8em 0 1.2em; padding: 1.1em 1.2em;
+  border: 1.5px solid #2a2118; border-radius: 10px; background: #f7f0e2;
+  page-break-inside: avoid;
+}
+.card-label { margin: 0 0 0.5em; }
+.card-q { font-size: 1.25em; line-height: 1.3; margin: 0; }
+.provenance { margin: 1.4em 0 0; padding-top: 0.8em; border-top: 1px solid #cfc6b6; page-break-inside: avoid; }
+.prov-label { margin: 0 0 0.4em; }
+.prov-text { font-size: 0.86em; color: #6b6257; margin: 0; }
+.cover { text-align: center; }
+.contents { list-style: none; padding: 0; }
+.contents li { margin: 0 0 0.5em; }
