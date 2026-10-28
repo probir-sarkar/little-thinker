@@ -191,7 +191,7 @@ const html = `<!doctype html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<title>Twenty Questions for the Table</title>
+<title>Philosophy for Children: Twenty Stories and the Questions They Leave</title>
 <meta name="author" content="Little Thinker">
 <meta name="description" content="Twenty old stories, each ending in the question it was invented to ask. Philosophy for children, ages 6–12.">
 <style>
@@ -296,9 +296,9 @@ const html = `<!doctype html>
 
 <section class="cover">
   <p class="cover-kicker">Little Thinker</p>
-  <h1>Twenty questions<br>for the table</h1>
-  <p class="cover-sub">Old stories — a cave, a ring, a ship — each one ending in a question nobody has settled.</p>
-  <p class="cover-note">Philosophy for children · ages 6–12 · read it aloud</p>
+  <h1>Philosophy<br>for Children</h1>
+  <p class="cover-sub">Twenty stories, and the questions they leave.</p>
+  <p class="cover-note">Ages 6–12 · read it aloud · no answers printed</p>
   <div class="cover-art">${coverArt}</div>
   <p class="cover-imprint">little-thinker.browserstay.com</p>
 </section>
@@ -363,7 +363,7 @@ ${
   .join("\n");
 
 const markdown = `---
-title: Twenty Questions for the Table
+title: "Philosophy for Children: Twenty Stories and the Questions They Leave"
 author: Little Thinker
 lang: en-GB
 description: Twenty old stories, each ending in the question it was invented to ask. Philosophy for children, ages 6–12.

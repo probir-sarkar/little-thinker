@@ -1,5 +1,5 @@
 ---
-title: Twenty Questions for the Table
+title: "Philosophy for Children: Twenty Stories and the Questions They Leave"
 author: Little Thinker
 lang: en-GB
 description: Twenty old stories, each ending in the question it was invented to ask. Philosophy for children, ages 6–12.
