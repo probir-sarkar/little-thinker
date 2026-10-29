@@ -1,0 +1,5 @@
+# Astro's sitemap integration emits sitemap-index.xml; every crawler, validator
+# and human still types /sitemap.xml first. Keep one canonical file and point
+# the expected path at it.
+/sitemap.xml /sitemap-index.xml 301
+/sitemap_index.xml /sitemap-index.xml 301
